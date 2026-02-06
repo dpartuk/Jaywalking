@@ -1,0 +1,12 @@
+# jaad.yaml
+
+# Paths - absolute paths are safest.
+# "." refers to the folder where you run the train script.
+path: ./dataset_yolo 
+train: images/train
+val: images/val
+
+# Class Names
+names:
+  0: person_crossing
+  1: person_static

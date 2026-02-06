@@ -1,0 +1,10 @@
+easydict
+numpy
+opencv_python
+openpifpaf==0.10.1
+pickle5
+Pillow
+PyYAML
+scikit_learn
+tensorboardX
+tqdm

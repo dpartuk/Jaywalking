@@ -1,0 +1,36 @@
+# OS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Model weights
+*.pt
+*.bin
+*.onnx
+
+# Datasets (large / symlinked)
+detection/dataset_yolo/
+detection/dataset_mini/
+detection/JAAD/
+segmentation/FPVCrosswalk2025/
+intention/datagen/
+
+# Training runs (logs, plots, cached results)
+detection/runs/
+
+# Videos / large outputs
+*.mp4
+
+# Logs
+nohup.out
+*.log
+*.out
+
+# IDE / editor
+.claude/
+
+# Environments
+.env
+.venv/
