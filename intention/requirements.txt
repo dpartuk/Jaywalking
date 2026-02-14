@@ -1,8 +1,8 @@
 easydict
 numpy
 opencv_python
-openpifpaf==0.10.1
-pickle5
+setuptools
+openpifpaf
 Pillow
 PyYAML
 scikit_learn

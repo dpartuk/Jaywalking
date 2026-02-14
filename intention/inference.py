@@ -1,4 +1,4 @@
-import pickle5 as pickle
+import pickle
 import argparse
 import numpy as np
 from tqdm import tqdm
@@ -6,6 +6,14 @@ from os.path import join, abspath, exists, dirname, isfile
 import cv2
 import PIL
 import json
+
+# Compatibility shim: openpifpaf 0.13.x expects ConvBNReLU in torchvision.models.mobilenetv2,
+# but it was removed in torchvision >= 0.14. Patch it before importing openpifpaf.
+import torchvision
+if not hasattr(torchvision.models.mobilenetv2, 'ConvBNReLU'):
+    from torchvision.ops.misc import Conv2dNormActivation
+    torchvision.models.mobilenetv2.ConvBNReLU = Conv2dNormActivation
+
 import openpifpaf
 
 import torch
@@ -152,12 +160,12 @@ class Inference(object):
         
         
 
-    def _get_2dkp_vid(self, vid, processor):
+    def _get_2dkp_vid(self, vid, predictor):
         """
-        Extracts the 2d keypoints of each pedestrian in the whole 
+        Extracts the 2d keypoints of each pedestrian in the whole
         video with OpenPifPaf
         :param vid: The video id
-        :param processor: The processor used to get the 2d keypoints
+        :param predictor: The openpifpaf.Predictor used to get the 2d keypoints
         :return: an array of list of 2d keypoints for a sequence
         """
 
@@ -167,32 +175,18 @@ class Inference(object):
 
         kp_OPP = []
         pil_imgs = []
-        
+
         while success:
             image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             pil_imgs.append(PIL.Image.fromarray(image))
             success, image = vidcap.read()
 
-        data = openpifpaf.datasets.PilImageList(pil_imgs)
-
-        batch_size = 5
-        loader = torch.utils.data.DataLoader(data, batch_size=batch_size, pin_memory=True)
-        
         print('Creating 2D keypoints')
-        for images_batch, _, _ in tqdm(loader):
-            images_batch = images_batch.cuda()
-            fields_batch = processor.fields(images_batch)
-
-            for i in range(len(fields_batch)):
-              predictions = processor.annotations(fields_batch[i])
-              
-              if not predictions:
-                  kp_OPP.append([np.zeros((17, 3))])
-              else:
-                  tmp_2dkp = []
-                  for pred in predictions:
-                      tmp_2dkp.append(pred.data)
-                  kp_OPP.append(tmp_2dkp)
+        for predictions, _, _ in predictor.pil_images(pil_imgs):
+            if not predictions:
+                kp_OPP.append([np.zeros((17, 3))])
+            else:
+                kp_OPP.append([pred.data for pred in predictions])
 
         return np.array(kp_OPP, dtype=object)
     
@@ -227,17 +221,15 @@ class Inference(object):
 
         forecast_step = int(self._t_pred * self._fps)
 
-        net_cpu, _ = openpifpaf.network.factory(checkpoint='resnet101')
-        net = net_cpu.cuda()
-        decode = openpifpaf.decoder.factory_decode(net, seed_threshold=0.5)
-        processor = openpifpaf.decoder.Processor(net, decode, instance_threshold=0.2, keypoint_threshold=0.3)
+        predictor = openpifpaf.Predictor(checkpoint='resnet50')
+        predictor.batch_size = 5
 
         vidcap = cv2.VideoCapture(clip_file_path)
         width = vidcap.get(cv2.CAP_PROP_FRAME_WIDTH)
         height = vidcap.get(cv2.CAP_PROP_FRAME_HEIGHT)
         num_frames = int(vidcap.get(cv2.CAP_PROP_FRAME_COUNT))
         
-        kp_OPP = self._get_2dkp_vid(filename, processor)
+        kp_OPP = self._get_2dkp_vid(filename, predictor)
         nbr_seq_vid = int((len(kp_OPP))/(forecast_step))
 
         data_seq = {'vid_id': filename,'num_seq': nbr_seq_vid,'forecast_step': forecast_step,

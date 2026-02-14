@@ -23,17 +23,23 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-import pickle5 as pickle
+import pickle
 import argparse
 import numpy as np
-from tqdm import tqdm
 import xml.etree.ElementTree as ET
 from os.path import join, abspath, exists, dirname, isfile, splitext
 import os
 import cv2
 import PIL
+
+# Compatibility shim: openpifpaf 0.13.x expects ConvBNReLU in torchvision.models.mobilenetv2,
+# but it was removed in torchvision >= 0.14. Patch it before importing openpifpaf.
+import torchvision
+if not hasattr(torchvision.models.mobilenetv2, 'ConvBNReLU'):
+    from torchvision.ops.misc import Conv2dNormActivation
+    torchvision.models.mobilenetv2.ConvBNReLU = Conv2dNormActivation
+
 import openpifpaf
-import torch
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -256,12 +262,12 @@ class JAAD(object):
     
 
 
-    def _get_2dkp_vid(self, vid, processor):
+    def _get_2dkp_vid(self, vid, predictor):
         """
-        Extracts the 2d keypoints of each pedestrian in the whole 
+        Extracts the 2d keypoints of each pedestrian in the whole
         video with OpenPifPaf
         :param vid: The video id
-        :param processor: The processor used to get the 2d keypoints
+        :param predictor: The openpifpaf.Predictor used to get the 2d keypoints
         :return: an array of list of 2d keypoints for a sequence
         """
 
@@ -271,48 +277,30 @@ class JAAD(object):
 
         pred_data = []
         pil_imgs = []
-        
+
         # Extract all the video images
         while success:
             image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             pil_imgs.append(PIL.Image.fromarray(image))
             success, image = vidcap.read()
 
-        data = openpifpaf.datasets.PilImageList(pil_imgs)
-
-        batch_size = 5
-        loader = torch.utils.data.DataLoader(data, batch_size=batch_size, pin_memory=True)
-        
         print('Creating 2D keypoints')
-        for images_batch, _, _ in tqdm(loader):
-            # images_batch = images_batch.cuda()
-            device = get_device()
-            images_batch = images_batch.to(device)
-            
-            fields_batch = processor.fields(images_batch)
-
-            # Stack the results and store them
-            for i in range(len(fields_batch)):
-              predictions = processor.annotations(fields_batch[i])
-              
-              if not predictions:
-                  pred_data.append([np.zeros((17, 3))])
-              else:
-                  tmp_2dkp = []
-                  for pred in predictions:
-                      tmp_2dkp.append(pred.data)
-                  pred_data.append(tmp_2dkp)
+        for predictions, _, _ in predictor.pil_images(pil_imgs):
+            if not predictions:
+                pred_data.append([np.zeros((17, 3))])
+            else:
+                pred_data.append([pred.data for pred in predictions])
         return np.array(pred_data, dtype=object)
 
 
 
-    def _get_annotations(self, vid, compute_kps, processor):
+    def _get_annotations(self, vid, compute_kps, predictor):
         """
-        Generates a dictinary of annotations by parsing the video XML file 
-        and generating 2d keypoints for the all pedestrians in the whole 
+        Generates a dictinary of annotations by parsing the video XML file
+        and generating 2d keypoints for the all pedestrians in the whole
         video (if compute_kps = True)
         :param vid: The id of video to parse
-        :param processor: The processor used to get the 2d keypoints
+        :param predictor: The openpifpaf.Predictor used to get the 2d keypoints
         :return: A dictionary of annotations, and the number of sequences per video
         """
 
@@ -358,7 +346,7 @@ class JAAD(object):
 
                     # Creating 2d KP
                     if pred_data is None and compute_kps:
-                        pred_data = self._get_2dkp_vid(vid, processor)
+                        pred_data = self._get_2dkp_vid(vid, predictor)
 
                     # Dividing DS in multiple 1s sequences
                     nbr_seq_ped = int((len(tmp_bbox) - forecast_step - 1)/(forecast_step))
@@ -419,24 +407,8 @@ class JAAD(object):
         """
         # For OpenPifPaf
         if compute_kps:
-            # net_cpu, _ = openpifpaf.network.factory(checkpoint='resnet101')
-            # net = net_cpu.cuda()
-            
-            if torch.backends.mps.is_available():
-                device = torch.device("mps")
-                print("OpenPifPaf: Using Apple Silicon (MPS)")
-            else:
-                device = torch.device("cpu")
-                print("OpenPifPaf: Using CPU")
-
-            # Create the network using the new API
-            net_cpu, _ = openpifpaf.network.Factory(checkpoint='resnet50').factory()
-
-            # Move the network to the correct device
-            net_cpu = net_cpu.to(device)
-
-            decode = openpifpaf.decoder.factory_decode(net, seed_threshold=0.5)
-            processor = openpifpaf.decoder.Processor(net, decode, instance_threshold=0.2, keypoint_threshold=0.3)
+            predictor = openpifpaf.Predictor(checkpoint='resnet50')
+            predictor.batch_size = 5
 
         video_ids = sorted(self._get_video_ids())
 
@@ -465,8 +437,8 @@ class JAAD(object):
             print('\nGetting annotations for %s' % vid)
             dataset['ckpt'] = vid
             
-            processor = processor if compute_kps else None
-            vid_annotations, nbr_seq = self._get_annotations(vid, compute_kps, processor)
+            predictor = predictor if compute_kps else None
+            vid_annotations, nbr_seq = self._get_annotations(vid, compute_kps, predictor)
 
             if (nbr_seq != 0):
                 dataset['annotations'][vid] = vid_annotations
