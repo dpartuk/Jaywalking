@@ -19,10 +19,11 @@ from tqdm.auto import tqdm
 # Update this path to where your dataset folder actually is
 DATASET_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "FPVCrosswalk2025")
 
-BATCH_SIZE = 8          # Lower to 4 or 2 if you run out of memory
-LR = 6e-5               # Learning Rate
-EPOCHS = 2               # Number of training epochs
-NUM_WORKERS = 0         # Set to 0 for maximum stability on macOS M-chips
+BATCH_SIZE = 32          # Lower to 4 or 2 if you run out of memory
+LR = 2e-4                # 6e-5  # Learning Rate
+EPOCHS = 50              # Number of training epochs
+NUM_WORKERS = 8          # 8 workers keeps the GPU fed and avoids data loading bottlenecks
+# NUM_WORKERS = 0        # Set to 0 for maximum stability on macOS M-chips
 
 # Setup Device (CUDA > MPS > CPU)
 if torch.cuda.is_available():
@@ -46,36 +47,36 @@ else:
 def get_image_mask_pairs(root_dir):
     image_paths = []
     mask_paths = []
-    
+
     print("Scanning dataset files...")
     for root, dirs, files in os.walk(root_dir):
         if 'images' in os.path.basename(root):
             mask_root = root.replace('/images', '/masks')
-            
+
             if not os.path.exists(mask_root):
                 continue
-                
+
             for file in files:
                 if file.lower().endswith(('.jpg', '.jpeg', '.png')):
                     img_path = os.path.join(root, file)
-                    
+
                     # Construct mask filename: name.jpg -> name_mask.jpg
                     name_stem = Path(file).stem
                     suffix = Path(file).suffix
-                    
+
                     # Check common naming conventions
                     candidates = [
                         f"{name_stem}_mask{suffix}",
-                        f"{name_stem}{suffix}" 
+                        f"{name_stem}{suffix}"
                     ]
-                    
+
                     for mask_name in candidates:
                         mask_path = os.path.join(mask_root, mask_name)
                         if os.path.exists(mask_path):
                             image_paths.append(img_path)
                             mask_paths.append(mask_path)
                             break
-    
+
     return image_paths, mask_paths
 
 # Gather data
@@ -101,7 +102,7 @@ class CrosswalkDataset(Dataset):
     def __init__(self, image_paths, mask_paths, processor):
         self.image_paths = image_paths
         self.mask_paths = mask_paths
-        self.processor = processor 
+        self.processor = processor
 
     def __len__(self):
         return len(self.image_paths)
@@ -109,7 +110,7 @@ class CrosswalkDataset(Dataset):
     def __getitem__(self, idx):
         # Open Image and Mask
         image = Image.open(self.image_paths[idx]).convert("RGB")
-        mask = Image.open(self.mask_paths[idx]).convert("L") 
+        mask = Image.open(self.mask_paths[idx]).convert("L")
 
         # Convert to numpy
         mask_np = np.array(mask)
@@ -136,7 +137,7 @@ class CrosswalkDataset(Dataset):
 # ==========================================
 # Load Model for Crosswalk Segmentation
 # We have 2 classes: Background and Crosswalk
-# We will use SegformerForSemanticSegmentation. 
+# We will use SegformerForSemanticSegmentation.
 # The standard checkpoint is usually nvidia/mit-b0 (fastest) or nvidia/segformer-b0-finetuned-ade-512-512.
 
 print("Loading SegFormer model...")
@@ -148,8 +149,8 @@ model_checkpoint = "nvidia/mit-b0"
 
 model = SegformerForSemanticSegmentation.from_pretrained(
     model_checkpoint,
-    num_labels=2, 
-    id2label=id2label, 
+    num_labels=2,
+    id2label=id2label,
     label2id=label2id,
     ignore_mismatched_sizes=True,
 )
@@ -181,14 +182,14 @@ best_iou = 0.0
 
 for epoch in range(EPOCHS):
     print(f"\nEpoch {epoch + 1}/{EPOCHS}")
-    
+
     # --- TRAIN ---
     model.train()
     train_loss = 0.0
-    
+
     # tqdm creates the progress bar
     progress_bar = tqdm(train_loader, desc="Training")
-    
+
     # ... (inside the epoch loop) ...
     for batch in progress_bar:
         # 1. Force inputs to be contiguous
@@ -196,32 +197,32 @@ for epoch in range(EPOCHS):
         labels = batch["labels"].to(DEVICE).contiguous()
 
         optimizer.zero_grad()
-        
+
         # 2. Forward pass (No labels passed to model)
         outputs = model(pixel_values=pixel_values)
         logits = outputs.logits  # Shape: [Batch, 2, 128, 128]
-        
+
         # 3. FIX: Downsample Labels instead of Upsampling Logits
         # This avoids the 'interpolate.backward' crash on MPS.
-        
+
         # Get the resolution of the model output
         h, w = logits.shape[-2:]
-        
+
         # Resize labels to match model output (Nearest Neighbor preserves integer classes)
         # Labels: [B, H, W] -> [B, 1, H, W] for interpolate -> [B, H, W]
         labels_small = torch.nn.functional.interpolate(
-            labels.unsqueeze(1).float(), 
-            size=(h, w), 
+            labels.unsqueeze(1).float(),
+            size=(h, w),
             mode="nearest"
         ).squeeze(1).long()
-        
+
         # 4. Calculate Loss at lower resolution
         loss = torch.nn.functional.cross_entropy(logits, labels_small)
-        
+
         # Backward pass
         loss.backward()
         optimizer.step()
-        
+
         # Update stats
         train_loss += loss.item()
         progress_bar.set_postfix({"loss": f"{loss.item():.4f}"})
@@ -233,32 +234,32 @@ for epoch in range(EPOCHS):
         for batch in val_loader:
             pixel_values = batch["pixel_values"].to(DEVICE)
             labels = batch["labels"].to(DEVICE)
-            
+
             outputs = model(pixel_values=pixel_values)
-            
+
             # Resize logits to match label size for evaluation
             upsampled_logits = torch.nn.functional.interpolate(
-                outputs.logits, 
-                size=labels.shape[-2:], 
-                mode="bilinear", 
+                outputs.logits,
+                size=labels.shape[-2:],
+                mode="bilinear",
                 align_corners=False
             )
-            
+
             predictions = upsampled_logits.argmax(dim=1)
-            
+
             # Add batch to metric
             metric.add_batch(
-                predictions=predictions.detach().cpu().numpy(), 
+                predictions=predictions.detach().cpu().numpy(),
                 references=labels.detach().cpu().numpy()
             )
-    
+
     # Compute Metrics
     metrics = metric.compute(num_labels=2, ignore_index=255)
     mean_iou = metrics['mean_iou']
     iou_crosswalk = metrics['per_category_iou'][1]
-    
+
     print(f"Mean IoU: {mean_iou:.4f} | Crosswalk IoU: {iou_crosswalk:.4f}")
-    
+
     # Save Best Model
     if mean_iou > best_iou:
         print(f"🚀 IoU improved ({best_iou:.4f} -> {mean_iou:.4f}). Saving model...")
