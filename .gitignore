@@ -14,7 +14,7 @@ __pycache__/
 detection/dataset_yolo/
 detection/dataset_mini/
 detection/JAAD/
-segmentation/FPVCrosswalk2025/
+segmentation/FPVCrosswalk2025
 intention/datagen/
 
 # Training runs (logs, plots, cached results)

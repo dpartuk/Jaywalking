@@ -17,7 +17,7 @@ from tqdm.auto import tqdm
 # 1. CONFIGURATION
 # ==========================================
 # Update this path to where your dataset folder actually is
-DATASET_ROOT = os.path.expanduser("~/local/FPVCrosswalk2025")
+DATASET_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "FPVCrosswalk2025")
 
 BATCH_SIZE = 8          # Lower to 4 or 2 if you run out of memory
 LR = 6e-5               # Learning Rate
