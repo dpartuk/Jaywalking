@@ -24,7 +24,7 @@ detection/runs/
 *.mp4
 
 # Logs
-nohup.out
+logs/
 *.log
 *.out
 
