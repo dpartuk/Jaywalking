@@ -24,13 +24,16 @@ LR = 6e-5               # Learning Rate
 EPOCHS = 2               # Number of training epochs
 NUM_WORKERS = 0         # Set to 0 for maximum stability on macOS M-chips
 
-# Setup Device (MPS for Mac M-series)
-if torch.backends.mps.is_available():
+# Setup Device (CUDA > MPS > CPU)
+if torch.cuda.is_available():
+    DEVICE = torch.device("cuda")
+    print(f"Using CUDA ({torch.cuda.get_device_name(0)}).")
+elif torch.backends.mps.is_available():
     DEVICE = torch.device("mps")
-    print("✅ Using Apple MPS (Metal Performance Shaders) acceleration.")
+    print("Using Apple MPS (Metal Performance Shaders) acceleration.")
 else:
     DEVICE = torch.device("cpu")
-    print("⚠️ MPS not available. Using CPU (will be slow).")
+    print("MPS/CUDA not available. Using CPU (will be slow).")
 
 # ==========================================
 # 2. DATA GATHERING
