@@ -1,0 +1,2444 @@
+Traceback (most recent call last):
+  File "/home/ubuntu/local/Jaywalking/intention/dataset.py", line 26, in <module>
+    import pickle5 as pickle
+ModuleNotFoundError: No module named 'pickle5'
+Traceback (most recent call last):
+  File "/home/ubuntu/local/Jaywalking/intention/dataset.py", line 26, in <module>
+    import pickle5 as pickle
+ModuleNotFoundError: No module named 'pickle5'
+Traceback (most recent call last):
+  File "/home/ubuntu/local/Jaywalking/intention/dataset.py", line 473, in <module>
+    DS = JAAD(data_path=opts.data_path)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/local/Jaywalking/intention/dataset.py", line 68, in __init__
+    assert exists(self._data_path), \
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Jaad path does not exist: /Users/dpeleg/local/JAAD_DS
+Traceback (most recent call last):
+  File "/home/ubuntu/local/Jaywalking/intention/dataset.py", line 473, in <module>
+    DS = JAAD(data_path=opts.data_path)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/local/Jaywalking/intention/dataset.py", line 68, in __init__
+    assert exists(self._data_path), \
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Jaad path does not exist: /Users/dpeleg/local/JAAD_DS
+{'_year': '2016', '_name': 'JAAD', '_image_ext': '.png', '_fps': 30, '_t_pred': 1, '_label_frames': 30, '_data_path': '/home/ubuntu/local/JAAD_DS', '_annotation_path': '/home/ubuntu/local/JAAD_DS/datagen/JAAD_DS/annotations', '_inference_path': '/home/ubuntu/local/JAAD_DS/datagen/JAAD_DS/Inference', '_videos_path': '/home/ubuntu/local/JAAD_DS/datagen/JAAD_DS/JAAD_clips', '_checkpoint_path': '/home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl'}
+Downloading: "http://github.com/openpifpaf/torchhub/releases/download/v0.13/resnet50-210830-150728-cocokp-slurm728641-edge513-o10s-ecd30da4.pkl" to /home/ubuntu/.cache/torch/hub/checkpoints/resnet50-210830-150728-cocokp-slurm728641-edge513-o10s-ecd30da4.pkl
+  0%|          | 0.00/97.4M [00:00<?, ?B/s] 12%|█▏        | 11.4M/97.4M [00:00<00:00, 119MB/s] 23%|██▎       | 22.8M/97.4M [00:00<00:00, 92.6MB/s] 33%|███▎      | 32.0M/97.4M [00:00<00:00, 82.9MB/s] 41%|████      | 40.1M/97.4M [00:00<00:01, 58.8MB/s] 54%|█████▎    | 52.1M/97.4M [00:00<00:00, 72.9MB/s] 62%|██████▏   | 60.1M/97.4M [00:01<00:00, 44.6MB/s] 72%|███████▏  | 70.1M/97.4M [00:01<00:00, 34.5MB/s] 77%|███████▋  | 74.9M/97.4M [00:01<00:00, 35.2MB/s] 81%|████████▏ | 79.4M/97.4M [00:01<00:00, 33.2MB/s] 85%|████████▌ | 83.2M/97.4M [00:01<00:00, 32.7MB/s] 90%|█████████ | 88.1M/97.4M [00:02<00:00, 30.7MB/s] 94%|█████████▍| 91.4M/97.4M [00:02<00:00, 22.9MB/s] 96%|█████████▋| 94.0M/97.4M [00:02<00:00, 23.6MB/s]100%|██████████| 97.4M/97.4M [00:02<00:00, 38.4MB/s]
+Generating dataset for jaad
+
+
+Getting annotations for video_0001
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0002
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0003
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0004
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0005
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0006
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0007
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0008
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0009
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0010
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0011
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0012
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0013
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0014
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0015
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0016
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0017
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0018
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0019
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0020
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0021
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0022
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0023
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0024
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0025
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0026
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0027
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0028
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0029
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0030
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0031
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0032
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0033
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0034
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0035
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0036
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0037
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0038
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0039
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0040
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0041
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0042
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0043
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0044
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0045
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0046
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0047
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0048
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0049
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0050
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0051
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0052
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0053
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0054
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0055
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0056
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0057
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0058
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0059
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0060
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0061
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0062
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0063
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0064
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0065
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0066
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0067
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0068
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0069
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0070
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0071
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0072
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0073
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0074
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0075
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0076
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0077
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0078
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0079
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0080
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0081
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0082
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0083
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0084
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0085
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0086
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0087
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0088
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0089
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0090
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0091
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0092
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0093
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0094
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0095
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0096
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0097
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0098
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0099
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0100
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0101
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0102
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0103
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0104
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0105
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0106
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0107
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0108
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0109
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0110
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0111
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0112
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0113
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0114
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0115
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0116
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0117
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0118
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0119
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0120
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0121
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0122
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0123
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0124
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0125
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0126
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0127
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0128
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0129
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0130
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0131
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0132
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0133
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0134
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0135
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0136
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0137
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0138
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0139
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0140
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0141
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0142
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0143
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0144
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0145
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0146
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0147
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0148
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0149
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0150
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0151
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0152
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0153
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0154
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0155
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0156
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0157
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0158
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0159
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0160
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0161
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0162
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0163
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0164
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0165
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0166
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0167
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0168
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0169
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0170
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0171
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0172
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0173
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0174
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0175
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0176
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0177
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0178
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0179
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0180
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0181
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0182
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0183
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0184
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0185
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0186
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0187
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0188
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0189
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0190
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0191
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0192
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0193
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0194
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0195
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0196
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0197
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0198
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0199
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0200
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0201
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0202
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0203
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0204
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0205
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0206
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0207
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0208
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0209
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0210
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0211
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0212
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0213
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0214
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0215
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0216
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0217
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0218
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0219
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0220
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0221
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0222
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0223
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0224
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0225
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0226
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0227
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0228
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0229
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0230
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0231
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0232
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0233
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0234
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0235
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0236
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0237
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0238
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0239
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0240
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0241
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0242
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0243
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0244
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0245
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0246
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0247
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0248
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0249
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0250
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0251
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0252
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0253
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0254
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0255
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0256
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0257
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0258
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0259
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0260
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0261
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0262
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0263
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0264
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0265
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0266
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0267
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0268
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0269
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0270
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0271
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0272
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0273
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0274
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0275
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0276
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0277
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0278
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0279
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0280
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0281
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0282
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0283
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0284
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0285
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0286
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0287
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0288
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0289
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0290
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0291
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0292
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0293
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0294
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0295
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0296
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0297
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0298
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0299
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0300
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0301
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0302
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0303
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0304
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0305
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0306
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0307
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0308
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0309
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0310
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0311
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0312
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0313
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0314
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0315
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0316
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0317
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0318
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0319
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0320
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0321
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0322
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0323
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0324
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0325
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0326
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0327
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0328
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0329
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0330
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0331
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0332
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0333
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0334
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0335
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0336
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0337
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0338
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0339
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0340
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0341
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0342
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0343
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0344
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0345
+Creating 2D keypoints
+
+Checkpoint saved to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+
+Getting annotations for video_0346
+Creating 2D keypoints
+
+Dataset written to /home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl
+/tmp/pip-install-lcv_pz6w/openpifpaf_dc00ca8d3cdd44bea4390ad2562544a4/openpifpaf/csrc/src/cif_hr.cpp:102: UserInfo: resizing cifhr buffer
+/tmp/pip-install-lcv_pz6w/openpifpaf_dc00ca8d3cdd44bea4390ad2562544a4/openpifpaf/csrc/src/occupancy.cpp:53: UserInfo: resizing occupancy buffer
+
+
+
+############# Training Intention
+
+INFO: Starting training with the following parameters
+{'action_classes': 2,
+ 'att_fuse': True,
+ 'batch_size': 8,
+ 'best_chk_path': 'checkpoints/best_epoch.bin',
+ 'chk_path': 'checkpoints/latest_epoch.bin',
+ 'clip_len': 30,
+ 'data_path': 'datagen/data/jaad_dataset.pkl',
+ 'depth': 5,
+ 'dim_feat': 512,
+ 'dim_in': 3,
+ 'dim_out': 3,
+ 'dim_rep': 512,
+ 'dropout_ratio': 0.5,
+ 'epochs': 50,
+ 'hidden_dim': 2048,
+ 'logs_path': 'logs/',
+ 'lr_backbone': 0.0001,
+ 'lr_decay': 0.99,
+ 'lr_head': 0.001,
+ 'maxlen': 30,
+ 'mlp_ratio': 2,
+ 'name': 'JAAD_train',
+ 'num_heads': 8,
+ 'num_joints': 19,
+ 'weight_decay': 0.01}
+INFO: Creating model
+Using Device: CUDA (NVIDIA)
+INFO: Number of parameters: 62291471
+INFO: Loading data
+INFO: Training on 774 batches
+INFO: Starting training ...
+INFO: Epoch 1/50
+INFO: Batch:[100/774] Batch time: 1.891 (2.090) Loss: 0.903 (0.907) Accuracy: 0.625 (0.615)F1: 0.564 (0.481)
+INFO: Batch:[200/774] Batch time: 1.851 (2.093) Loss: 0.439 (0.827) Accuracy: 0.875 (0.613)F1: 0.873 (0.493)
+INFO: Batch:[300/774] Batch time: 1.639 (2.060) Loss: 1.030 (0.799) Accuracy: 0.625 (0.623)F1: 0.564 (0.509)
+INFO: Batch:[400/774] Batch time: 2.131 (2.066) Loss: 0.587 (0.777) Accuracy: 0.750 (0.623)F1: 0.429 (0.503)
+INFO: Batch:[500/774] Batch time: 2.098 (2.072) Loss: 1.182 (0.768) Accuracy: 0.375 (0.619)F1: 0.273 (0.494)
+INFO: Batch:[600/774] Batch time: 2.308 (2.088) Loss: 0.899 (0.757) Accuracy: 0.375 (0.618)F1: 0.365 (0.492)
+INFO: Batch:[700/774] Batch time: 1.896 (2.101) Loss: 0.556 (0.754) Accuracy: 0.625 (0.619)F1: 0.385 (0.492)
+774it [27:07,  2.10s/it]
+INFO: Starting testing for Epoch 1/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 28.99it/s]
+INFO: Testing done
+Loss: 0.6175 Accuracy: 0.692
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 2/50
+INFO: Batch:[100/774] Batch time: 2.303 (2.117) Loss: 0.464 (0.696) Accuracy: 0.875 (0.656)F1: 0.795 (0.537)
+INFO: Batch:[200/774] Batch time: 1.795 (2.133) Loss: 0.637 (0.689) Accuracy: 0.375 (0.656)F1: 0.273 (0.532)
+INFO: Batch:[300/774] Batch time: 1.895 (2.149) Loss: 0.754 (0.67) Accuracy: 0.500 (0.660)F1: 0.467 (0.535)
+INFO: Batch:[400/774] Batch time: 2.025 (2.146) Loss: 0.585 (0.669) Accuracy: 0.625 (0.657)F1: 0.564 (0.532)
+INFO: Batch:[500/774] Batch time: 1.963 (2.148) Loss: 1.209 (0.663) Accuracy: 0.375 (0.656)F1: 0.273 (0.536)
+INFO: Batch:[600/774] Batch time: 2.493 (2.172) Loss: 0.363 (0.66) Accuracy: 1.000 (0.658)F1: 1.000 (0.545)
+INFO: Batch:[700/774] Batch time: 2.211 (2.187) Loss: 0.737 (0.662) Accuracy: 0.625 (0.660)F1: 0.564 (0.545)
+774it [28:24,  2.20s/it]
+INFO: Starting testing for Epoch 2/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 28.67it/s]
+INFO: Testing done
+Loss: 0.6689 Accuracy: 0.615
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 3/50
+INFO: Batch:[100/774] Batch time: 2.376 (2.329) Loss: 0.433 (0.622) Accuracy: 0.875 (0.673)F1: 0.467 (0.571)
+INFO: Batch:[200/774] Batch time: 1.952 (2.260) Loss: 0.367 (0.619) Accuracy: 0.750 (0.683)F1: 0.429 (0.565)
+INFO: Batch:[300/774] Batch time: 1.845 (2.216) Loss: 0.576 (0.63) Accuracy: 0.625 (0.670)F1: 0.385 (0.559)
+INFO: Batch:[400/774] Batch time: 2.083 (2.173) Loss: 0.732 (0.625) Accuracy: 0.500 (0.673)F1: 0.467 (0.564)
+INFO: Batch:[500/774] Batch time: 2.158 (2.161) Loss: 0.695 (0.618) Accuracy: 0.500 (0.682)F1: 0.333 (0.572)
+INFO: Batch:[600/774] Batch time: 2.233 (2.151) Loss: 0.306 (0.618) Accuracy: 0.875 (0.680)F1: 0.795 (0.572)
+INFO: Batch:[700/774] Batch time: 1.603 (2.145) Loss: 0.543 (0.617) Accuracy: 0.625 (0.680)F1: 0.564 (0.574)
+774it [27:37,  2.14s/it]
+INFO: Starting testing for Epoch 3/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 28.68it/s]
+INFO: Testing done
+Loss: 0.6497 Accuracy: 0.642
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 4/50
+INFO: Batch:[100/774] Batch time: 2.508 (2.167) Loss: 0.390 (0.569) Accuracy: 0.750 (0.709)F1: 0.733 (0.608)
+INFO: Batch:[200/774] Batch time: 2.548 (2.116) Loss: 0.455 (0.593) Accuracy: 0.750 (0.688)F1: 0.429 (0.585)
+INFO: Batch:[300/774] Batch time: 2.032 (2.102) Loss: 0.440 (0.582) Accuracy: 0.750 (0.701)F1: 0.750 (0.609)
+INFO: Batch:[400/774] Batch time: 2.036 (2.114) Loss: 0.394 (0.589) Accuracy: 0.750 (0.700)F1: 0.429 (0.608)
+INFO: Batch:[500/774] Batch time: 2.240 (2.124) Loss: 0.352 (0.598) Accuracy: 0.875 (0.692)F1: 0.855 (0.594)
+INFO: Batch:[600/774] Batch time: 2.628 (2.132) Loss: 0.376 (0.597) Accuracy: 0.875 (0.692)F1: 0.795 (0.598)
+INFO: Batch:[700/774] Batch time: 2.557 (2.145) Loss: 0.719 (0.598) Accuracy: 0.500 (0.690)F1: 0.333 (0.597)
+774it [27:48,  2.16s/it]
+INFO: Starting testing for Epoch 4/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 29.18it/s]
+INFO: Testing done
+Loss: 0.6356 Accuracy: 0.672
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 5/50
+INFO: Batch:[100/774] Batch time: 2.205 (2.143) Loss: 0.339 (0.565) Accuracy: 1.000 (0.725)F1: 1.000 (0.657)
+INFO: Batch:[200/774] Batch time: 2.621 (2.134) Loss: 0.863 (0.574) Accuracy: 0.625 (0.711)F1: 0.564 (0.640)
+INFO: Batch:[300/774] Batch time: 2.696 (2.142) Loss: 0.816 (0.573) Accuracy: 0.625 (0.710)F1: 0.619 (0.642)
+INFO: Batch:[400/774] Batch time: 2.316 (2.142) Loss: 0.775 (0.572) Accuracy: 0.500 (0.712)F1: 0.333 (0.634)
+INFO: Batch:[500/774] Batch time: 1.829 (2.141) Loss: 0.348 (0.568) Accuracy: 0.875 (0.713)F1: 0.467 (0.634)
+INFO: Batch:[600/774] Batch time: 2.207 (2.141) Loss: 0.487 (0.564) Accuracy: 0.625 (0.715)F1: 0.619 (0.634)
+INFO: Batch:[700/774] Batch time: 2.133 (2.147) Loss: 0.833 (0.563) Accuracy: 0.625 (0.713)F1: 0.619 (0.634)
+774it [27:45,  2.15s/it]
+INFO: Starting testing for Epoch 5/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 28.85it/s]
+INFO: Testing done
+Loss: 0.6981 Accuracy: 0.615
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 6/50
+INFO: Batch:[100/774] Batch time: 2.131 (2.207) Loss: 0.509 (0.535) Accuracy: 0.750 (0.726)F1: 0.733 (0.633)
+INFO: Batch:[200/774] Batch time: 2.216 (2.216) Loss: 1.061 (0.55) Accuracy: 0.500 (0.719)F1: 0.467 (0.611)
+INFO: Batch:[300/774] Batch time: 2.214 (2.185) Loss: 0.470 (0.549) Accuracy: 0.875 (0.721)F1: 0.467 (0.623)
+INFO: Batch:[400/774] Batch time: 2.266 (2.168) Loss: 0.653 (0.552) Accuracy: 0.750 (0.719)F1: 0.667 (0.623)
+INFO: Batch:[500/774] Batch time: 2.088 (2.160) Loss: 0.368 (0.552) Accuracy: 0.875 (0.720)F1: 0.795 (0.629)
+INFO: Batch:[600/774] Batch time: 2.276 (2.155) Loss: 0.580 (0.554) Accuracy: 0.625 (0.717)F1: 0.564 (0.630)
+INFO: Batch:[700/774] Batch time: 2.021 (2.157) Loss: 0.590 (0.552) Accuracy: 0.875 (0.721)F1: 0.855 (0.636)
+774it [27:52,  2.16s/it]
+INFO: Starting testing for Epoch 6/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 28.63it/s]
+INFO: Testing done
+Loss: 0.6608 Accuracy: 0.698
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 7/50
+INFO: Batch:[100/774] Batch time: 2.261 (2.201) Loss: 0.609 (0.59) Accuracy: 0.875 (0.711)F1: 0.855 (0.644)
+INFO: Batch:[200/774] Batch time: 2.372 (2.205) Loss: 1.447 (0.562) Accuracy: 0.500 (0.719)F1: 0.500 (0.644)
+INFO: Batch:[300/774] Batch time: 2.405 (2.219) Loss: 0.289 (0.549) Accuracy: 0.875 (0.725)F1: 0.873 (0.653)
+INFO: Batch:[400/774] Batch time: 2.383 (2.225) Loss: 0.267 (0.542) Accuracy: 0.875 (0.728)F1: 0.855 (0.655)
+INFO: Batch:[500/774] Batch time: 1.692 (2.214) Loss: 0.779 (0.532) Accuracy: 0.625 (0.733)F1: 0.619 (0.657)
+INFO: Batch:[600/774] Batch time: 2.379 (2.197) Loss: 0.674 (0.532) Accuracy: 0.625 (0.733)F1: 0.564 (0.655)
+INFO: Batch:[700/774] Batch time: 2.259 (2.196) Loss: 0.480 (0.528) Accuracy: 0.625 (0.737)F1: 0.564 (0.659)
+774it [28:14,  2.19s/it]
+INFO: Starting testing for Epoch 7/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 29.12it/s]
+INFO: Testing done
+Loss: 0.6906 Accuracy: 0.663
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 8/50
+INFO: Batch:[100/774] Batch time: 2.078 (2.099) Loss: 0.744 (0.535) Accuracy: 0.500 (0.726)F1: 0.333 (0.662)
+INFO: Batch:[200/774] Batch time: 2.344 (2.177) Loss: 0.808 (0.505) Accuracy: 0.750 (0.751)F1: 0.667 (0.679)
+INFO: Batch:[300/774] Batch time: 2.057 (2.185) Loss: 0.565 (0.507) Accuracy: 0.500 (0.745)F1: 0.467 (0.673)
+INFO: Batch:[400/774] Batch time: 2.387 (2.194) Loss: 0.480 (0.507) Accuracy: 0.625 (0.745)F1: 0.564 (0.675)
+INFO: Batch:[500/774] Batch time: 2.601 (2.198) Loss: 0.506 (0.511) Accuracy: 0.750 (0.744)F1: 0.733 (0.673)
+INFO: Batch:[600/774] Batch time: 2.300 (2.192) Loss: 0.401 (0.508) Accuracy: 0.750 (0.749)F1: 0.667 (0.673)
+INFO: Batch:[700/774] Batch time: 2.299 (2.190) Loss: 0.500 (0.509) Accuracy: 0.500 (0.746)F1: 0.333 (0.675)
+774it [28:20,  2.20s/it]
+INFO: Starting testing for Epoch 8/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 29.29it/s]
+INFO: Testing done
+Loss: 0.6275 Accuracy: 0.657
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 9/50
+INFO: Batch:[100/774] Batch time: 2.396 (2.186) Loss: 0.691 (0.479) Accuracy: 0.625 (0.780)F1: 0.564 (0.723)
+INFO: Batch:[200/774] Batch time: 2.102 (2.180) Loss: 0.559 (0.48) Accuracy: 0.625 (0.775)F1: 0.385 (0.716)
+INFO: Batch:[300/774] Batch time: 2.322 (2.159) Loss: 0.350 (0.486) Accuracy: 0.875 (0.765)F1: 0.855 (0.713)
+INFO: Batch:[400/774] Batch time: 2.376 (2.153) Loss: 0.560 (0.482) Accuracy: 0.750 (0.771)F1: 0.667 (0.716)
+INFO: Batch:[500/774] Batch time: 2.239 (2.135) Loss: 0.417 (0.488) Accuracy: 0.750 (0.765)F1: 0.667 (0.708)
+INFO: Batch:[600/774] Batch time: 1.941 (2.128) Loss: 0.317 (0.489) Accuracy: 1.000 (0.763)F1: 1.000 (0.707)
+INFO: Batch:[700/774] Batch time: 1.976 (2.124) Loss: 0.269 (0.493) Accuracy: 0.750 (0.759)F1: 0.667 (0.696)
+774it [27:32,  2.13s/it]
+INFO: Starting testing for Epoch 9/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 28.98it/s]
+INFO: Testing done
+Loss: 0.6186 Accuracy: 0.701
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 10/50
+INFO: Batch:[100/774] Batch time: 2.066 (2.108) Loss: 0.423 (0.496) Accuracy: 0.750 (0.761)F1: 0.429 (0.692)
+INFO: Batch:[200/774] Batch time: 1.969 (2.150) Loss: 0.527 (0.497) Accuracy: 0.750 (0.754)F1: 0.733 (0.687)
+INFO: Batch:[300/774] Batch time: 1.926 (2.181) Loss: 0.510 (0.489) Accuracy: 0.625 (0.762)F1: 0.564 (0.698)
+INFO: Batch:[400/774] Batch time: 2.038 (2.184) Loss: 0.663 (0.487) Accuracy: 0.500 (0.761)F1: 0.333 (0.698)
+INFO: Batch:[500/774] Batch time: 2.100 (2.187) Loss: 0.542 (0.488) Accuracy: 0.625 (0.760)F1: 0.564 (0.696)
+INFO: Batch:[600/774] Batch time: 2.270 (2.190) Loss: 0.549 (0.491) Accuracy: 0.500 (0.756)F1: 0.333 (0.693)
+INFO: Batch:[700/774] Batch time: 1.990 (2.179) Loss: 0.285 (0.49) Accuracy: 0.875 (0.756)F1: 0.795 (0.694)
+774it [28:04,  2.18s/it]
+INFO: Starting testing for Epoch 10/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 28.93it/s]
+INFO: Testing done
+Loss: 0.5705 Accuracy: 0.719
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 11/50
+INFO: Batch:[100/774] Batch time: 2.178 (2.159) Loss: 0.412 (0.472) Accuracy: 0.625 (0.760)F1: 0.564 (0.696)
+INFO: Batch:[200/774] Batch time: 2.103 (2.152) Loss: 0.354 (0.462) Accuracy: 0.750 (0.774)F1: 0.733 (0.711)
+INFO: Batch:[300/774] Batch time: 2.446 (2.157) Loss: 0.373 (0.471) Accuracy: 0.875 (0.767)F1: 0.855 (0.706)
+INFO: Batch:[400/774] Batch time: 2.329 (2.157) Loss: 0.269 (0.467) Accuracy: 1.000 (0.773)F1: 1.000 (0.714)
+INFO: Batch:[500/774] Batch time: 2.096 (2.151) Loss: 0.375 (0.463) Accuracy: 0.875 (0.775)F1: 0.873 (0.715)
+INFO: Batch:[600/774] Batch time: 1.687 (2.143) Loss: 0.379 (0.466) Accuracy: 0.875 (0.774)F1: 0.795 (0.717)
+INFO: Batch:[700/774] Batch time: 2.096 (2.153) Loss: 0.269 (0.467) Accuracy: 1.000 (0.773)F1: 1.000 (0.717)
+774it [27:48,  2.16s/it]
+INFO: Starting testing for Epoch 11/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 29.00it/s]
+INFO: Testing done
+Loss: 0.5864 Accuracy: 0.709
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 12/50
+INFO: Batch:[100/774] Batch time: 2.400 (2.182) Loss: 0.351 (0.445) Accuracy: 0.875 (0.790)F1: 0.795 (0.730)
+INFO: Batch:[200/774] Batch time: 2.191 (2.144) Loss: 0.591 (0.44) Accuracy: 0.625 (0.791)F1: 0.619 (0.739)
+INFO: Batch:[300/774] Batch time: 2.532 (2.154) Loss: 0.266 (0.448) Accuracy: 0.875 (0.786)F1: 0.855 (0.740)
+INFO: Batch:[400/774] Batch time: 2.208 (2.145) Loss: 0.657 (0.464) Accuracy: 0.500 (0.775)F1: 0.500 (0.725)
+INFO: Batch:[500/774] Batch time: 2.231 (2.146) Loss: 0.405 (0.465) Accuracy: 0.875 (0.773)F1: 0.873 (0.722)
+INFO: Batch:[600/774] Batch time: 1.684 (2.146) Loss: 0.302 (0.462) Accuracy: 0.875 (0.775)F1: 0.873 (0.721)
+INFO: Batch:[700/774] Batch time: 1.951 (2.155) Loss: 0.366 (0.461) Accuracy: 0.875 (0.776)F1: 0.855 (0.724)
+774it [27:48,  2.16s/it]
+INFO: Starting testing for Epoch 12/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 28.78it/s]
+INFO: Testing done
+Loss: 0.5945 Accuracy: 0.714
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 13/50
+INFO: Batch:[100/774] Batch time: 2.086 (2.196) Loss: 0.254 (0.419) Accuracy: 0.875 (0.809)F1: 0.855 (0.754)
+INFO: Batch:[200/774] Batch time: 2.000 (2.201) Loss: 0.284 (0.436) Accuracy: 0.875 (0.801)F1: 0.855 (0.749)
+INFO: Batch:[300/774] Batch time: 2.247 (2.209) Loss: 0.390 (0.438) Accuracy: 0.750 (0.799)F1: 0.667 (0.749)
+INFO: Batch:[400/774] Batch time: 2.206 (2.200) Loss: 0.560 (0.448) Accuracy: 0.750 (0.789)F1: 0.667 (0.743)
+INFO: Batch:[500/774] Batch time: 2.503 (2.191) Loss: 0.502 (0.44) Accuracy: 0.750 (0.797)F1: 0.667 (0.752)
+INFO: Batch:[600/774] Batch time: 2.257 (2.186) Loss: 0.325 (0.439) Accuracy: 0.875 (0.795)F1: 0.855 (0.749)
+INFO: Batch:[700/774] Batch time: 1.550 (2.185) Loss: 0.317 (0.442) Accuracy: 1.000 (0.792)F1: 1.000 (0.746)
+774it [28:07,  2.18s/it]
+INFO: Starting testing for Epoch 13/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 28.86it/s]
+INFO: Testing done
+Loss: 0.6475 Accuracy: 0.671
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 14/50
+INFO: Batch:[100/774] Batch time: 2.246 (2.133) Loss: 1.125 (0.463) Accuracy: 0.625 (0.777)F1: 0.619 (0.734)
+INFO: Batch:[200/774] Batch time: 2.223 (2.177) Loss: 0.342 (0.435) Accuracy: 0.875 (0.789)F1: 0.855 (0.744)
+INFO: Batch:[300/774] Batch time: 1.988 (2.186) Loss: 0.474 (0.434) Accuracy: 0.625 (0.788)F1: 0.385 (0.735)
+INFO: Batch:[400/774] Batch time: 2.495 (2.184) Loss: 0.392 (0.433) Accuracy: 0.875 (0.793)F1: 0.795 (0.737)
+INFO: Batch:[500/774] Batch time: 2.108 (2.169) Loss: 0.286 (0.44) Accuracy: 0.750 (0.792)F1: 0.733 (0.737)
+INFO: Batch:[600/774] Batch time: 1.909 (2.173) Loss: 0.697 (0.437) Accuracy: 0.875 (0.795)F1: 0.873 (0.743)
+INFO: Batch:[700/774] Batch time: 1.926 (2.176) Loss: 0.491 (0.435) Accuracy: 0.875 (0.798)F1: 0.855 (0.746)
+774it [28:03,  2.18s/it]
+INFO: Starting testing for Epoch 14/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 28.64it/s]
+INFO: Testing done
+Loss: 0.6315 Accuracy: 0.694
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 15/50
+INFO: Batch:[100/774] Batch time: 2.652 (2.121) Loss: 0.308 (0.428) Accuracy: 0.875 (0.806)F1: 0.795 (0.745)
+INFO: Batch:[200/774] Batch time: 2.738 (2.166) Loss: 0.238 (0.424) Accuracy: 0.875 (0.807)F1: 0.855 (0.758)
+INFO: Batch:[300/774] Batch time: 2.175 (2.167) Loss: 0.411 (0.426) Accuracy: 0.750 (0.806)F1: 0.733 (0.759)
+INFO: Batch:[400/774] Batch time: 2.331 (2.174) Loss: 0.250 (0.428) Accuracy: 0.875 (0.800)F1: 0.855 (0.753)
+INFO: Batch:[500/774] Batch time: 1.903 (2.178) Loss: 0.271 (0.428) Accuracy: 0.875 (0.801)F1: 0.873 (0.753)
+INFO: Batch:[600/774] Batch time: 2.234 (2.181) Loss: 0.484 (0.432) Accuracy: 0.750 (0.799)F1: 0.667 (0.751)
+INFO: Batch:[700/774] Batch time: 2.147 (2.194) Loss: 0.393 (0.432) Accuracy: 0.750 (0.796)F1: 0.750 (0.747)
+774it [28:24,  2.20s/it]
+INFO: Starting testing for Epoch 15/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 28.78it/s]
+INFO: Testing done
+Loss: 0.6025 Accuracy: 0.723
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 16/50
+INFO: Batch:[100/774] Batch time: 2.335 (2.250) Loss: 0.231 (0.358) Accuracy: 0.875 (0.836)F1: 0.855 (0.807)
+INFO: Batch:[200/774] Batch time: 2.301 (2.241) Loss: 0.272 (0.4) Accuracy: 0.875 (0.812)F1: 0.855 (0.781)
+INFO: Batch:[300/774] Batch time: 1.979 (2.236) Loss: 0.368 (0.41) Accuracy: 0.875 (0.804)F1: 0.467 (0.758)
+INFO: Batch:[400/774] Batch time: 2.502 (2.243) Loss: 0.309 (0.415) Accuracy: 0.750 (0.803)F1: 0.733 (0.757)
+INFO: Batch:[500/774] Batch time: 2.034 (2.233) Loss: 0.693 (0.415) Accuracy: 0.750 (0.802)F1: 0.429 (0.755)
+INFO: Batch:[600/774] Batch time: 2.420 (2.228) Loss: 0.394 (0.42) Accuracy: 0.875 (0.800)F1: 0.795 (0.750)
+INFO: Batch:[700/774] Batch time: 2.468 (2.230) Loss: 0.319 (0.42) Accuracy: 0.875 (0.799)F1: 0.855 (0.746)
+774it [28:49,  2.23s/it]
+INFO: Starting testing for Epoch 16/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 29.00it/s]
+INFO: Testing done
+Loss: 0.6593 Accuracy: 0.692
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 17/50
+INFO: Batch:[100/774] Batch time: 1.894 (2.087) Loss: 0.133 (0.374) Accuracy: 1.000 (0.842)F1: 1.000 (0.805)
+INFO: Batch:[200/774] Batch time: 2.219 (2.087) Loss: 0.662 (0.39) Accuracy: 0.625 (0.831)F1: 0.564 (0.798)
+INFO: Batch:[300/774] Batch time: 2.454 (2.103) Loss: 0.407 (0.396) Accuracy: 0.750 (0.824)F1: 0.750 (0.784)
+INFO: Batch:[400/774] Batch time: 1.902 (2.123) Loss: 0.185 (0.407) Accuracy: 1.000 (0.818)F1: 1.000 (0.775)
+INFO: Batch:[500/774] Batch time: 2.034 (2.108) Loss: 0.113 (0.397) Accuracy: 1.000 (0.822)F1: 1.000 (0.778)
+INFO: Batch:[600/774] Batch time: 1.996 (2.119) Loss: 0.588 (0.4) Accuracy: 0.625 (0.819)F1: 0.385 (0.773)
+INFO: Batch:[700/774] Batch time: 2.200 (2.130) Loss: 0.324 (0.403) Accuracy: 0.750 (0.815)F1: 0.667 (0.769)
+774it [27:35,  2.14s/it]
+INFO: Starting testing for Epoch 17/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 27.96it/s]
+INFO: Testing done
+Loss: 0.7099 Accuracy: 0.655
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 18/50
+INFO: Batch:[100/774] Batch time: 1.998 (2.168) Loss: 0.150 (0.374) Accuracy: 1.000 (0.836)F1: 1.000 (0.787)
+INFO: Batch:[200/774] Batch time: 1.693 (2.202) Loss: 0.254 (0.373) Accuracy: 1.000 (0.841)F1: 1.000 (0.793)
+INFO: Batch:[300/774] Batch time: 1.794 (2.206) Loss: 0.540 (0.397) Accuracy: 0.750 (0.825)F1: 0.733 (0.784)
+INFO: Batch:[400/774] Batch time: 2.207 (2.207) Loss: 0.310 (0.399) Accuracy: 0.750 (0.821)F1: 0.733 (0.780)
+INFO: Batch:[500/774] Batch time: 2.484 (2.203) Loss: 0.600 (0.401) Accuracy: 0.750 (0.821)F1: 0.667 (0.778)
+INFO: Batch:[600/774] Batch time: 2.314 (2.195) Loss: 0.734 (0.4) Accuracy: 0.500 (0.821)F1: 0.467 (0.778)
+INFO: Batch:[700/774] Batch time: 1.586 (2.195) Loss: 0.487 (0.4) Accuracy: 0.750 (0.819)F1: 0.667 (0.775)
+774it [28:19,  2.20s/it]
+INFO: Starting testing for Epoch 18/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 29.23it/s]
+INFO: Testing done
+Loss: 0.6363 Accuracy: 0.700
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 19/50
+INFO: Batch:[100/774] Batch time: 2.073 (2.038) Loss: 0.384 (0.379) Accuracy: 0.750 (0.820)F1: 0.733 (0.774)
+INFO: Batch:[200/774] Batch time: 2.280 (2.128) Loss: 0.354 (0.381) Accuracy: 0.875 (0.822)F1: 0.873 (0.782)
+INFO: Batch:[300/774] Batch time: 2.131 (2.127) Loss: 0.204 (0.384) Accuracy: 0.875 (0.824)F1: 0.855 (0.783)
+INFO: Batch:[400/774] Batch time: 2.205 (2.133) Loss: 0.230 (0.388) Accuracy: 0.875 (0.820)F1: 0.855 (0.779)
+INFO: Batch:[500/774] Batch time: 2.146 (2.135) Loss: 0.332 (0.391) Accuracy: 0.875 (0.819)F1: 0.855 (0.777)
+INFO: Batch:[600/774] Batch time: 2.391 (2.136) Loss: 0.344 (0.385) Accuracy: 0.875 (0.823)F1: 0.855 (0.780)
+INFO: Batch:[700/774] Batch time: 2.244 (2.132) Loss: 0.418 (0.392) Accuracy: 0.750 (0.817)F1: 0.429 (0.771)
+774it [27:27,  2.13s/it]
+INFO: Starting testing for Epoch 19/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 29.10it/s]
+INFO: Testing done
+Loss: 0.6922 Accuracy: 0.695
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 20/50
+INFO: Batch:[100/774] Batch time: 2.493 (2.223) Loss: 0.466 (0.392) Accuracy: 0.750 (0.809)F1: 0.733 (0.772)
+INFO: Batch:[200/774] Batch time: 2.523 (2.184) Loss: 1.005 (0.386) Accuracy: 0.625 (0.822)F1: 0.619 (0.779)
+INFO: Batch:[300/774] Batch time: 2.300 (2.170) Loss: 0.580 (0.378) Accuracy: 0.750 (0.821)F1: 0.750 (0.779)
+INFO: Batch:[400/774] Batch time: 1.959 (2.182) Loss: 0.309 (0.382) Accuracy: 0.750 (0.821)F1: 0.733 (0.778)
+INFO: Batch:[500/774] Batch time: 2.400 (2.172) Loss: 0.552 (0.38) Accuracy: 0.625 (0.824)F1: 0.619 (0.783)
+INFO: Batch:[600/774] Batch time: 2.123 (2.183) Loss: 0.161 (0.38) Accuracy: 1.000 (0.824)F1: 1.000 (0.783)
+INFO: Batch:[700/774] Batch time: 2.102 (2.179) Loss: 0.337 (0.379) Accuracy: 0.750 (0.825)F1: 0.667 (0.785)
+774it [28:04,  2.18s/it]
+INFO: Starting testing for Epoch 20/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 27.46it/s]
+INFO: Testing done
+Loss: 0.6272 Accuracy: 0.711
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 21/50
+INFO: Batch:[100/774] Batch time: 1.977 (2.115) Loss: 0.091 (0.353) Accuracy: 1.000 (0.839)F1: 1.000 (0.801)
+INFO: Batch:[200/774] Batch time: 2.096 (2.156) Loss: 0.539 (0.362) Accuracy: 0.750 (0.838)F1: 0.733 (0.798)
+INFO: Batch:[300/774] Batch time: 2.317 (2.161) Loss: 0.213 (0.369) Accuracy: 1.000 (0.836)F1: 1.000 (0.795)
+INFO: Batch:[400/774] Batch time: 1.938 (2.163) Loss: 0.248 (0.371) Accuracy: 0.875 (0.835)F1: 0.795 (0.795)
+INFO: Batch:[500/774] Batch time: 2.100 (2.169) Loss: 0.195 (0.374) Accuracy: 1.000 (0.831)F1: 1.000 (0.788)
+INFO: Batch:[600/774] Batch time: 2.335 (2.173) Loss: 0.634 (0.373) Accuracy: 0.625 (0.829)F1: 0.385 (0.788)
+INFO: Batch:[700/774] Batch time: 1.983 (2.177) Loss: 0.235 (0.38) Accuracy: 0.875 (0.825)F1: 0.795 (0.782)
+774it [28:09,  2.18s/it]
+INFO: Starting testing for Epoch 21/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 28.44it/s]
+INFO: Testing done
+Loss: 0.6901 Accuracy: 0.688
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 22/50
+INFO: Batch:[100/774] Batch time: 2.212 (2.210) Loss: 0.112 (0.33) Accuracy: 1.000 (0.870)F1: 1.000 (0.841)
+INFO: Batch:[200/774] Batch time: 2.049 (2.188) Loss: 0.273 (0.337) Accuracy: 1.000 (0.857)F1: 1.000 (0.827)
+INFO: Batch:[300/774] Batch time: 2.507 (2.183) Loss: 0.211 (0.343) Accuracy: 0.875 (0.848)F1: 0.795 (0.816)
+INFO: Batch:[400/774] Batch time: 1.991 (2.191) Loss: 0.364 (0.356) Accuracy: 0.875 (0.840)F1: 0.855 (0.801)
+INFO: Batch:[500/774] Batch time: 2.430 (2.194) Loss: 0.136 (0.355) Accuracy: 1.000 (0.840)F1: 1.000 (0.799)
+INFO: Batch:[600/774] Batch time: 2.162 (2.197) Loss: 0.699 (0.361) Accuracy: 0.750 (0.837)F1: 0.750 (0.796)
+INFO: Batch:[700/774] Batch time: 2.237 (2.195) Loss: 0.683 (0.364) Accuracy: 0.625 (0.836)F1: 0.619 (0.795)
+774it [28:17,  2.19s/it]
+INFO: Starting testing for Epoch 22/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 28.65it/s]
+INFO: Testing done
+Loss: 0.6515 Accuracy: 0.709
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 23/50
+INFO: Batch:[100/774] Batch time: 1.873 (2.149) Loss: 0.633 (0.324) Accuracy: 0.750 (0.860)F1: 0.750 (0.836)
+INFO: Batch:[200/774] Batch time: 2.132 (2.127) Loss: 0.296 (0.345) Accuracy: 0.875 (0.847)F1: 0.855 (0.804)
+INFO: Batch:[300/774] Batch time: 2.253 (2.146) Loss: 0.162 (0.364) Accuracy: 0.875 (0.839)F1: 0.855 (0.796)
+INFO: Batch:[400/774] Batch time: 1.966 (2.147) Loss: 0.795 (0.375) Accuracy: 0.500 (0.832)F1: 0.333 (0.788)
+INFO: Batch:[500/774] Batch time: 2.417 (2.152) Loss: 0.764 (0.431) Accuracy: 0.750 (0.802)F1: 0.667 (0.748)
+INFO: Batch:[600/774] Batch time: 1.878 (2.147) Loss: 0.496 (0.468) Accuracy: 0.750 (0.781)F1: 0.733 (0.719)
+INFO: Batch:[700/774] Batch time: 1.838 (2.162) Loss: 0.830 (0.485) Accuracy: 0.500 (0.767)F1: 0.467 (0.700)
+774it [27:54,  2.16s/it]
+INFO: Starting testing for Epoch 23/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 29.01it/s]
+INFO: Testing done
+Loss: 0.6552 Accuracy: 0.659
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 24/50
+INFO: Batch:[100/774] Batch time: 2.297 (2.156) Loss: 0.469 (0.559) Accuracy: 0.750 (0.712)F1: 0.733 (0.602)
+INFO: Batch:[200/774] Batch time: 1.883 (2.164) Loss: 0.361 (0.552) Accuracy: 0.750 (0.711)F1: 0.429 (0.613)
+INFO: Batch:[300/774] Batch time: 1.997 (2.172) Loss: 0.446 (0.556) Accuracy: 0.875 (0.714)F1: 0.795 (0.625)
+INFO: Batch:[400/774] Batch time: 1.901 (2.152) Loss: 0.629 (0.547) Accuracy: 0.750 (0.723)F1: 0.733 (0.633)
+INFO: Batch:[500/774] Batch time: 2.385 (2.169) Loss: 0.619 (0.549) Accuracy: 0.750 (0.719)F1: 0.667 (0.630)
+INFO: Batch:[600/774] Batch time: 1.716 (2.179) Loss: 0.592 (0.546) Accuracy: 0.875 (0.722)F1: 0.855 (0.633)
+INFO: Batch:[700/774] Batch time: 2.571 (2.173) Loss: 0.660 (0.544) Accuracy: 0.625 (0.724)F1: 0.619 (0.634)
+774it [28:06,  2.18s/it]
+INFO: Starting testing for Epoch 24/50
+Using Device: CUDA (NVIDIA)
+189it [00:06, 29.05it/s]
+INFO: Testing done
+Loss: 0.6517 Accuracy: 0.688
+INFO: Saving checkpoint to checkpoints/latest_epoch.bin
+INFO: Epoch 25/50
+INFO: Batch:[100/774] Batch time: 2.156 (2.166) Loss: 0.627 (0.537) Accuracy: 0.500 (0.729)F1: 0.467 (0.657)
+INFO: Batch:[200/774] Batch time: 2.250 (2.172) Loss: 0.687 (0.528) Accuracy: 0.625 (0.743)F1: 0.619 (0.679)
+INFO: Batch:[300/774] Batch time: 1.849 (2.168) Loss: 1.047 (0.534) Accuracy: 0.375 (0.735)F1: 0.273 (0.653)
+309it [11:10,  2.06s/it]
+
+
+###### Training Segmentation
+
+python segmentation/train.py
+Using CUDA (NVIDIA A100 80GB PCIe).
+Scanning dataset files...
+✅ Found 3300 image/mask pairs.
+Data Split -> Train: 2640, Val: 330, Test: 330
+Loading SegFormer model...
+Loading weights: 100%|████████████| 192/192 [00:00<00:00, 4892.15it/s, Materializing param=segformer.encoder.patch_embeddings.3.proj.weight]
+SegformerForSemanticSegmentation LOAD REPORT from: nvidia/mit-b0
+Key                                           | Status     |
+----------------------------------------------+------------+-
+classifier.bias                               | UNEXPECTED |
+classifier.weight                             | UNEXPECTED |
+decode_head.linear_c.{0, 1, 2, 3}.proj.bias   | MISSING    |
+decode_head.linear_c.{0, 1, 2, 3}.proj.weight | MISSING    |
+decode_head.linear_fuse.weight                | MISSING    |
+decode_head.batch_norm.running_var            | MISSING    |
+decode_head.batch_norm.num_batches_tracked    | MISSING    |
+decode_head.classifier.weight                 | MISSING    |
+decode_head.classifier.bias                   | MISSING    |
+decode_head.batch_norm.running_mean           | MISSING    |
+decode_head.batch_norm.weight                 | MISSING    |
+decode_head.batch_norm.bias                   | MISSING    |
+
+Notes:
+- UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+/home/ubuntu/miniforge3/envs/jay/lib/python3.11/site-packages/transformers/image_processing_base.py:370: UserWarning: The following named arguments are not valid for `SegformerImageProcessor.__init__` and were ignored: 'feature_extractor_type', 'reduce_labels'
+  image_processor = cls(**image_processor_dict)
+
+Starting Training...
+
+Epoch 1/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:48<00:00,  1.70it/s, loss=0.0829]
+Running Validation...
+/home/ubuntu/miniforge3/envs/jay/lib/python3.11/site-packages/datasets/features/image.py:371: UserWarning: Downcasting array dtype int64 to int32 to be compatible with 'Pillow'
+  warnings.warn(f"Downcasting array dtype {dtype} to {dest_dtype} to be compatible with 'Pillow'")
+Mean IoU: 0.9337 | Crosswalk IoU: 0.9091
+🚀 IoU improved (0.0000 -> 0.9337). Saving model...
+
+Epoch 2/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:46<00:00,  1.78it/s, loss=0.0829]
+Running Validation...
+Mean IoU: 0.9380 | Crosswalk IoU: 0.9144
+🚀 IoU improved (0.9337 -> 0.9380). Saving model...
+
+Epoch 3/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:46<00:00,  1.78it/s, loss=0.0815]
+Running Validation...
+Mean IoU: 0.9338 | Crosswalk IoU: 0.9081
+
+Epoch 4/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:45<00:00,  1.84it/s, loss=0.0658]
+Running Validation...
+Mean IoU: 0.9416 | Crosswalk IoU: 0.9201
+🚀 IoU improved (0.9380 -> 0.9416). Saving model...
+
+Epoch 5/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:46<00:00,  1.80it/s, loss=0.0630]
+Running Validation...
+Mean IoU: 0.9431 | Crosswalk IoU: 0.9215
+🚀 IoU improved (0.9416 -> 0.9431). Saving model...
+
+Epoch 6/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:47<00:00,  1.76it/s, loss=0.0481]
+Running Validation...
+Mean IoU: 0.9445 | Crosswalk IoU: 0.9238
+🚀 IoU improved (0.9431 -> 0.9445). Saving model...
+
+Epoch 7/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:46<00:00,  1.78it/s, loss=0.0895]
+Running Validation...
+Mean IoU: 0.9480 | Crosswalk IoU: 0.9285
+🚀 IoU improved (0.9445 -> 0.9480). Saving model...
+
+Epoch 8/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [01:08<00:00,  1.21it/s, loss=0.0334]
+Running Validation...
+Mean IoU: 0.9476 | Crosswalk IoU: 0.9278
+
+Epoch 9/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [01:01<00:00,  1.36it/s, loss=0.0463]
+Running Validation...
+Mean IoU: 0.9464 | Crosswalk IoU: 0.9267
+
+Epoch 10/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:46<00:00,  1.78it/s, loss=0.0576]
+Running Validation...
+Mean IoU: 0.9505 | Crosswalk IoU: 0.9318
+🚀 IoU improved (0.9480 -> 0.9505). Saving model...
+
+Epoch 11/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:46<00:00,  1.78it/s, loss=0.0407]
+Running Validation...
+Mean IoU: 0.9514 | Crosswalk IoU: 0.9329
+🚀 IoU improved (0.9505 -> 0.9514). Saving model...
+
+Epoch 12/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:47<00:00,  1.74it/s, loss=0.0426]
+Running Validation...
+Mean IoU: 0.9496 | Crosswalk IoU: 0.9309
+
+Epoch 13/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:47<00:00,  1.74it/s, loss=0.0301]
+Running Validation...
+Mean IoU: 0.9499 | Crosswalk IoU: 0.9311
+
+Epoch 14/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:47<00:00,  1.73it/s, loss=0.0451]
+Running Validation...
+Mean IoU: 0.9527 | Crosswalk IoU: 0.9351
+🚀 IoU improved (0.9514 -> 0.9527). Saving model...
+
+Epoch 15/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:46<00:00,  1.78it/s, loss=0.0330]
+Running Validation...
+Mean IoU: 0.9521 | Crosswalk IoU: 0.9340
+
+Epoch 16/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:48<00:00,  1.71it/s, loss=0.0303]
+Running Validation...
+Mean IoU: 0.9504 | Crosswalk IoU: 0.9319
+
+Epoch 17/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:51<00:00,  1.60it/s, loss=0.0564]
+Running Validation...
+Mean IoU: 0.9507 | Crosswalk IoU: 0.9324
+
+Epoch 18/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:46<00:00,  1.78it/s, loss=0.0299]
+Running Validation...
+Mean IoU: 0.9519 | Crosswalk IoU: 0.9339
+
+Epoch 19/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:47<00:00,  1.74it/s, loss=0.0382]
+Running Validation...
+Mean IoU: 0.9470 | Crosswalk IoU: 0.9271
+
+Epoch 20/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:47<00:00,  1.76it/s, loss=0.0262]
+Running Validation...
+Mean IoU: 0.9504 | Crosswalk IoU: 0.9318
+
+Epoch 21/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:47<00:00,  1.75it/s, loss=0.0252]
+Running Validation...
+Mean IoU: 0.9541 | Crosswalk IoU: 0.9367
+🚀 IoU improved (0.9527 -> 0.9541). Saving model...
+
+Epoch 22/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:46<00:00,  1.77it/s, loss=0.0332]
+Running Validation...
+Mean IoU: 0.9541 | Crosswalk IoU: 0.9367
+
+Epoch 23/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:47<00:00,  1.74it/s, loss=0.0321]
+Running Validation...
+Mean IoU: 0.9534 | Crosswalk IoU: 0.9359
+
+Epoch 24/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:47<00:00,  1.76it/s, loss=0.0229]
+Running Validation...
+Mean IoU: 0.9512 | Crosswalk IoU: 0.9331
+
+Epoch 25/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:48<00:00,  1.72it/s, loss=0.0293]
+Running Validation...
+Mean IoU: 0.9520 | Crosswalk IoU: 0.9337
+
+Epoch 26/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:48<00:00,  1.72it/s, loss=0.0245]
+Running Validation...
+Mean IoU: 0.9498 | Crosswalk IoU: 0.9308
+
+Epoch 27/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:49<00:00,  1.68it/s, loss=0.0231]
+Running Validation...
+Mean IoU: 0.9547 | Crosswalk IoU: 0.9376
+🚀 IoU improved (0.9541 -> 0.9547). Saving model...
+
+Epoch 28/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:49<00:00,  1.68it/s, loss=0.0273]
+Running Validation...
+Mean IoU: 0.9505 | Crosswalk IoU: 0.9321
+
+Epoch 29/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:49<00:00,  1.68it/s, loss=0.0253]
+Running Validation...
+Mean IoU: 0.9542 | Crosswalk IoU: 0.9368
+
+Epoch 30/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:48<00:00,  1.71it/s, loss=0.0240]
+Running Validation...
+Mean IoU: 0.9530 | Crosswalk IoU: 0.9352
+
+Epoch 31/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:48<00:00,  1.71it/s, loss=0.0219]
+Running Validation...
+Mean IoU: 0.9541 | Crosswalk IoU: 0.9368
+
+Epoch 32/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:48<00:00,  1.70it/s, loss=0.0199]
+Running Validation...
+Mean IoU: 0.9537 | Crosswalk IoU: 0.9361
+
+Epoch 33/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:53<00:00,  1.55it/s, loss=0.0238]
+Running Validation...
+Mean IoU: 0.9547 | Crosswalk IoU: 0.9375
+
+Epoch 34/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:50<00:00,  1.65it/s, loss=0.0261]
+Running Validation...
+Mean IoU: 0.9547 | Crosswalk IoU: 0.9377
+🚀 IoU improved (0.9547 -> 0.9547). Saving model...
+
+Epoch 35/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:48<00:00,  1.71it/s, loss=0.0241]
+Running Validation...
+Mean IoU: 0.9510 | Crosswalk IoU: 0.9326
+
+Epoch 36/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:55<00:00,  1.50it/s, loss=0.0206]
+Running Validation...
+Mean IoU: 0.9518 | Crosswalk IoU: 0.9336
+
+Epoch 37/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [01:13<00:00,  1.13it/s, loss=0.0208]
+Running Validation...
+Mean IoU: 0.9523 | Crosswalk IoU: 0.9343
+
+Epoch 38/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [01:22<00:00,  1.00it/s, loss=0.0202]
+Running Validation...
+Mean IoU: 0.9519 | Crosswalk IoU: 0.9336
+
+Epoch 39/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:50<00:00,  1.66it/s, loss=0.0175]
+Running Validation...
+Mean IoU: 0.9524 | Crosswalk IoU: 0.9345
+
+Epoch 40/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:49<00:00,  1.66it/s, loss=0.0279]
+Running Validation...
+Mean IoU: 0.9560 | Crosswalk IoU: 0.9392
+🚀 IoU improved (0.9547 -> 0.9560). Saving model...
+
+Epoch 41/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:50<00:00,  1.66it/s, loss=0.0209]
+Running Validation...
+Mean IoU: 0.9565 | Crosswalk IoU: 0.9401
+🚀 IoU improved (0.9560 -> 0.9565). Saving model...
+
+Epoch 42/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:50<00:00,  1.65it/s, loss=0.0146]
+Running Validation...
+Mean IoU: 0.9568 | Crosswalk IoU: 0.9403
+🚀 IoU improved (0.9565 -> 0.9568). Saving model...
+
+Epoch 43/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:49<00:00,  1.69it/s, loss=0.0151]
+Running Validation...
+Mean IoU: 0.9539 | Crosswalk IoU: 0.9363
+
+Epoch 44/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:50<00:00,  1.64it/s, loss=0.0205]
+Running Validation...
+Mean IoU: 0.9572 | Crosswalk IoU: 0.9409
+🚀 IoU improved (0.9568 -> 0.9572). Saving model...
+
+Epoch 45/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [01:15<00:00,  1.09it/s, loss=0.0160]
+Running Validation...
+Mean IoU: 0.9574 | Crosswalk IoU: 0.9413
+🚀 IoU improved (0.9572 -> 0.9574). Saving model...
+
+Epoch 46/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [01:05<00:00,  1.27it/s, loss=0.0270]
+Running Validation...
+Mean IoU: 0.9513 | Crosswalk IoU: 0.9330
+
+Epoch 47/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:48<00:00,  1.69it/s, loss=0.0252]
+Running Validation...
+Mean IoU: 0.9481 | Crosswalk IoU: 0.9286
+
+Epoch 48/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [01:33<00:00,  1.12s/it, loss=0.0174]
+Running Validation...
+Mean IoU: 0.9564 | Crosswalk IoU: 0.9399
+
+Epoch 49/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:48<00:00,  1.71it/s, loss=0.0165]
+Running Validation...
+Mean IoU: 0.9577 | Crosswalk IoU: 0.9416
+🚀 IoU improved (0.9574 -> 0.9577). Saving model...
+
+Epoch 50/50
+Training: 100%|████████████████████████████████████████████████████████████████████████████████| 83/83 [00:48<00:00,  1.71it/s, loss=0.0160]
+Running Validation...
+Mean IoU: 0.9557 | Crosswalk IoU: 0.9391
+
+Training Complete.

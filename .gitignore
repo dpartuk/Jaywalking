@@ -27,6 +27,7 @@ detection/runs/
 logs/
 *.log
 *.out
+!nohup.out
 
 # IDE / editor
 .claude/
