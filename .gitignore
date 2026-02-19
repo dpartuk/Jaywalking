@@ -15,6 +15,9 @@ detection/dataset_yolo/
 detection/dataset_mini/
 detection/JAAD/
 segmentation/FPVCrosswalk2025
+segmentation/jaad_finetune/images/
+segmentation/jaad_finetune/masks/
+segmentation/jaad_finetune.zip
 intention/datagen/
 
 # Training runs (logs, plots, cached results)
