@@ -18,6 +18,7 @@ segmentation/FPVCrosswalk2025
 segmentation/jaad_finetune/images/
 segmentation/jaad_finetune/masks/
 segmentation/jaad_finetune.zip
+segmentation/crosswalk/
 intention/datagen/
 
 # Training runs (logs, plots, cached results)
