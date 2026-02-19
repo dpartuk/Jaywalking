@@ -27,26 +27,30 @@ JAAD_FINETUNE_DIR = os.path.join(SCRIPT_DIR, "jaad_finetune")
 IMAGES_DIR = os.path.join(JAAD_FINETUNE_DIR, "images")
 MASKS_DIR = os.path.join(JAAD_FINETUNE_DIR, "masks")
 
-PRETRAINED_WEIGHTS = os.path.join(os.path.dirname(SCRIPT_DIR), "best_segformer_crosswalk.pt")
 OUTPUT_WEIGHTS = os.path.join(os.path.dirname(SCRIPT_DIR), "best_segformer_crosswalk_jaad.pt")
+# Resume from JAAD fine-tuned weights if available, otherwise start from base FPVCrosswalk weights
+PRETRAINED_WEIGHTS = OUTPUT_WEIGHTS if os.path.isfile(OUTPUT_WEIGHTS) else \
+    os.path.join(os.path.dirname(SCRIPT_DIR), "best_segformer_crosswalk.pt")
 
 MODEL_CHECKPOINT = "nvidia/mit-b0"
 
 BATCH_SIZE = 8
 LR = 1e-5             # Low LR for fine-tuning
 EPOCHS = 20
-NUM_WORKERS = 4
 VAL_SPLIT = 0.2
 
 # Setup Device (CUDA > MPS > CPU)
 if torch.cuda.is_available():
     DEVICE = torch.device("cuda")
+    NUM_WORKERS = 4
     print(f"Using CUDA ({torch.cuda.get_device_name(0)}).")
 elif torch.backends.mps.is_available():
     DEVICE = torch.device("mps")
+    NUM_WORKERS = 0  # macOS fork issues with MPS
     print("Using Apple MPS (Metal Performance Shaders) acceleration.")
 else:
     DEVICE = torch.device("cpu")
+    NUM_WORKERS = 0
     print("MPS/CUDA not available. Using CPU (will be slow).")
 
 # ==========================================
@@ -181,7 +185,29 @@ def main():
     # ==========================================
     print("\nStarting Fine-tuning...")
 
-    best_iou = 0.0
+    best_cw_iou = 0.0
+
+    # Establish baseline by running validation before training
+    if val_loader is not None:
+        model.eval()
+        print("Running baseline validation...")
+        with torch.no_grad():
+            for batch in val_loader:
+                pixel_values = batch["pixel_values"].to(DEVICE)
+                labels = batch["labels"].to(DEVICE)
+                outputs = model(pixel_values=pixel_values)
+                upsampled_logits = torch.nn.functional.interpolate(
+                    outputs.logits, size=labels.shape[-2:],
+                    mode="bilinear", align_corners=False
+                )
+                predictions = upsampled_logits.argmax(dim=1)
+                metric.add_batch(
+                    predictions=predictions.detach().cpu().numpy(),
+                    references=labels.detach().cpu().numpy()
+                )
+        metrics = metric.compute(num_labels=2, ignore_index=255)
+        best_cw_iou = metrics["per_category_iou"][1]
+        print(f"Baseline Crosswalk IoU: {best_cw_iou:.4f}")
 
     for epoch in range(EPOCHS):
         print(f"\nEpoch {epoch + 1}/{EPOCHS}")
@@ -256,12 +282,12 @@ def main():
 
         print(f"Mean IoU: {mean_iou:.4f} | Crosswalk IoU: {iou_crosswalk:.4f}")
 
-        if mean_iou > best_iou:
-            print(f"IoU improved ({best_iou:.4f} -> {mean_iou:.4f}). Saving model...")
-            best_iou = mean_iou
+        if iou_crosswalk > best_cw_iou:
+            print(f"Crosswalk IoU improved ({best_cw_iou:.4f} -> {iou_crosswalk:.4f}). Saving model...")
+            best_cw_iou = iou_crosswalk
             torch.save(model.state_dict(), OUTPUT_WEIGHTS)
 
-    print(f"\nFine-tuning Complete. Best weights saved to {OUTPUT_WEIGHTS}")
+    print(f"\nFine-tuning Complete. Best Crosswalk IoU: {best_cw_iou:.4f}. Weights saved to {OUTPUT_WEIGHTS}")
 
 
 if __name__ == "__main__":

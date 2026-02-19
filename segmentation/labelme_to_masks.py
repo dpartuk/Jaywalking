@@ -59,7 +59,8 @@ def main():
                 draw.rectangle([x0, y0, x1, y1], fill=255)
 
         # Save mask with same stem as the original image
-        img_name = Path(data["imagePath"]).stem
+        # Handle Windows-style backslashes in imagePath from LabelMe annotations
+        img_name = Path(data["imagePath"].replace("\\", "/")).stem
         out_path = os.path.join(MASKS_DIR, f"{img_name}.png")
         mask.save(out_path)
         print(f"  {jf} -> {img_name}.png  ({np.array(mask).sum() // 255} crosswalk pixels)")

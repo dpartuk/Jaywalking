@@ -28,12 +28,15 @@ MODEL_CHECKPOINT = "nvidia/mit-b0"
 # Setup Device (CUDA > MPS > CPU)
 if torch.cuda.is_available():
     DEVICE = torch.device("cuda")
+    NUM_WORKERS = 4
     print(f"Using CUDA ({torch.cuda.get_device_name(0)}).")
 elif torch.backends.mps.is_available():
     DEVICE = torch.device("mps")
+    NUM_WORKERS = 0  # macOS fork issues with MPS
     print("Using Apple MPS (Metal Performance Shaders) acceleration.")
 else:
     DEVICE = torch.device("cpu")
+    NUM_WORKERS = 0
     print("MPS/CUDA not available. Using CPU (will be slow).")
 
 
@@ -80,7 +83,7 @@ def main():
     parser.add_argument("--weights", type=str, default=WEIGHTS_PATH, help="Path to model weights")
     parser.add_argument("--input_dir", type=str, default=JAAD_IMAGES, help="JAAD images root")
     parser.add_argument("--output_dir", type=str, default=OUTPUT_DIR, help="Output masks root")
-    parser.add_argument("--num_workers", type=int, default=4, help="DataLoader workers")
+    parser.add_argument("--num_workers", type=int, default=NUM_WORKERS, help="DataLoader workers")
     parser.add_argument("--sample", type=int, default=0,
                         help="Randomly select N frames total from random videos (for testing)")
     parser.add_argument("--video", type=str, default=None,
