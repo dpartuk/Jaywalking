@@ -6,6 +6,7 @@ crosswalk masks (0/255 uint8 PNG) to segmentation/crosswalk/<video_id>/<frame>.p
 
 import os
 import argparse
+import csv
 import random
 import numpy as np
 import torch
@@ -166,6 +167,11 @@ def main():
     os.makedirs(args.output_dir, exist_ok=True)
     print(f"Saving masks to {args.output_dir}")
 
+    csv_path = os.path.join(args.output_dir, "crosswalk_metrics.csv")
+    csv_file = open(csv_path, "w", newline="")
+    csv_writer = csv.writer(csv_file)
+    csv_writer.writerow(["video_id", "frame", "max_prob", "mean_prob", "pct_pixels_over_50"])
+
     with torch.no_grad():
         for pixel_values, rel_paths, widths, heights in tqdm(loader, desc="Inference"):
             pixel_values = pixel_values.to(DEVICE)
@@ -184,13 +190,21 @@ def main():
                     align_corners=False,
                 )
 
+                probs = torch.softmax(upsampled, dim=1)
+                cw_prob = probs[0, 1]  # crosswalk channel
+                max_prob = cw_prob.max().item()
+                mean_prob = cw_prob.mean().item()
+                pct_over_50 = (cw_prob > 0.5).float().mean().item() * 100
+
                 if args.debug:
-                    probs = torch.softmax(upsampled, dim=1)
-                    cw_prob = probs[0, 1]  # crosswalk channel
-                    pct_over_50 = (cw_prob > 0.5).float().mean().item() * 100
                     print(f"  {rel_paths[i]}: crosswalk_prob "
-                          f"max={cw_prob.max():.4f} mean={cw_prob.mean():.4f} "
+                          f"max={max_prob:.4f} mean={mean_prob:.4f} "
                           f"pixels>0.5={pct_over_50:.2f}%")
+
+                # Write metrics to CSV
+                video_id = rel_paths[i].split(os.sep)[0]
+                frame = os.path.basename(rel_paths[i])
+                csv_writer.writerow([video_id, frame, f"{max_prob:.4f}", f"{mean_prob:.4f}", f"{pct_over_50:.2f}"])
 
                 pred = upsampled.argmax(dim=1).squeeze(0)  # [H, W]
 
@@ -205,7 +219,9 @@ def main():
                 out_path = str(Path(out_path).with_suffix(".png"))
                 Image.fromarray(mask, mode="L").save(out_path)
 
+    csv_file.close()
     print(f"Done. Masks saved to {args.output_dir}")
+    print(f"Metrics saved to {csv_path}")
 
 
 if __name__ == "__main__":
