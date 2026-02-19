@@ -1,30 +1,3 @@
-Traceback (most recent call last):
-  File "/home/ubuntu/local/Jaywalking/intention/dataset.py", line 26, in <module>
-    import pickle5 as pickle
-ModuleNotFoundError: No module named 'pickle5'
-Traceback (most recent call last):
-  File "/home/ubuntu/local/Jaywalking/intention/dataset.py", line 26, in <module>
-    import pickle5 as pickle
-ModuleNotFoundError: No module named 'pickle5'
-Traceback (most recent call last):
-  File "/home/ubuntu/local/Jaywalking/intention/dataset.py", line 473, in <module>
-    DS = JAAD(data_path=opts.data_path)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ubuntu/local/Jaywalking/intention/dataset.py", line 68, in __init__
-    assert exists(self._data_path), \
-           ^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: Jaad path does not exist: /Users/dpeleg/local/JAAD_DS
-Traceback (most recent call last):
-  File "/home/ubuntu/local/Jaywalking/intention/dataset.py", line 473, in <module>
-    DS = JAAD(data_path=opts.data_path)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ubuntu/local/Jaywalking/intention/dataset.py", line 68, in __init__
-    assert exists(self._data_path), \
-           ^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: Jaad path does not exist: /Users/dpeleg/local/JAAD_DS
-{'_year': '2016', '_name': 'JAAD', '_image_ext': '.png', '_fps': 30, '_t_pred': 1, '_label_frames': 30, '_data_path': '/home/ubuntu/local/JAAD_DS', '_annotation_path': '/home/ubuntu/local/JAAD_DS/datagen/JAAD_DS/annotations', '_inference_path': '/home/ubuntu/local/JAAD_DS/datagen/JAAD_DS/Inference', '_videos_path': '/home/ubuntu/local/JAAD_DS/datagen/JAAD_DS/JAAD_clips', '_checkpoint_path': '/home/ubuntu/local/JAAD_DS/datagen/data/jaad_dataset.pkl'}
-Downloading: "http://github.com/openpifpaf/torchhub/releases/download/v0.13/resnet50-210830-150728-cocokp-slurm728641-edge513-o10s-ecd30da4.pkl" to /home/ubuntu/.cache/torch/hub/checkpoints/resnet50-210830-150728-cocokp-slurm728641-edge513-o10s-ecd30da4.pkl
-  0%|          | 0.00/97.4M [00:00<?, ?B/s] 12%|█▏        | 11.4M/97.4M [00:00<00:00, 119MB/s] 23%|██▎       | 22.8M/97.4M [00:00<00:00, 92.6MB/s] 33%|███▎      | 32.0M/97.4M [00:00<00:00, 82.9MB/s] 41%|████      | 40.1M/97.4M [00:00<00:01, 58.8MB/s] 54%|█████▎    | 52.1M/97.4M [00:00<00:00, 72.9MB/s] 62%|██████▏   | 60.1M/97.4M [00:01<00:00, 44.6MB/s] 72%|███████▏  | 70.1M/97.4M [00:01<00:00, 34.5MB/s] 77%|███████▋  | 74.9M/97.4M [00:01<00:00, 35.2MB/s] 81%|████████▏ | 79.4M/97.4M [00:01<00:00, 33.2MB/s] 85%|████████▌ | 83.2M/97.4M [00:01<00:00, 32.7MB/s] 90%|█████████ | 88.1M/97.4M [00:02<00:00, 30.7MB/s] 94%|█████████▍| 91.4M/97.4M [00:02<00:00, 22.9MB/s] 96%|█████████▋| 94.0M/97.4M [00:02<00:00, 23.6MB/s]100%|██████████| 97.4M/97.4M [00:02<00:00, 38.4MB/s]
 Generating dataset for jaad
 
 
@@ -2442,3 +2415,382 @@ Running Validation...
 Mean IoU: 0.9557 | Crosswalk IoU: 0.9391
 
 Training Complete.
+[stderr] /Users/dpeleg/.local/lib/python3.11/site-packages/joblib/_multiprocessing_helpers.py:44: UserWarning: [Errno 1] Operation not permitted.  joblib will operate in serial mode
+  warnings.warn("%s.  joblib will operate in serial mode" % (e,))
+
+
+#### Fine-tuning Segmentation
+
+MPS/CUDA not available. Using CPU (will be slow).
+Scanning fine-tuning dataset...
+Found 199 image/mask pairs.
+Train: 159, Val: 40
+Loading SegFormer model...
+Loading pretrained weights from /Users/dpeleg/local/Jaywalking/best_segformer_crosswalk.pt
+
+Starting Fine-tuning...
+
+Epoch 1/20
+Avg Train Loss: 0.9682
+Running Validation...
+Mean IoU: 0.5517 | Crosswalk IoU: 0.1666
+IoU improved (0.0000 -> 0.5517). Saving model...
+
+Epoch 2/20
+Avg Train Loss: 0.5531
+Running Validation...
+Mean IoU: 0.5757 | Crosswalk IoU: 0.2217
+IoU improved (0.5517 -> 0.5757). Saving model...
+
+Epoch 3/20
+Avg Train Loss: 0.3609
+Running Validation...
+Mean IoU: 0.5772 | Crosswalk IoU: 0.2303
+IoU improved (0.5757 -> 0.5772). Saving model...
+
+Epoch 4/20
+Avg Train Loss: 0.2874
+Running Validation...
+Mean IoU: 0.5980 | Crosswalk IoU: 0.2628
+IoU improved (0.5772 -> 0.5980). Saving model...
+
+Epoch 5/20
+Avg Train Loss: 0.2403
+Running Validation...
+Mean IoU: 0.6172 | Crosswalk IoU: 0.2932
+IoU improved (0.5980 -> 0.6172). Saving model...
+
+Epoch 6/20
+Avg Train Loss: 0.2025
+Running Validation...
+Mean IoU: 0.6393 | Crosswalk IoU: 0.3239
+IoU improved (0.6172 -> 0.6393). Saving model...
+
+Epoch 7/20
+[stderr] /Users/dpeleg/.local/lib/python3.11/site-packages/joblib/_multiprocessing_helpers.py:44: UserWarning: [Errno 1] Operation not permitted.  joblib will operate in serial mode
+  warnings.warn("%s.  joblib will operate in serial mode" % (e,))
+Loading weights: 100%|██████████| 192/192 [00:00<00:00, 17161.56it/s, Materializing param=segformer.encoder.patch_embeddings.3.proj.weight]
+SegformerForSemanticSegmentation LOAD REPORT from: nvidia/mit-b0
+Key                                           | Status     |
+----------------------------------------------+------------+-
+classifier.weight                             | UNEXPECTED |
+classifier.bias                               | UNEXPECTED |
+decode_head.linear_fuse.weight                | MISSING    |
+decode_head.linear_c.{0, 1, 2, 3}.proj.weight | MISSING    |
+decode_head.batch_norm.weight                 | MISSING    |
+decode_head.classifier.weight                 | MISSING    |
+decode_head.linear_c.{0, 1, 2, 3}.proj.bias   | MISSING    |
+decode_head.batch_norm.running_mean           | MISSING    |
+decode_head.classifier.bias                   | MISSING    |
+decode_head.batch_norm.bias                   | MISSING    |
+decode_head.batch_norm.running_var            | MISSING    |
+decode_head.batch_norm.num_batches_tracked    | MISSING    |
+
+Notes:
+- UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+/Users/dpeleg/miniforge3/envs/jay/lib/python3.11/site-packages/transformers/image_processing_base.py:370: UserWarning: The following named arguments are not valid for `SegformerImageProcessor.__init__` and were ignored: 'feature_extractor_type', 'reduce_labels'
+  image_processor = cls(**image_processor_dict)
+Training: 100%|██████████| 20/20 [01:18<00:00,  3.93s/it, loss=0.7091]
+/Users/dpeleg/miniforge3/envs/jay/lib/python3.11/site-packages/datasets/features/image.py:371: UserWarning: Downcasting array dtype int64 to int32 to be compatible with 'Pillow'
+  warnings.warn(f"Downcasting array dtype {dtype} to {dest_dtype} to be compatible with 'Pillow'")
+Training: 100%|██████████| 20/20 [01:20<00:00,  4.03s/it, loss=0.5369]
+Training: 100%|██████████| 20/20 [01:22<00:00,  4.11s/it, loss=0.2920]
+Training: 100%|██████████| 20/20 [01:21<00:00,  4.09s/it, loss=0.2280]
+Training: 100%|██████████| 20/20 [01:22<00:00,  4.12s/it, loss=0.2324]
+Training: 100%|██████████| 20/20 [01:22<00:00,  4.13s/it, loss=0.1546]
+Training: 100%|██████████| 20/20 [01:22<00:00,  4.14s/it, loss=0.1501][stderr]
+Avg Train Loss: 0.1774
+Running Validation...
+Mean IoU: 0.6491 | Crosswalk IoU: 0.3412
+IoU improved (0.6393 -> 0.6491). Saving model...
+
+Epoch 8/20
+Training: 100%|██████████| 20/20 [01:22<00:00,  4.11s/it, loss=0.1688][stderr]
+Avg Train Loss: 0.1587
+Running Validation...
+Mean IoU: 0.6571 | Crosswalk IoU: 0.3537
+IoU improved (0.6491 -> 0.6571). Saving model...
+
+Epoch 9/20
+Training: 100%|██████████| 20/20 [01:21<00:00,  4.08s/it, loss=0.1250][stderr]
+Avg Train Loss: 0.1522
+Running Validation...
+Mean IoU: 0.6646 | Crosswalk IoU: 0.3670
+IoU improved (0.6571 -> 0.6646). Saving model...
+
+Epoch 10/20
+Training: 100%|██████████| 20/20 [01:21<00:00,  4.10s/it, loss=0.1331][stderr]
+Avg Train Loss: 0.1359
+Running Validation...
+Mean IoU: 0.6665 | Crosswalk IoU: 0.3680
+IoU improved (0.6646 -> 0.6665). Saving model...
+
+Epoch 11/20
+Training: 100%|██████████| 20/20 [01:21<00:00,  4.10s/it, loss=0.1608][stderr]
+Avg Train Loss: 0.1378
+Running Validation...
+Mean IoU: 0.6754 | Crosswalk IoU: 0.3856
+IoU improved (0.6665 -> 0.6754). Saving model...
+
+Epoch 12/20
+Training: 100%|██████████| 20/20 [01:22<00:00,  4.13s/it, loss=0.1394][stderr]
+Avg Train Loss: 0.1255
+Running Validation...
+Mean IoU: 0.6738 | Crosswalk IoU: 0.3810
+
+Epoch 13/20
+Training: 100%|██████████| 20/20 [01:21<00:00,  4.09s/it, loss=0.1198][stderr]
+Avg Train Loss: 0.1195
+Running Validation...
+Mean IoU: 0.6757 | Crosswalk IoU: 0.3843
+IoU improved (0.6754 -> 0.6757). Saving model...
+
+Epoch 14/20
+Training: 100%|██████████| 20/20 [01:24<00:00,  4.22s/it, loss=0.0982][stderr]
+Avg Train Loss: 0.1206
+Running Validation...
+Mean IoU: 0.6845 | Crosswalk IoU: 0.4017
+IoU improved (0.6757 -> 0.6845). Saving model...
+
+Epoch 15/20
+Training: 100%|██████████| 20/20 [01:25<00:00,  4.28s/it, loss=0.1223][stderr]
+Avg Train Loss: 0.1173
+Running Validation...
+Mean IoU: 0.6839 | Crosswalk IoU: 0.3997
+
+Epoch 16/20
+Training: 100%|██████████| 20/20 [01:24<00:00,  4.21s/it, loss=0.1179][stderr]
+Avg Train Loss: 0.1093
+Running Validation...
+Mean IoU: 0.6892 | Crosswalk IoU: 0.4103
+IoU improved (0.6845 -> 0.6892). Saving model...
+
+Epoch 17/20
+Training: 100%|██████████| 20/20 [01:23<00:00,  4.18s/it, loss=0.1041][stderr]
+Avg Train Loss: 0.1160
+Running Validation...
+Mean IoU: 0.6874 | Crosswalk IoU: 0.4058
+
+Epoch 18/20
+Training: 100%|██████████| 20/20 [01:23<00:00,  4.15s/it, loss=0.1208][stderr]
+Avg Train Loss: 0.1059
+Running Validation...
+Mean IoU: 0.6870 | Crosswalk IoU: 0.4043
+
+Epoch 19/20
+Training: 100%|██████████| 20/20 [01:24<00:00,  4.20s/it, loss=0.1158][stderr]
+Avg Train Loss: 0.1057
+Running Validation...
+Mean IoU: 0.6916 | Crosswalk IoU: 0.4134
+IoU improved (0.6892 -> 0.6916). Saving model...
+
+Epoch 20/20
+Training: 100%|██████████| 20/20 [01:24<00:00,  4.22s/it, loss=0.0913][stderr]
+Avg Train Loss: 0.1032
+Running Validation...
+Mean IoU: 0.6994 | Crosswalk IoU: 0.4289
+IoU improved (0.6916 -> 0.6994). Saving model...
+
+Fine-tuning Complete. Best weights saved to /Users/dpeleg/local/Jaywalking/best_segformer_crosswalk_jaad.pt
+
+
+
+
+
+
+
+MPS/CUDA not available. Using CPU (will be slow).
+Scanning fine-tuning dataset...
+Found 199 image/mask pairs.
+Train: 159, Val: 40
+Loading SegFormer model...
+[stderr] Loading weights:   0%|          | 0/192 [00:00<?, ?it/s]Loading weights:   1%|          | 1/192 [00:00<00:00, 6335.81it/s, Materializing param=segformer.encoder.block.0.0.attention.output.dense.bias]Loading weights:   1%|          | 1/192 [00:00<00:00, 3355.44it/s, Materializing param=segformer.encoder.block.0.0.attention.output.dense.bias]Loading weights:   1%|          | 2/192 [00:00<00:00, 2666.44it/s, Materializing param=segformer.encoder.block.0.0.attention.output.dense.weight]Loading weights:   1%|          | 2/192 [00:00<00:00, 2326.29it/s, Materializing param=segformer.encoder.block.0.0.attention.output.dense.weight]Loading weights:   2%|▏         | 3/192 [00:00<00:00, 2744.96it/s, Materializing param=segformer.encoder.block.0.0.attention.self.key.bias]      Loading weights:   2%|▏         | 3/192 [00:00<00:00, 2413.76it/s, Materializing param=segformer.encoder.block.0.0.attention.self.key.bias]Loading weights:   2%|▏         | 4/192 [00:00<00:00, 2745.86it/s, Materializing param=segformer.encoder.block.0.0.attention.self.key.weight]Loading weights:   2%|▏         | 4/192 [00:00<00:00, 2551.28it/s, Materializing param=segformer.encoder.block.0.0.attention.self.key.weight]Loading weights:   3%|▎         | 5/192 [00:00<00:00, 2842.82it/s, Materializing param=segformer.encoder.block.0.0.attention.self.layer_norm.bias]Loading weights:   3%|▎         | 5/192 [00:00<00:00, 2721.81it/s, Materializing param=segformer.encoder.block.0.0.attention.self.layer_norm.bias]Loading weights:   3%|▎         | 6/192 [00:00<00:00, 2989.53it/s, Materializing param=segformer.encoder.block.0.0.attention.self.layer_norm.weight]Loading weights:   3%|▎         | 6/192 [00:00<00:00, 2879.38it/s, Materializing param=segformer.encoder.block.0.0.attention.self.layer_norm.weight]Loading weights:   4%|▎         | 7/192 [00:00<00:00, 3146.18it/s, Materializing param=segformer.encoder.block.0.0.attention.self.query.bias]       Loading weights:   4%|▎         | 7/192 [00:00<00:00, 3071.79it/s, Materializing param=segformer.encoder.block.0.0.attention.self.query.bias]Loading weights:   4%|▍         | 8/192 [00:00<00:00, 3310.09it/s, Materializing param=segformer.encoder.block.0.0.attention.self.query.weight]Loading weights:   4%|▍         | 8/192 [00:00<00:00, 3235.10it/s, Materializing param=segformer.encoder.block.0.0.attention.self.query.weight]Loading weights:   5%|▍         | 9/192 [00:00<00:00, 3469.55it/s, Materializing param=segformer.encoder.block.0.0.attention.self.sr.bias]     Loading weights:   5%|▍         | 9/192 [00:00<00:00, 3396.50it/s, Materializing param=segformer.encoder.block.0.0.attention.self.sr.bias]Loading weights:   5%|▌         | 10/192 [00:00<00:00, 3607.69it/s, Materializing param=segformer.encoder.block.0.0.attention.self.sr.weight]Loading weights:   5%|▌         | 10/192 [00:00<00:00, 3542.49it/s, Materializing param=segformer.encoder.block.0.0.attention.self.sr.weight]Loading weights:   6%|▌         | 11/192 [00:00<00:00, 3750.39it/s, Materializing param=segformer.encoder.block.0.0.attention.self.value.bias]Loading weights:   6%|▌         | 11/192 [00:00<00:00, 3685.09it/s, Materializing param=segformer.encoder.block.0.0.attention.self.value.bias]Loading weights:   6%|▋         | 12/192 [00:00<00:00, 3878.53it/s, Materializing param=segformer.encoder.block.0.0.attention.self.value.weight]Loading weights:   6%|▋         | 12/192 [00:00<00:00, 3815.61it/s, Materializing param=segformer.encoder.block.0.0.attention.self.value.weight]Loading weights:   7%|▋         | 13/192 [00:00<00:00, 4000.14it/s, Materializing param=segformer.encoder.block.0.0.layer_norm_1.bias]          Loading weights:   7%|▋         | 13/192 [00:00<00:00, 3940.59it/s, Materializing param=segformer.encoder.block.0.0.layer_norm_1.bias]Loading weights:   7%|▋         | 14/192 [00:00<00:00, 4115.23it/s, Materializing param=segformer.encoder.block.0.0.layer_norm_1.weight]Loading weights:   7%|▋         | 14/192 [00:00<00:00, 4054.71it/s, Materializing param=segformer.encoder.block.0.0.layer_norm_1.weight]Loading weights:   8%|▊         | 15/192 [00:00<00:00, 4221.89it/s, Materializing param=segformer.encoder.block.0.0.layer_norm_2.bias]  Loading weights:   8%|▊         | 15/192 [00:00<00:00, 4161.02it/s, Materializing param=segformer.encoder.block.0.0.layer_norm_2.bias]Loading weights:   8%|▊         | 16/192 [00:00<00:00, 4317.63it/s, Materializing param=segformer.encoder.block.0.0.layer_norm_2.weight]Loading weights:   8%|▊         | 16/192 [00:00<00:00, 4262.23it/s, Materializing param=segformer.encoder.block.0.0.layer_norm_2.weight]Loading weights:   9%|▉         | 17/192 [00:00<00:00, 4415.60it/s, Materializing param=segformer.encoder.block.0.0.mlp.dense1.bias]    Loading weights:   9%|▉         | 17/192 [00:00<00:00, 4363.45it/s, Materializing param=segformer.encoder.block.0.0.mlp.dense1.bias]Loading weights:   9%|▉         | 18/192 [00:00<00:00, 4498.99it/s, Materializing param=segformer.encoder.block.0.0.mlp.dense1.weight]Loading weights:   9%|▉         | 18/192 [00:00<00:00, 4448.09it/s, Materializing param=segformer.encoder.block.0.0.mlp.dense1.weight]Loading weights:  10%|▉         | 19/192 [00:00<00:00, 4587.11it/s, Materializing param=segformer.encoder.block.0.0.mlp.dense2.bias]  Loading weights:  10%|▉         | 19/192 [00:00<00:00, 4539.03it/s, Materializing param=segformer.encoder.block.0.0.mlp.dense2.bias]Loading weights:  10%|█         | 20/192 [00:00<00:00, 4669.94it/s, Materializing param=segformer.encoder.block.0.0.mlp.dense2.weight]Loading weights:  10%|█         | 20/192 [00:00<00:00, 4621.31it/s, Materializing param=segformer.encoder.block.0.0.mlp.dense2.weight]Loading weights:  11%|█         | 21/192 [00:00<00:00, 4751.09it/s, Materializing param=segformer.encoder.block.0.0.mlp.dwconv.dwconv.bias]Loading weights:  11%|█         | 21/192 [00:00<00:00, 4701.38it/s, Materializing param=segformer.encoder.block.0.0.mlp.dwconv.dwconv.bias]Loading weights:  11%|█▏        | 22/192 [00:00<00:00, 4814.25it/s, Materializing param=segformer.encoder.block.0.0.mlp.dwconv.dwconv.weight]Loading weights:  11%|█▏        | 22/192 [00:00<00:00, 4767.24it/s, Materializing param=segformer.encoder.block.0.0.mlp.dwconv.dwconv.weight]Loading weights:  12%|█▏        | 23/192 [00:00<00:00, 4877.10it/s, Materializing param=segformer.encoder.block.0.1.attention.output.dense.bias]Loading weights:  12%|█▏        | 23/192 [00:00<00:00, 4823.93it/s, Materializing param=segformer.encoder.block.0.1.attention.output.dense.bias]Loading weights:  12%|█▎        | 24/192 [00:00<00:00, 4919.28it/s, Materializing param=segformer.encoder.block.0.1.attention.output.dense.weight]Loading weights:  12%|█▎        | 24/192 [00:00<00:00, 4871.20it/s, Materializing param=segformer.encoder.block.0.1.attention.output.dense.weight]Loading weights:  13%|█▎        | 25/192 [00:00<00:00, 4975.21it/s, Materializing param=segformer.encoder.block.0.1.attention.self.key.bias]      Loading weights:  13%|█▎        | 25/192 [00:00<00:00, 4930.99it/s, Materializing param=segformer.encoder.block.0.1.attention.self.key.bias]Loading weights:  14%|█▎        | 26/192 [00:00<00:00, 5027.05it/s, Materializing param=segformer.encoder.block.0.1.attention.self.key.weight]Loading weights:  14%|█▎        | 26/192 [00:00<00:00, 4984.77it/s, Materializing param=segformer.encoder.block.0.1.attention.self.key.weight]Loading weights:  14%|█▍        | 27/192 [00:00<00:00, 5081.95it/s, Materializing param=segformer.encoder.block.0.1.attention.self.layer_norm.bias]Loading weights:  14%|█▍        | 27/192 [00:00<00:00, 5040.11it/s, Materializing param=segformer.encoder.block.0.1.attention.self.layer_norm.bias]Loading weights:  15%|█▍        | 28/192 [00:00<00:00, 5129.30it/s, Materializing param=segformer.encoder.block.0.1.attention.self.layer_norm.weight]Loading weights:  15%|█▍        | 28/192 [00:00<00:00, 5086.21it/s, Materializing param=segformer.encoder.block.0.1.attention.self.layer_norm.weight]Loading weights:  15%|█▌        | 29/192 [00:00<00:00, 5174.19it/s, Materializing param=segformer.encoder.block.0.1.attention.self.query.bias]       Loading weights:  15%|█▌        | 29/192 [00:00<00:00, 5130.11it/s, Materializing param=segformer.encoder.block.0.1.attention.self.query.bias]Loading weights:  16%|█▌        | 30/192 [00:00<00:00, 5205.57it/s, Materializing param=segformer.encoder.block.0.1.attention.self.query.weight]Loading weights:  16%|█▌        | 30/192 [00:00<00:00, 5162.64it/s, Materializing param=segformer.encoder.block.0.1.attention.self.query.weight]Loading weights:  16%|█▌        | 31/192 [00:00<00:00, 5248.17it/s, Materializing param=segformer.encoder.block.0.1.attention.self.sr.bias]     Loading weights:  16%|█▌        | 31/192 [00:00<00:00, 5209.27it/s, Materializing param=segformer.encoder.block.0.1.attention.self.sr.bias]Loading weights:  17%|█▋        | 32/192 [00:00<00:00, 5291.04it/s, Materializing param=segformer.encoder.block.0.1.attention.self.sr.weight]Loading weights:  17%|█▋        | 32/192 [00:00<00:00, 5251.08it/s, Materializing param=segformer.encoder.block.0.1.attention.self.sr.weight]Loading weights:  17%|█▋        | 33/192 [00:00<00:00, 5331.95it/s, Materializing param=segformer.encoder.block.0.1.attention.self.value.bias]Loading weights:  17%|█▋        | 33/192 [00:00<00:00, 5293.81it/s, Materializing param=segformer.encoder.block.0.1.attention.self.value.bias]Loading weights:  18%|█▊        | 34/192 [00:00<00:00, 5374.68it/s, Materializing param=segformer.encoder.block.0.1.attention.self.value.weight]Loading weights:  18%|█▊        | 34/192 [00:00<00:00, 5336.66it/s, Materializing param=segformer.encoder.block.0.1.attention.self.value.weight]Loading weights:  18%|█▊        | 35/192 [00:00<00:00, 5415.60it/s, Materializing param=segformer.encoder.block.0.1.layer_norm_1.bias]          Loading weights:  18%|█▊        | 35/192 [00:00<00:00, 5377.12it/s, Materializing param=segformer.encoder.block.0.1.layer_norm_1.bias]Loading weights:  19%|█▉        | 36/192 [00:00<00:00, 5453.05it/s, Materializing param=segformer.encoder.block.0.1.layer_norm_1.weight]Loading weights:  19%|█▉        | 36/192 [00:00<00:00, 5416.08it/s, Materializing param=segformer.encoder.block.0.1.layer_norm_1.weight]Loading weights:  19%|█▉        | 37/192 [00:00<00:00, 5494.40it/s, Materializing param=segformer.encoder.block.0.1.layer_norm_2.bias]  Loading weights:  19%|█▉        | 37/192 [00:00<00:00, 5461.33it/s, Materializing param=segformer.encoder.block.0.1.layer_norm_2.bias]Loading weights:  20%|█▉        | 38/192 [00:00<00:00, 5537.03it/s, Materializing param=segformer.encoder.block.0.1.layer_norm_2.weight]Loading weights:  20%|█▉        | 38/192 [00:00<00:00, 5504.91it/s, Materializing param=segformer.encoder.block.0.1.layer_norm_2.weight]Loading weights:  20%|██        | 39/192 [00:00<00:00, 5580.20it/s, Materializing param=segformer.encoder.block.0.1.mlp.dense1.bias]    Loading weights:  20%|██        | 39/192 [00:00<00:00, 5545.20it/s, Materializing param=segformer.encoder.block.0.1.mlp.dense1.bias]Loading weights:  21%|██        | 40/192 [00:00<00:00, 5397.38it/s, Materializing param=segformer.encoder.block.0.1.mlp.dense1.weight][stderr] Loading weights:  21%|██        | 40/192 [00:00<00:00, 5309.25it/s, Materializing param=segformer.encoder.block.0.1.mlp.dense1.weight]Loading weights:  21%|██▏       | 41/192 [00:00<00:00, 5342.07it/s, Materializing param=segformer.encoder.block.0.1.mlp.dense2.bias]  Loading weights:  21%|██▏       | 41/192 [00:00<00:00, 5299.92it/s, Materializing param=segformer.encoder.block.0.1.mlp.dense2.bias]Loading weights:  22%|██▏       | 42/192 [00:00<00:00, 5351.83it/s, Materializing param=segformer.encoder.block.0.1.mlp.dense2.weight]Loading weights:  22%|██▏       | 42/192 [00:00<00:00, 5317.90it/s, Materializing param=segformer.encoder.block.0.1.mlp.dense2.weight]Loading weights:  22%|██▏       | 43/192 [00:00<00:00, 5375.07it/s, Materializing param=segformer.encoder.block.0.1.mlp.dwconv.dwconv.bias]Loading weights:  22%|██▏       | 43/192 [00:00<00:00, 5341.64it/s, Materializing param=segformer.encoder.block.0.1.mlp.dwconv.dwconv.bias]Loading weights:  23%|██▎       | 44/192 [00:00<00:00, 5396.81it/s, Materializing param=segformer.encoder.block.0.1.mlp.dwconv.dwconv.weight]Loading weights:  23%|██▎       | 44/192 [00:00<00:00, 5365.28it/s, Materializing param=segformer.encoder.block.0.1.mlp.dwconv.dwconv.weight]Loading weights:  23%|██▎       | 45/192 [00:00<00:00, 5423.05it/s, Materializing param=segformer.encoder.block.1.0.attention.output.dense.bias]Loading weights:  23%|██▎       | 45/192 [00:00<00:00, 5391.29it/s, Materializing param=segformer.encoder.block.1.0.attention.output.dense.bias]Loading weights:  24%|██▍       | 46/192 [00:00<00:00, 5444.38it/s, Materializing param=segformer.encoder.block.1.0.attention.output.dense.weight]Loading weights:  24%|██▍       | 46/192 [00:00<00:00, 5413.83it/s, Materializing param=segformer.encoder.block.1.0.attention.output.dense.weight]Loading weights:  24%|██▍       | 47/192 [00:00<00:00, 5469.06it/s, Materializing param=segformer.encoder.block.1.0.attention.self.key.bias]      Loading weights:  24%|██▍       | 47/192 [00:00<00:00, 5439.18it/s, Materializing param=segformer.encoder.block.1.0.attention.self.key.bias]Loading weights:  25%|██▌       | 48/192 [00:00<00:00, 5492.62it/s, Materializing param=segformer.encoder.block.1.0.attention.self.key.weight]Loading weights:  25%|██▌       | 48/192 [00:00<00:00, 5464.00it/s, Materializing param=segformer.encoder.block.1.0.attention.self.key.weight]Loading weights:  26%|██▌       | 49/192 [00:00<00:00, 5519.27it/s, Materializing param=segformer.encoder.block.1.0.attention.self.layer_norm.bias]Loading weights:  26%|██▌       | 49/192 [00:00<00:00, 5489.63it/s, Materializing param=segformer.encoder.block.1.0.attention.self.layer_norm.bias]Loading weights:  26%|██▌       | 50/192 [00:00<00:00, 5542.74it/s, Materializing param=segformer.encoder.block.1.0.attention.self.layer_norm.weight]Loading weights:  26%|██▌       | 50/192 [00:00<00:00, 5514.47it/s, Materializing param=segformer.encoder.block.1.0.attention.self.layer_norm.weight]Loading weights:  27%|██▋       | 51/192 [00:00<00:00, 5566.50it/s, Materializing param=segformer.encoder.block.1.0.attention.self.query.bias]       Loading weights:  27%|██▋       | 51/192 [00:00<00:00, 5538.68it/s, Materializing param=segformer.encoder.block.1.0.attention.self.query.bias]Loading weights:  27%|██▋       | 52/192 [00:00<00:00, 5594.56it/s, Materializing param=segformer.encoder.block.1.0.attention.self.query.weight]Loading weights:  27%|██▋       | 52/192 [00:00<00:00, 5562.60it/s, Materializing param=segformer.encoder.block.1.0.attention.self.query.weight]Loading weights:  28%|██▊       | 53/192 [00:00<00:00, 5614.44it/s, Materializing param=segformer.encoder.block.1.0.attention.self.sr.bias]     Loading weights:  28%|██▊       | 53/192 [00:00<00:00, 5587.77it/s, Materializing param=segformer.encoder.block.1.0.attention.self.sr.bias]Loading weights:  28%|██▊       | 54/192 [00:00<00:00, 5638.63it/s, Materializing param=segformer.encoder.block.1.0.attention.self.sr.weight]Loading weights:  28%|██▊       | 54/192 [00:00<00:00, 5612.78it/s, Materializing param=segformer.encoder.block.1.0.attention.self.sr.weight]Loading weights:  29%|██▊       | 55/192 [00:00<00:00, 5663.25it/s, Materializing param=segformer.encoder.block.1.0.attention.self.value.bias]Loading weights:  29%|██▊       | 55/192 [00:00<00:00, 5637.64it/s, Materializing param=segformer.encoder.block.1.0.attention.self.value.bias]Loading weights:  29%|██▉       | 56/192 [00:00<00:00, 5687.05it/s, Materializing param=segformer.encoder.block.1.0.attention.self.value.weight]Loading weights:  29%|██▉       | 56/192 [00:00<00:00, 5660.74it/s, Materializing param=segformer.encoder.block.1.0.attention.self.value.weight]Loading weights:  30%|██▉       | 57/192 [00:00<00:00, 5711.44it/s, Materializing param=segformer.encoder.block.1.0.layer_norm_1.bias]          Loading weights:  30%|██▉       | 57/192 [00:00<00:00, 5689.70it/s, Materializing param=segformer.encoder.block.1.0.layer_norm_1.bias][stderr] Loading weights:  30%|███       | 58/192 [00:00<00:00, 5748.34it/s, Materializing param=segformer.encoder.block.1.0.layer_norm_1.weight]Loading weights:  30%|███       | 58/192 [00:00<00:00, 5726.82it/s, Materializing param=segformer.encoder.block.1.0.layer_norm_1.weight]Loading weights:  31%|███       | 59/192 [00:00<00:00, 5783.76it/s, Materializing param=segformer.encoder.block.1.0.layer_norm_2.bias]  Loading weights:  31%|███       | 59/192 [00:00<00:00, 5762.88it/s, Materializing param=segformer.encoder.block.1.0.layer_norm_2.bias]Loading weights:  31%|███▏      | 60/192 [00:00<00:00, 5819.63it/s, Materializing param=segformer.encoder.block.1.0.layer_norm_2.weight]Loading weights:  31%|███▏      | 60/192 [00:00<00:00, 5798.18it/s, Materializing param=segformer.encoder.block.1.0.layer_norm_2.weight]Loading weights:  32%|███▏      | 61/192 [00:00<00:00, 5854.21it/s, Materializing param=segformer.encoder.block.1.0.mlp.dense1.bias]    Loading weights:  32%|███▏      | 61/192 [00:00<00:00, 5832.46it/s, Materializing param=segformer.encoder.block.1.0.mlp.dense1.bias]Loading weights:  32%|███▏      | 62/192 [00:00<00:00, 5882.88it/s, Materializing param=segformer.encoder.block.1.0.mlp.dense1.weight]Loading weights:  32%|███▏      | 62/192 [00:00<00:00, 5862.46it/s, Materializing param=segformer.encoder.block.1.0.mlp.dense1.weight]Loading weights:  33%|███▎      | 63/192 [00:00<00:00, 5916.07it/s, Materializing param=segformer.encoder.block.1.0.mlp.dense2.bias]  Loading weights:  33%|███▎      | 63/192 [00:00<00:00, 5895.08it/s, Materializing param=segformer.encoder.block.1.0.mlp.dense2.bias]Loading weights:  33%|███▎      | 64/192 [00:00<00:00, 5946.34it/s, Materializing param=segformer.encoder.block.1.0.mlp.dense2.weight]Loading weights:  33%|███▎      | 64/192 [00:00<00:00, 5923.24it/s, Materializing param=segformer.encoder.block.1.0.mlp.dense2.weight]Loading weights:  34%|███▍      | 65/192 [00:00<00:00, 5975.45it/s, Materializing param=segformer.encoder.block.1.0.mlp.dwconv.dwconv.bias]Loading weights:  34%|███▍      | 65/192 [00:00<00:00, 5954.70it/s, Materializing param=segformer.encoder.block.1.0.mlp.dwconv.dwconv.bias]Loading weights:  34%|███▍      | 66/192 [00:00<00:00, 6003.30it/s, Materializing param=segformer.encoder.block.1.0.mlp.dwconv.dwconv.weight]Loading weights:  34%|███▍      | 66/192 [00:00<00:00, 5982.54it/s, Materializing param=segformer.encoder.block.1.0.mlp.dwconv.dwconv.weight]Loading weights:  35%|███▍      | 67/192 [00:00<00:00, 6030.70it/s, Materializing param=segformer.encoder.block.1.1.attention.output.dense.bias]Loading weights:  35%|███▍      | 67/192 [00:00<00:00, 6008.90it/s, Materializing param=segformer.encoder.block.1.1.attention.output.dense.bias]Loading weights:  35%|███▌      | 68/192 [00:00<00:00, 6054.70it/s, Materializing param=segformer.encoder.block.1.1.attention.output.dense.weight]Loading weights:  35%|███▌      | 68/192 [00:00<00:00, 6032.67it/s, Materializing param=segformer.encoder.block.1.1.attention.output.dense.weight]Loading weights:  36%|███▌      | 69/192 [00:00<00:00, 6078.19it/s, Materializing param=segformer.encoder.block.1.1.attention.self.key.bias]      Loading weights:  36%|███▌      | 69/192 [00:00<00:00, 6057.45it/s, Materializing param=segformer.encoder.block.1.1.attention.self.key.bias]Loading weights:  36%|███▋      | 70/192 [00:00<00:00, 6103.98it/s, Materializing param=segformer.encoder.block.1.1.attention.self.key.weight]Loading weights:  36%|███▋      | 70/192 [00:00<00:00, 6084.37it/s, Materializing param=segformer.encoder.block.1.1.attention.self.key.weight][stderr] Loading weights:  37%|███▋      | 71/192 [00:00<00:00, 6130.76it/s, Materializing param=segformer.encoder.block.1.1.attention.self.layer_norm.bias]Loading weights:  37%|███▋      | 71/192 [00:00<00:00, 6110.63it/s, Materializing param=segformer.encoder.block.1.1.attention.self.layer_norm.bias]Loading weights:  38%|███▊      | 72/192 [00:00<00:00, 6156.53it/s, Materializing param=segformer.encoder.block.1.1.attention.self.layer_norm.weight]Loading weights:  38%|███▊      | 72/192 [00:00<00:00, 6135.51it/s, Materializing param=segformer.encoder.block.1.1.attention.self.layer_norm.weight]Loading weights:  38%|███▊      | 73/192 [00:00<00:00, 6179.17it/s, Materializing param=segformer.encoder.block.1.1.attention.self.query.bias]       Loading weights:  38%|███▊      | 73/192 [00:00<00:00, 6158.79it/s, Materializing param=segformer.encoder.block.1.1.attention.self.query.bias]Loading weights:  39%|███▊      | 74/192 [00:00<00:00, 6203.35it/s, Materializing param=segformer.encoder.block.1.1.attention.self.query.weight]Loading weights:  39%|███▊      | 74/192 [00:00<00:00, 6183.70it/s, Materializing param=segformer.encoder.block.1.1.attention.self.query.weight]Loading weights:  39%|███▉      | 75/192 [00:00<00:00, 6226.70it/s, Materializing param=segformer.encoder.block.1.1.attention.self.sr.bias]     Loading weights:  39%|███▉      | 75/192 [00:00<00:00, 6206.55it/s, Materializing param=segformer.encoder.block.1.1.attention.self.sr.bias]Loading weights:  40%|███▉      | 76/192 [00:00<00:00, 6248.50it/s, Materializing param=segformer.encoder.block.1.1.attention.self.sr.weight]Loading weights:  40%|███▉      | 76/192 [00:00<00:00, 6228.47it/s, Materializing param=segformer.encoder.block.1.1.attention.self.sr.weight]Loading weights:  40%|████      | 77/192 [00:00<00:00, 6271.34it/s, Materializing param=segformer.encoder.block.1.1.attention.self.value.bias]Loading weights:  40%|████      | 77/192 [00:00<00:00, 6252.16it/s, Materializing param=segformer.encoder.block.1.1.attention.self.value.bias]Loading weights:  41%|████      | 78/192 [00:00<00:00, 6293.39it/s, Materializing param=segformer.encoder.block.1.1.attention.self.value.weight]Loading weights:  41%|████      | 78/192 [00:00<00:00, 6273.72it/s, Materializing param=segformer.encoder.block.1.1.attention.self.value.weight]Loading weights:  41%|████      | 79/192 [00:00<00:00, 6315.04it/s, Materializing param=segformer.encoder.block.1.1.layer_norm_1.bias]          Loading weights:  41%|████      | 79/192 [00:00<00:00, 6296.80it/s, Materializing param=segformer.encoder.block.1.1.layer_norm_1.bias]Loading weights:  42%|████▏     | 80/192 [00:00<00:00, 6341.19it/s, Materializing param=segformer.encoder.block.1.1.layer_norm_1.weight]Loading weights:  42%|████▏     | 80/192 [00:00<00:00, 6322.56it/s, Materializing param=segformer.encoder.block.1.1.layer_norm_1.weight]Loading weights:  42%|████▏     | 81/192 [00:00<00:00, 6367.04it/s, Materializing param=segformer.encoder.block.1.1.layer_norm_2.bias]  Loading weights:  42%|████▏     | 81/192 [00:00<00:00, 6348.47it/s, Materializing param=segformer.encoder.block.1.1.layer_norm_2.bias]Loading weights:  43%|████▎     | 82/192 [00:00<00:00, 6391.38it/s, Materializing param=segformer.encoder.block.1.1.layer_norm_2.weight][stderr] Loading weights:  43%|████▎     | 82/192 [00:00<00:00, 6372.43it/s, Materializing param=segformer.encoder.block.1.1.layer_norm_2.weight]Loading weights:  43%|████▎     | 83/192 [00:00<00:00, 6415.20it/s, Materializing param=segformer.encoder.block.1.1.mlp.dense1.bias]    Loading weights:  43%|████▎     | 83/192 [00:00<00:00, 6397.05it/s, Materializing param=segformer.encoder.block.1.1.mlp.dense1.bias]Loading weights:  44%|████▍     | 84/192 [00:00<00:00, 6438.27it/s, Materializing param=segformer.encoder.block.1.1.mlp.dense1.weight]Loading weights:  44%|████▍     | 84/192 [00:00<00:00, 6420.09it/s, Materializing param=segformer.encoder.block.1.1.mlp.dense1.weight]Loading weights:  44%|████▍     | 85/192 [00:00<00:00, 6461.43it/s, Materializing param=segformer.encoder.block.1.1.mlp.dense2.bias]  Loading weights:  44%|████▍     | 85/192 [00:00<00:00, 6443.91it/s, Materializing param=segformer.encoder.block.1.1.mlp.dense2.bias]Loading weights:  45%|████▍     | 86/192 [00:00<00:00, 6483.28it/s, Materializing param=segformer.encoder.block.1.1.mlp.dense2.weight]Loading weights:  45%|████▍     | 86/192 [00:00<00:00, 6465.27it/s, Materializing param=segformer.encoder.block.1.1.mlp.dense2.weight]Loading weights:  45%|████▌     | 87/192 [00:00<00:00, 6505.23it/s, Materializing param=segformer.encoder.block.1.1.mlp.dwconv.dwconv.bias]Loading weights:  45%|████▌     | 87/192 [00:00<00:00, 6486.84it/s, Materializing param=segformer.encoder.block.1.1.mlp.dwconv.dwconv.bias]Loading weights:  46%|████▌     | 88/192 [00:00<00:00, 6523.95it/s, Materializing param=segformer.encoder.block.1.1.mlp.dwconv.dwconv.weight]Loading weights:  46%|████▌     | 88/192 [00:00<00:00, 6504.52it/s, Materializing param=segformer.encoder.block.1.1.mlp.dwconv.dwconv.weight]Loading weights:  46%|████▋     | 89/192 [00:00<00:00, 6542.34it/s, Materializing param=segformer.encoder.block.2.0.attention.output.dense.bias]Loading weights:  46%|████▋     | 89/192 [00:00<00:00, 6523.48it/s, Materializing param=segformer.encoder.block.2.0.attention.output.dense.bias]Loading weights:  47%|████▋     | 90/192 [00:00<00:00, 6549.28it/s, Materializing param=segformer.encoder.block.2.0.attention.output.dense.weight]Loading weights:  47%|████▋     | 90/192 [00:00<00:00, 6528.78it/s, Materializing param=segformer.encoder.block.2.0.attention.output.dense.weight]Loading weights:  47%|████▋     | 91/192 [00:00<00:00, 6562.39it/s, Materializing param=segformer.encoder.block.2.0.attention.self.key.bias]      Loading weights:  47%|████▋     | 91/192 [00:00<00:00, 6544.05it/s, Materializing param=segformer.encoder.block.2.0.attention.self.key.bias]Loading weights:  48%|████▊     | 92/192 [00:00<00:00, 6578.52it/s, Materializing param=segformer.encoder.block.2.0.attention.self.key.weight]Loading weights:  48%|████▊     | 92/192 [00:00<00:00, 6560.73it/s, Materializing param=segformer.encoder.block.2.0.attention.self.key.weight][stderr] Loading weights:  48%|████▊     | 93/192 [00:00<00:00, 6596.71it/s, Materializing param=segformer.encoder.block.2.0.attention.self.layer_norm.bias]Loading weights:  48%|████▊     | 93/192 [00:00<00:00, 6578.14it/s, Materializing param=segformer.encoder.block.2.0.attention.self.layer_norm.bias]Loading weights:  49%|████▉     | 94/192 [00:00<00:00, 6609.96it/s, Materializing param=segformer.encoder.block.2.0.attention.self.layer_norm.weight]Loading weights:  49%|████▉     | 94/192 [00:00<00:00, 6591.40it/s, Materializing param=segformer.encoder.block.2.0.attention.self.layer_norm.weight]Loading weights:  49%|████▉     | 95/192 [00:00<00:00, 6627.17it/s, Materializing param=segformer.encoder.block.2.0.attention.self.query.bias]       Loading weights:  49%|████▉     | 95/192 [00:00<00:00, 6609.26it/s, Materializing param=segformer.encoder.block.2.0.attention.self.query.bias]Loading weights:  50%|█████     | 96/192 [00:00<00:00, 6644.11it/s, Materializing param=segformer.encoder.block.2.0.attention.self.query.weight]Loading weights:  50%|█████     | 96/192 [00:00<00:00, 6626.18it/s, Materializing param=segformer.encoder.block.2.0.attention.self.query.weight]Loading weights:  51%|█████     | 97/192 [00:00<00:00, 6662.10it/s, Materializing param=segformer.encoder.block.2.0.attention.self.sr.bias]     Loading weights:  51%|█████     | 97/192 [00:00<00:00, 6644.36it/s, Materializing param=segformer.encoder.block.2.0.attention.self.sr.bias]Loading weights:  51%|█████     | 98/192 [00:00<00:00, 6679.05it/s, Materializing param=segformer.encoder.block.2.0.attention.self.sr.weight]Loading weights:  51%|█████     | 98/192 [00:00<00:00, 6662.16it/s, Materializing param=segformer.encoder.block.2.0.attention.self.sr.weight]Loading weights:  52%|█████▏    | 99/192 [00:00<00:00, 6696.49it/s, Materializing param=segformer.encoder.block.2.0.attention.self.value.bias]Loading weights:  52%|█████▏    | 99/192 [00:00<00:00, 6678.83it/s, Materializing param=segformer.encoder.block.2.0.attention.self.value.bias]Loading weights:  52%|█████▏    | 100/192 [00:00<00:00, 6711.96it/s, Materializing param=segformer.encoder.block.2.0.attention.self.value.weight]Loading weights:  52%|█████▏    | 100/192 [00:00<00:00, 6694.82it/s, Materializing param=segformer.encoder.block.2.0.attention.self.value.weight]Loading weights:  53%|█████▎    | 101/192 [00:00<00:00, 6728.90it/s, Materializing param=segformer.encoder.block.2.0.layer_norm_1.bias]          Loading weights:  53%|█████▎    | 101/192 [00:00<00:00, 6711.42it/s, Materializing param=segformer.encoder.block.2.0.layer_norm_1.bias]Loading weights:  53%|█████▎    | 102/192 [00:00<00:00, 6746.87it/s, Materializing param=segformer.encoder.block.2.0.layer_norm_1.weight]Loading weights:  53%|█████▎    | 102/192 [00:00<00:00, 6728.72it/s, Materializing param=segformer.encoder.block.2.0.layer_norm_1.weight][stderr] Loading weights:  54%|█████▎    | 103/192 [00:00<00:00, 6762.57it/s, Materializing param=segformer.encoder.block.2.0.layer_norm_2.bias]  Loading weights:  54%|█████▎    | 103/192 [00:00<00:00, 6746.20it/s, Materializing param=segformer.encoder.block.2.0.layer_norm_2.bias]Loading weights:  54%|█████▍    | 104/192 [00:00<00:00, 6781.94it/s, Materializing param=segformer.encoder.block.2.0.layer_norm_2.weight]Loading weights:  54%|█████▍    | 104/192 [00:00<00:00, 6765.11it/s, Materializing param=segformer.encoder.block.2.0.layer_norm_2.weight]Loading weights:  55%|█████▍    | 105/192 [00:00<00:00, 6800.10it/s, Materializing param=segformer.encoder.block.2.0.mlp.dense1.bias]    Loading weights:  55%|█████▍    | 105/192 [00:00<00:00, 6783.35it/s, Materializing param=segformer.encoder.block.2.0.mlp.dense1.bias]Loading weights:  55%|█████▌    | 106/192 [00:00<00:00, 6816.76it/s, Materializing param=segformer.encoder.block.2.0.mlp.dense1.weight]Loading weights:  55%|█████▌    | 106/192 [00:00<00:00, 6801.02it/s, Materializing param=segformer.encoder.block.2.0.mlp.dense1.weight]Loading weights:  56%|█████▌    | 107/192 [00:00<00:00, 6834.44it/s, Materializing param=segformer.encoder.block.2.0.mlp.dense2.bias]  Loading weights:  56%|█████▌    | 107/192 [00:00<00:00, 6818.35it/s, Materializing param=segformer.encoder.block.2.0.mlp.dense2.bias]Loading weights:  56%|█████▋    | 108/192 [00:00<00:00, 6851.57it/s, Materializing param=segformer.encoder.block.2.0.mlp.dense2.weight]Loading weights:  56%|█████▋    | 108/192 [00:00<00:00, 6835.44it/s, Materializing param=segformer.encoder.block.2.0.mlp.dense2.weight]Loading weights:  57%|█████▋    | 109/192 [00:00<00:00, 6867.95it/s, Materializing param=segformer.encoder.block.2.0.mlp.dwconv.dwconv.bias]Loading weights:  57%|█████▋    | 109/192 [00:00<00:00, 6851.59it/s, Materializing param=segformer.encoder.block.2.0.mlp.dwconv.dwconv.bias]Loading weights:  57%|█████▋    | 110/192 [00:00<00:00, 6882.78it/s, Materializing param=segformer.encoder.block.2.0.mlp.dwconv.dwconv.weight]Loading weights:  57%|█████▋    | 110/192 [00:00<00:00, 6867.72it/s, Materializing param=segformer.encoder.block.2.0.mlp.dwconv.dwconv.weight]Loading weights:  58%|█████▊    | 111/192 [00:00<00:00, 6903.03it/s, Materializing param=segformer.encoder.block.2.1.attention.output.dense.bias]Loading weights:  58%|█████▊    | 111/192 [00:00<00:00, 6888.93it/s, Materializing param=segformer.encoder.block.2.1.attention.output.dense.bias]Loading weights:  58%|█████▊    | 112/192 [00:00<00:00, 6923.44it/s, Materializing param=segformer.encoder.block.2.1.attention.output.dense.weight]Loading weights:  58%|█████▊    | 112/192 [00:00<00:00, 6909.79it/s, Materializing param=segformer.encoder.block.2.1.attention.output.dense.weight]Loading weights:  59%|█████▉    | 113/192 [00:00<00:00, 6944.11it/s, Materializing param=segformer.encoder.block.2.1.attention.self.key.bias]      [stderr] Loading weights:  59%|█████▉    | 113/192 [00:00<00:00, 6930.91it/s, Materializing param=segformer.encoder.block.2.1.attention.self.key.bias]Loading weights:  59%|█████▉    | 114/192 [00:00<00:00, 6964.85it/s, Materializing param=segformer.encoder.block.2.1.attention.self.key.weight]Loading weights:  59%|█████▉    | 114/192 [00:00<00:00, 6951.28it/s, Materializing param=segformer.encoder.block.2.1.attention.self.key.weight]Loading weights:  60%|█████▉    | 115/192 [00:00<00:00, 6985.75it/s, Materializing param=segformer.encoder.block.2.1.attention.self.layer_norm.bias]Loading weights:  60%|█████▉    | 115/192 [00:00<00:00, 6971.91it/s, Materializing param=segformer.encoder.block.2.1.attention.self.layer_norm.bias]Loading weights:  60%|██████    | 116/192 [00:00<00:00, 7004.90it/s, Materializing param=segformer.encoder.block.2.1.attention.self.layer_norm.weight]Loading weights:  60%|██████    | 116/192 [00:00<00:00, 6991.01it/s, Materializing param=segformer.encoder.block.2.1.attention.self.layer_norm.weight]Loading weights:  61%|██████    | 117/192 [00:00<00:00, 7024.13it/s, Materializing param=segformer.encoder.block.2.1.attention.self.query.bias]       Loading weights:  61%|██████    | 117/192 [00:00<00:00, 7010.28it/s, Materializing param=segformer.encoder.block.2.1.attention.self.query.bias]Loading weights:  61%|██████▏   | 118/192 [00:00<00:00, 7044.03it/s, Materializing param=segformer.encoder.block.2.1.attention.self.query.weight]Loading weights:  61%|██████▏   | 118/192 [00:00<00:00, 7030.13it/s, Materializing param=segformer.encoder.block.2.1.attention.self.query.weight]Loading weights:  62%|██████▏   | 119/192 [00:00<00:00, 7064.02it/s, Materializing param=segformer.encoder.block.2.1.attention.self.sr.bias]     Loading weights:  62%|██████▏   | 119/192 [00:00<00:00, 7050.54it/s, Materializing param=segformer.encoder.block.2.1.attention.self.sr.bias]Loading weights:  62%|██████▎   | 120/192 [00:00<00:00, 7083.88it/s, Materializing param=segformer.encoder.block.2.1.attention.self.sr.weight]Loading weights:  62%|██████▎   | 120/192 [00:00<00:00, 7070.44it/s, Materializing param=segformer.encoder.block.2.1.attention.self.sr.weight]Loading weights:  63%|██████▎   | 121/192 [00:00<00:00, 7103.02it/s, Materializing param=segformer.encoder.block.2.1.attention.self.value.bias]Loading weights:  63%|██████▎   | 121/192 [00:00<00:00, 7089.33it/s, Materializing param=segformer.encoder.block.2.1.attention.self.value.bias]Loading weights:  64%|██████▎   | 122/192 [00:00<00:00, 7122.05it/s, Materializing param=segformer.encoder.block.2.1.attention.self.value.weight]Loading weights:  64%|██████▎   | 122/192 [00:00<00:00, 7108.30it/s, Materializing param=segformer.encoder.block.2.1.attention.self.value.weight][stderr] Loading weights:  64%|██████▍   | 123/192 [00:00<00:00, 7139.98it/s, Materializing param=segformer.encoder.block.2.1.layer_norm_1.bias]          Loading weights:  64%|██████▍   | 123/192 [00:00<00:00, 7126.77it/s, Materializing param=segformer.encoder.block.2.1.layer_norm_1.bias]Loading weights:  65%|██████▍   | 124/192 [00:00<00:00, 7160.27it/s, Materializing param=segformer.encoder.block.2.1.layer_norm_1.weight]Loading weights:  65%|██████▍   | 124/192 [00:00<00:00, 7146.60it/s, Materializing param=segformer.encoder.block.2.1.layer_norm_1.weight]Loading weights:  65%|██████▌   | 125/192 [00:00<00:00, 7180.16it/s, Materializing param=segformer.encoder.block.2.1.layer_norm_2.bias]  Loading weights:  65%|██████▌   | 125/192 [00:00<00:00, 7166.61it/s, Materializing param=segformer.encoder.block.2.1.layer_norm_2.bias]Loading weights:  66%|██████▌   | 126/192 [00:00<00:00, 7199.64it/s, Materializing param=segformer.encoder.block.2.1.layer_norm_2.weight]Loading weights:  66%|██████▌   | 126/192 [00:00<00:00, 7186.52it/s, Materializing param=segformer.encoder.block.2.1.layer_norm_2.weight]Loading weights:  66%|██████▌   | 127/192 [00:00<00:00, 7219.60it/s, Materializing param=segformer.encoder.block.2.1.mlp.dense1.bias]    Loading weights:  66%|██████▌   | 127/192 [00:00<00:00, 7206.51it/s, Materializing param=segformer.encoder.block.2.1.mlp.dense1.bias]Loading weights:  67%|██████▋   | 128/192 [00:00<00:00, 7232.92it/s, Materializing param=segformer.encoder.block.2.1.mlp.dense1.weight]Loading weights:  67%|██████▋   | 128/192 [00:00<00:00, 7219.79it/s, Materializing param=segformer.encoder.block.2.1.mlp.dense1.weight]Loading weights:  67%|██████▋   | 129/192 [00:00<00:00, 7250.46it/s, Materializing param=segformer.encoder.block.2.1.mlp.dense2.bias]  Loading weights:  67%|██████▋   | 129/192 [00:00<00:00, 7237.46it/s, Materializing param=segformer.encoder.block.2.1.mlp.dense2.bias]Loading weights:  68%|██████▊   | 130/192 [00:00<00:00, 7268.67it/s, Materializing param=segformer.encoder.block.2.1.mlp.dense2.weight]Loading weights:  68%|██████▊   | 130/192 [00:00<00:00, 7255.33it/s, Materializing param=segformer.encoder.block.2.1.mlp.dense2.weight]Loading weights:  68%|██████▊   | 131/192 [00:00<00:00, 7286.80it/s, Materializing param=segformer.encoder.block.2.1.mlp.dwconv.dwconv.bias]Loading weights:  68%|██████▊   | 131/192 [00:00<00:00, 7273.39it/s, Materializing param=segformer.encoder.block.2.1.mlp.dwconv.dwconv.bias]Loading weights:  69%|██████▉   | 132/192 [00:00<00:00, 7302.52it/s, Materializing param=segformer.encoder.block.2.1.mlp.dwconv.dwconv.weight]Loading weights:  69%|██████▉   | 132/192 [00:00<00:00, 7289.64it/s, Materializing param=segformer.encoder.block.2.1.mlp.dwconv.dwconv.weight][stderr] Loading weights:  69%|██████▉   | 133/192 [00:00<00:00, 7318.17it/s, Materializing param=segformer.encoder.block.3.0.attention.output.dense.bias]Loading weights:  69%|██████▉   | 133/192 [00:00<00:00, 7304.47it/s, Materializing param=segformer.encoder.block.3.0.attention.output.dense.bias]Loading weights:  70%|██████▉   | 134/192 [00:00<00:00, 7332.79it/s, Materializing param=segformer.encoder.block.3.0.attention.output.dense.weight]Loading weights:  70%|██████▉   | 134/192 [00:00<00:00, 7319.62it/s, Materializing param=segformer.encoder.block.3.0.attention.output.dense.weight]Loading weights:  70%|███████   | 135/192 [00:00<00:00, 7348.50it/s, Materializing param=segformer.encoder.block.3.0.attention.self.key.bias]      Loading weights:  70%|███████   | 135/192 [00:00<00:00, 7335.74it/s, Materializing param=segformer.encoder.block.3.0.attention.self.key.bias]Loading weights:  71%|███████   | 136/192 [00:00<00:00, 7364.51it/s, Materializing param=segformer.encoder.block.3.0.attention.self.key.weight]Loading weights:  71%|███████   | 136/192 [00:00<00:00, 7351.03it/s, Materializing param=segformer.encoder.block.3.0.attention.self.key.weight]Loading weights:  71%|███████▏  | 137/192 [00:00<00:00, 7379.88it/s, Materializing param=segformer.encoder.block.3.0.attention.self.query.bias]Loading weights:  71%|███████▏  | 137/192 [00:00<00:00, 7367.30it/s, Materializing param=segformer.encoder.block.3.0.attention.self.query.bias]Loading weights:  72%|███████▏  | 138/192 [00:00<00:00, 7395.85it/s, Materializing param=segformer.encoder.block.3.0.attention.self.query.weight]Loading weights:  72%|███████▏  | 138/192 [00:00<00:00, 7383.21it/s, Materializing param=segformer.encoder.block.3.0.attention.self.query.weight]Loading weights:  72%|███████▏  | 139/192 [00:00<00:00, 7412.13it/s, Materializing param=segformer.encoder.block.3.0.attention.self.value.bias]  Loading weights:  72%|███████▏  | 139/192 [00:00<00:00, 7399.52it/s, Materializing param=segformer.encoder.block.3.0.attention.self.value.bias]Loading weights:  73%|███████▎  | 140/192 [00:00<00:00, 7428.24it/s, Materializing param=segformer.encoder.block.3.0.attention.self.value.weight]Loading weights:  73%|███████▎  | 140/192 [00:00<00:00, 7415.67it/s, Materializing param=segformer.encoder.block.3.0.attention.self.value.weight]Loading weights:  73%|███████▎  | 141/192 [00:00<00:00, 7443.82it/s, Materializing param=segformer.encoder.block.3.0.layer_norm_1.bias]          Loading weights:  73%|███████▎  | 141/192 [00:00<00:00, 7431.29it/s, Materializing param=segformer.encoder.block.3.0.layer_norm_1.bias]Loading weights:  74%|███████▍  | 142/192 [00:00<00:00, 7461.12it/s, Materializing param=segformer.encoder.block.3.0.layer_norm_1.weight]Loading weights:  74%|███████▍  | 142/192 [00:00<00:00, 7448.15it/s, Materializing param=segformer.encoder.block.3.0.layer_norm_1.weight][stderr] Loading weights:  74%|███████▍  | 143/192 [00:00<00:00, 7477.50it/s, Materializing param=segformer.encoder.block.3.0.layer_norm_2.bias]  Loading weights:  74%|███████▍  | 143/192 [00:00<00:00, 7465.50it/s, Materializing param=segformer.encoder.block.3.0.layer_norm_2.bias]Loading weights:  75%|███████▌  | 144/192 [00:00<00:00, 7495.31it/s, Materializing param=segformer.encoder.block.3.0.layer_norm_2.weight]Loading weights:  75%|███████▌  | 144/192 [00:00<00:00, 7482.87it/s, Materializing param=segformer.encoder.block.3.0.layer_norm_2.weight]Loading weights:  76%|███████▌  | 145/192 [00:00<00:00, 7511.47it/s, Materializing param=segformer.encoder.block.3.0.mlp.dense1.bias]    Loading weights:  76%|███████▌  | 145/192 [00:00<00:00, 7498.23it/s, Materializing param=segformer.encoder.block.3.0.mlp.dense1.bias]Loading weights:  76%|███████▌  | 146/192 [00:00<00:00, 7522.31it/s, Materializing param=segformer.encoder.block.3.0.mlp.dense1.weight]Loading weights:  76%|███████▌  | 146/192 [00:00<00:00, 7509.21it/s, Materializing param=segformer.encoder.block.3.0.mlp.dense1.weight]Loading weights:  77%|███████▋  | 147/192 [00:00<00:00, 7536.61it/s, Materializing param=segformer.encoder.block.3.0.mlp.dense2.bias]  Loading weights:  77%|███████▋  | 147/192 [00:00<00:00, 7524.29it/s, Materializing param=segformer.encoder.block.3.0.mlp.dense2.bias]Loading weights:  77%|███████▋  | 148/192 [00:00<00:00, 7551.79it/s, Materializing param=segformer.encoder.block.3.0.mlp.dense2.weight]Loading weights:  77%|███████▋  | 148/192 [00:00<00:00, 7539.13it/s, Materializing param=segformer.encoder.block.3.0.mlp.dense2.weight]Loading weights:  78%|███████▊  | 149/192 [00:00<00:00, 7566.55it/s, Materializing param=segformer.encoder.block.3.0.mlp.dwconv.dwconv.bias]Loading weights:  78%|███████▊  | 149/192 [00:00<00:00, 7553.83it/s, Materializing param=segformer.encoder.block.3.0.mlp.dwconv.dwconv.bias]Loading weights:  78%|███████▊  | 150/192 [00:00<00:00, 7579.61it/s, Materializing param=segformer.encoder.block.3.0.mlp.dwconv.dwconv.weight]Loading weights:  78%|███████▊  | 150/192 [00:00<00:00, 7567.30it/s, Materializing param=segformer.encoder.block.3.0.mlp.dwconv.dwconv.weight]Loading weights:  79%|███████▊  | 151/192 [00:00<00:00, 7593.00it/s, Materializing param=segformer.encoder.block.3.1.attention.output.dense.bias]Loading weights:  79%|███████▊  | 151/192 [00:00<00:00, 7580.01it/s, Materializing param=segformer.encoder.block.3.1.attention.output.dense.bias]Loading weights:  79%|███████▉  | 152/192 [00:00<00:00, 7604.99it/s, Materializing param=segformer.encoder.block.3.1.attention.output.dense.weight]Loading weights:  79%|███████▉  | 152/192 [00:00<00:00, 7592.40it/s, Materializing param=segformer.encoder.block.3.1.attention.output.dense.weight]Loading weights:  80%|███████▉  | 153/192 [00:00<00:00, 7617.68it/s, Materializing param=segformer.encoder.block.3.1.attention.self.key.bias]      [stderr] Loading weights:  80%|███████▉  | 153/192 [00:00<00:00, 7604.77it/s, Materializing param=segformer.encoder.block.3.1.attention.self.key.bias]Loading weights:  80%|████████  | 154/192 [00:00<00:00, 7629.43it/s, Materializing param=segformer.encoder.block.3.1.attention.self.key.weight]Loading weights:  80%|████████  | 154/192 [00:00<00:00, 7617.01it/s, Materializing param=segformer.encoder.block.3.1.attention.self.key.weight]Loading weights:  81%|████████  | 155/192 [00:00<00:00, 7642.59it/s, Materializing param=segformer.encoder.block.3.1.attention.self.query.bias]Loading weights:  81%|████████  | 155/192 [00:00<00:00, 7630.93it/s, Materializing param=segformer.encoder.block.3.1.attention.self.query.bias]Loading weights:  81%|████████▏ | 156/192 [00:00<00:00, 7656.80it/s, Materializing param=segformer.encoder.block.3.1.attention.self.query.weight]Loading weights:  81%|████████▏ | 156/192 [00:00<00:00, 7644.81it/s, Materializing param=segformer.encoder.block.3.1.attention.self.query.weight]Loading weights:  82%|████████▏ | 157/192 [00:00<00:00, 7670.15it/s, Materializing param=segformer.encoder.block.3.1.attention.self.value.bias]  Loading weights:  82%|████████▏ | 157/192 [00:00<00:00, 7658.20it/s, Materializing param=segformer.encoder.block.3.1.attention.self.value.bias]Loading weights:  82%|████████▏ | 158/192 [00:00<00:00, 7683.39it/s, Materializing param=segformer.encoder.block.3.1.attention.self.value.weight]Loading weights:  82%|████████▏ | 158/192 [00:00<00:00, 7671.38it/s, Materializing param=segformer.encoder.block.3.1.attention.self.value.weight]Loading weights:  83%|████████▎ | 159/192 [00:00<00:00, 7696.41it/s, Materializing param=segformer.encoder.block.3.1.layer_norm_1.bias]          Loading weights:  83%|████████▎ | 159/192 [00:00<00:00, 7684.89it/s, Materializing param=segformer.encoder.block.3.1.layer_norm_1.bias]Loading weights:  83%|████████▎ | 160/192 [00:00<00:00, 7711.18it/s, Materializing param=segformer.encoder.block.3.1.layer_norm_1.weight]Loading weights:  83%|████████▎ | 160/192 [00:00<00:00, 7699.33it/s, Materializing param=segformer.encoder.block.3.1.layer_norm_1.weight]Loading weights:  84%|████████▍ | 161/192 [00:00<00:00, 7725.91it/s, Materializing param=segformer.encoder.block.3.1.layer_norm_2.bias]  Loading weights:  84%|████████▍ | 161/192 [00:00<00:00, 7714.52it/s, Materializing param=segformer.encoder.block.3.1.layer_norm_2.bias]Loading weights:  84%|████████▍ | 162/192 [00:00<00:00, 7741.21it/s, Materializing param=segformer.encoder.block.3.1.layer_norm_2.weight]Loading weights:  84%|████████▍ | 162/192 [00:00<00:00, 7729.76it/s, Materializing param=segformer.encoder.block.3.1.layer_norm_2.weight]Loading weights:  85%|████████▍ | 163/192 [00:00<00:00, 7756.39it/s, Materializing param=segformer.encoder.block.3.1.mlp.dense1.bias]    [stderr] Loading weights:  85%|████████▍ | 163/192 [00:00<00:00, 7744.62it/s, Materializing param=segformer.encoder.block.3.1.mlp.dense1.bias]Loading weights:  85%|████████▌ | 164/192 [00:00<00:00, 7769.60it/s, Materializing param=segformer.encoder.block.3.1.mlp.dense1.weight]Loading weights:  85%|████████▌ | 164/192 [00:00<00:00, 7757.86it/s, Materializing param=segformer.encoder.block.3.1.mlp.dense1.weight]Loading weights:  86%|████████▌ | 165/192 [00:00<00:00, 7783.13it/s, Materializing param=segformer.encoder.block.3.1.mlp.dense2.bias]  Loading weights:  86%|████████▌ | 165/192 [00:00<00:00, 7771.33it/s, Materializing param=segformer.encoder.block.3.1.mlp.dense2.bias]Loading weights:  86%|████████▋ | 166/192 [00:00<00:00, 7796.37it/s, Materializing param=segformer.encoder.block.3.1.mlp.dense2.weight]Loading weights:  86%|████████▋ | 166/192 [00:00<00:00, 7785.03it/s, Materializing param=segformer.encoder.block.3.1.mlp.dense2.weight]Loading weights:  87%|████████▋ | 167/192 [00:00<00:00, 7809.66it/s, Materializing param=segformer.encoder.block.3.1.mlp.dwconv.dwconv.bias]Loading weights:  87%|████████▋ | 167/192 [00:00<00:00, 7798.36it/s, Materializing param=segformer.encoder.block.3.1.mlp.dwconv.dwconv.bias]Loading weights:  88%|████████▊ | 168/192 [00:00<00:00, 7821.29it/s, Materializing param=segformer.encoder.block.3.1.mlp.dwconv.dwconv.weight]Loading weights:  88%|████████▊ | 168/192 [00:00<00:00, 7809.67it/s, Materializing param=segformer.encoder.block.3.1.mlp.dwconv.dwconv.weight]Loading weights:  88%|████████▊ | 169/192 [00:00<00:00, 7832.80it/s, Materializing param=segformer.encoder.layer_norm.0.bias]                 Loading weights:  88%|████████▊ | 169/192 [00:00<00:00, 7821.57it/s, Materializing param=segformer.encoder.layer_norm.0.bias]Loading weights:  89%|████████▊ | 170/192 [00:00<00:00, 7847.15it/s, Materializing param=segformer.encoder.layer_norm.0.weight]Loading weights:  89%|████████▊ | 170/192 [00:00<00:00, 7835.94it/s, Materializing param=segformer.encoder.layer_norm.0.weight]Loading weights:  89%|████████▉ | 171/192 [00:00<00:00, 7860.96it/s, Materializing param=segformer.encoder.layer_norm.1.bias]  Loading weights:  89%|████████▉ | 171/192 [00:00<00:00, 7849.43it/s, Materializing param=segformer.encoder.layer_norm.1.bias]Loading weights:  90%|████████▉ | 172/192 [00:00<00:00, 7875.51it/s, Materializing param=segformer.encoder.layer_norm.1.weight]Loading weights:  90%|████████▉ | 172/192 [00:00<00:00, 7864.35it/s, Materializing param=segformer.encoder.layer_norm.1.weight]Loading weights:  90%|█████████ | 173/192 [00:00<00:00, 7891.23it/s, Materializing param=segformer.encoder.layer_norm.2.bias]  Loading weights:  90%|█████████ | 173/192 [00:00<00:00, 7880.09it/s, Materializing param=segformer.encoder.layer_norm.2.bias][stderr] Loading weights:  91%|█████████ | 174/192 [00:00<00:00, 7908.38it/s, Materializing param=segformer.encoder.layer_norm.2.weight]Loading weights:  91%|█████████ | 174/192 [00:00<00:00, 7898.71it/s, Materializing param=segformer.encoder.layer_norm.2.weight]Loading weights:  91%|█████████ | 175/192 [00:00<00:00, 7927.20it/s, Materializing param=segformer.encoder.layer_norm.3.bias]  Loading weights:  91%|█████████ | 175/192 [00:00<00:00, 7917.45it/s, Materializing param=segformer.encoder.layer_norm.3.bias]Loading weights:  92%|█████████▏| 176/192 [00:00<00:00, 7945.13it/s, Materializing param=segformer.encoder.layer_norm.3.weight]Loading weights:  92%|█████████▏| 176/192 [00:00<00:00, 7935.39it/s, Materializing param=segformer.encoder.layer_norm.3.weight]Loading weights:  92%|█████████▏| 177/192 [00:00<00:00, 7962.93it/s, Materializing param=segformer.encoder.patch_embeddings.0.layer_norm.bias]Loading weights:  92%|█████████▏| 177/192 [00:00<00:00, 7952.61it/s, Materializing param=segformer.encoder.patch_embeddings.0.layer_norm.bias]Loading weights:  93%|█████████▎| 178/192 [00:00<00:00, 7978.56it/s, Materializing param=segformer.encoder.patch_embeddings.0.layer_norm.weight]Loading weights:  93%|█████████▎| 178/192 [00:00<00:00, 7968.52it/s, Materializing param=segformer.encoder.patch_embeddings.0.layer_norm.weight]Loading weights:  93%|█████████▎| 179/192 [00:00<00:00, 7994.68it/s, Materializing param=segformer.encoder.patch_embeddings.0.proj.bias]        Loading weights:  93%|█████████▎| 179/192 [00:00<00:00, 7984.73it/s, Materializing param=segformer.encoder.patch_embeddings.0.proj.bias]Loading weights:  94%|█████████▍| 180/192 [00:00<00:00, 8011.11it/s, Materializing param=segformer.encoder.patch_embeddings.0.proj.weight]Loading weights:  94%|█████████▍| 180/192 [00:00<00:00, 8001.09it/s, Materializing param=segformer.encoder.patch_embeddings.0.proj.weight]Loading weights:  94%|█████████▍| 181/192 [00:00<00:00, 8027.67it/s, Materializing param=segformer.encoder.patch_embeddings.1.layer_norm.bias]Loading weights:  94%|█████████▍| 181/192 [00:00<00:00, 8017.41it/s, Materializing param=segformer.encoder.patch_embeddings.1.layer_norm.bias]Loading weights:  95%|█████████▍| 182/192 [00:00<00:00, 8043.19it/s, Materializing param=segformer.encoder.patch_embeddings.1.layer_norm.weight]Loading weights:  95%|█████████▍| 182/192 [00:00<00:00, 8032.87it/s, Materializing param=segformer.encoder.patch_embeddings.1.layer_norm.weight]Loading weights:  95%|█████████▌| 183/192 [00:00<00:00, 8059.19it/s, Materializing param=segformer.encoder.patch_embeddings.1.proj.bias]        Loading weights:  95%|█████████▌| 183/192 [00:00<00:00, 8048.97it/s, Materializing param=segformer.encoder.patch_embeddings.1.proj.bias]Loading weights:  96%|█████████▌| 184/192 [00:00<00:00, 8074.75it/s, Materializing param=segformer.encoder.patch_embeddings.1.proj.weight][stderr] Loading weights:  96%|█████████▌| 184/192 [00:00<00:00, 8064.20it/s, Materializing param=segformer.encoder.patch_embeddings.1.proj.weight]Loading weights:  96%|█████████▋| 185/192 [00:00<00:00, 8090.27it/s, Materializing param=segformer.encoder.patch_embeddings.2.layer_norm.bias]Loading weights:  96%|█████████▋| 185/192 [00:00<00:00, 8079.74it/s, Materializing param=segformer.encoder.patch_embeddings.2.layer_norm.bias]Loading weights:  97%|█████████▋| 186/192 [00:00<00:00, 8105.02it/s, Materializing param=segformer.encoder.patch_embeddings.2.layer_norm.weight]Loading weights:  97%|█████████▋| 186/192 [00:00<00:00, 8094.34it/s, Materializing param=segformer.encoder.patch_embeddings.2.layer_norm.weight]Loading weights:  97%|█████████▋| 187/192 [00:00<00:00, 8120.25it/s, Materializing param=segformer.encoder.patch_embeddings.2.proj.bias]        Loading weights:  97%|█████████▋| 187/192 [00:00<00:00, 8108.92it/s, Materializing param=segformer.encoder.patch_embeddings.2.proj.bias]Loading weights:  98%|█████████▊| 188/192 [00:00<00:00, 8134.70it/s, Materializing param=segformer.encoder.patch_embeddings.2.proj.weight]Loading weights:  98%|█████████▊| 188/192 [00:00<00:00, 8124.56it/s, Materializing param=segformer.encoder.patch_embeddings.2.proj.weight]Loading weights:  98%|█████████▊| 189/192 [00:00<00:00, 8150.48it/s, Materializing param=segformer.encoder.patch_embeddings.3.layer_norm.bias]Loading weights:  98%|█████████▊| 189/192 [00:00<00:00, 8140.27it/s, Materializing param=segformer.encoder.patch_embeddings.3.layer_norm.bias]Loading weights:  99%|█████████▉| 190/192 [00:00<00:00, 8165.48it/s, Materializing param=segformer.encoder.patch_embeddings.3.layer_norm.weight]Loading weights:  99%|█████████▉| 190/192 [00:00<00:00, 8154.86it/s, Materializing param=segformer.encoder.patch_embeddings.3.layer_norm.weight]Loading weights:  99%|█████████▉| 191/192 [00:00<00:00, 8179.87it/s, Materializing param=segformer.encoder.patch_embeddings.3.proj.bias]        Loading weights:  99%|█████████▉| 191/192 [00:00<00:00, 8169.78it/s, Materializing param=segformer.encoder.patch_embeddings.3.proj.bias]Loading weights: 100%|██████████| 192/192 [00:00<00:00, 8195.00it/s, Materializing param=segformer.encoder.patch_embeddings.3.proj.weight]Loading weights: 100%|██████████| 192/192 [00:00<00:00, 8184.84it/s, Materializing param=segformer.encoder.patch_embeddings.3.proj.weight]Loading weights: 100%|██████████| 192/192 [00:00<00:00, 8160.21it/s, Materializing param=segformer.encoder.patch_embeddings.3.proj.weight]
+[stderr] [1mSegformerForSemanticSegmentation LOAD REPORT[0m from: nvidia/mit-b0
+Key                                           | Status     | 
+----------------------------------------------+------------+-
+classifier.bias                               | UNEXPECTED | 
+classifier.weight                             | UNEXPECTED | 
+decode_head.linear_c.{0, 1, 2, 3}.proj.weight | MISSING    | 
+decode_head.classifier.weight                 | MISSING    | 
+decode_head.classifier.bias                   | MISSING    | 
+decode_head.linear_fuse.weight                | MISSING    | 
+decode_head.batch_norm.running_mean           | MISSING    | 
+decode_head.linear_c.{0, 1, 2, 3}.proj.bias   | MISSING    | 
+decode_head.batch_norm.weight                 | MISSING    | 
+decode_head.batch_norm.num_batches_tracked    | MISSING    | 
+decode_head.batch_norm.bias                   | MISSING    | 
+decode_head.batch_norm.running_var            | MISSING    | 
+
+Starting Fine-tuning...
+
+Epoch 1/20
+Training: 100%|██████████| 20/20 [01:21<00:00,  4.06s/it, loss=0.0476][stderr]
+[stderr] /Users/dpeleg/miniforge3/envs/jay/lib/python3.11/site-packages/datasets/features/image.py:371: UserWarning: Downcasting array dtype int64 to int32 to be compatible with 'Pillow'
+  warnings.warn(f"Downcasting array dtype {dtype} to {dest_dtype} to be compatible with 'Pillow'")
+Avg Train Loss: 0.0547
+Running Validation...
+Mean IoU: 0.7285 | Crosswalk IoU: 0.4825
+IoU improved (0.0000 -> 0.7285). Saving model...
+
+Epoch 2/20
+Training: 100%|██████████| 20/20 [01:22<00:00,  4.10s/it, loss=0.0430][stderr]
+Avg Train Loss: 0.0537
+Running Validation...
+Mean IoU: 0.7545 | Crosswalk IoU: 0.5342
+IoU improved (0.7285 -> 0.7545). Saving model...
+
+Epoch 3/20
+Training: 100%|██████████| 20/20 [01:22<00:00,  4.14s/it, loss=0.0490][stderr]
+Avg Train Loss: 0.0538
+Running Validation...
+Mean IoU: 0.7496 | Crosswalk IoU: 0.5250
+
+
+Starting Fine-tuning...
+Running baseline validation...
+Baseline Crosswalk IoU: 0.5342
+
+Epoch 1/20
+Training: 100%|██████████| 20/20 [01:19<00:00,  3.97s/it, loss=0.0483][stderr]
+Avg Train Loss: 0.0543
+Running Validation...
+Mean IoU: 0.7525 | Crosswalk IoU: 0.5300
+
+Epoch 2/20
+Training: 100%|██████████| 20/20 [01:22<00:00,  4.10s/it, loss=0.0544][stderr]
+Avg Train Loss: 0.0505
+Running Validation...
+Mean IoU: 0.7451 | Crosswalk IoU: 0.5152
+
+Epoch 3/20
+Training: 100%|██████████| 20/20 [01:23<00:00,  4.19s/it, loss=0.0384][stderr]
+Avg Train Loss: 0.0531
+Running Validation...
+Mean IoU: 0.7512 | Crosswalk IoU: 0.5273
+
+Epoch 4/20
+Training: 100%|██████████| 20/20 [01:24<00:00,  4.25s/it, loss=0.0543][stderr]
+Avg Train Loss: 0.0483
+Running Validation...
+Mean IoU: 0.7483 | Crosswalk IoU: 0.5214
+
+Epoch 5/20
+Training: 100%|██████████| 20/20 [01:24<00:00,  4.24s/it, loss=0.0517][stderr]
+Avg Train Loss: 0.0483
+Running Validation...
+Mean IoU: 0.7562 | Crosswalk IoU: 0.5369
+Crosswalk IoU improved (0.5342 -> 0.5369). Saving model...
+
+Epoch 6/20
+Training: 100%|██████████| 20/20 [01:25<00:00,  4.27s/it, loss=0.0384][stderr]
+Avg Train Loss: 0.0486
+Running Validation...
+Mean IoU: 0.7416 | Crosswalk IoU: 0.5082
+
+Epoch 7/20
+Training: 100%|██████████| 20/20 [01:24<00:00,  4.25s/it, loss=0.0378][stderr]
+Avg Train Loss: 0.0472
+Running Validation...
+Mean IoU: 0.7555 | Crosswalk IoU: 0.5353
+
+Epoch 8/20
+Training: 100%|██████████| 20/20 [01:26<00:00,  4.31s/it, loss=0.0383][stderr]
+Avg Train Loss: 0.0446
+Running Validation...
+Mean IoU: 0.7506 | Crosswalk IoU: 0.5255
+
+Epoch 9/20
+Training: 100%|██████████| 20/20 [01:26<00:00,  4.32s/it, loss=0.0474][stderr]
+(jay) dpeleg:~/local/Jaywalking$ tail -f /private/var/folders/1s/kjxj4vf51p50w086b36gs9sm0000gn/T/claude-dpeleg/claude-501/-Users-dpeleg-local-Jaywalking/tasks/bba2e18.output
+Mean IoU: 0.7506 | Crosswalk IoU: 0.5255
+
+Epoch 9/20
+Training: 100%|██████████| 20/20 [01:26<00:00,  4.32s/it, loss=0.0474][stderr]
+Avg Train Loss: 0.0453
+Running Validation...
+Mean IoU: 0.7541 | Crosswalk IoU: 0.5332
+
+Epoch 10/20
+Training: 100%|██████████| 20/20 [01:25<00:00,  4.28s/it, loss=0.0466][stderr]
+Avg Train Loss: 0.0451
+Running Validation...
+Mean IoU: 0.7519 | Crosswalk IoU: 0.5282
+
+Epoch 11/20
+Training: 100%|██████████| 20/20 [01:26<00:00,  4.34s/it, loss=0.0543][stderr]
+Avg Train Loss: 0.0450
+Running Validation...
+Mean IoU: 0.7555 | Crosswalk IoU: 0.5356
+
+Epoch 12/20
+Training: 100%|██████████| 20/20 [01:25<00:00,  4.29s/it, loss=0.0310][stderr]
+Avg Train Loss: 0.0435
+Running Validation...
+Mean IoU: 0.7595 | Crosswalk IoU: 0.5431
+Crosswalk IoU improved (0.5369 -> 0.5431). Saving model...
+
+Epoch 13/20
+Training: 100%|██████████| 20/20 [01:27<00:00,  4.35s/it, loss=0.0367][stderr]
+Avg Train Loss: 0.0423
+Running Validation...
+Mean IoU: 0.7574 | Crosswalk IoU: 0.5390
+
+Epoch 14/20
+Training: 100%|██████████| 20/20 [01:25<00:00,  4.29s/it, loss=0.0530][stderr]
+Avg Train Loss: 0.0437
+Running Validation...
+Mean IoU: 0.7459 | Crosswalk IoU: 0.5164
+
+Epoch 15/20
+Training: 100%|██████████| 20/20 [01:25<00:00,  4.26s/it, loss=0.0349][stderr]
+Avg Train Loss: 0.0428
+Running Validation...
+Mean IoU: 0.7640 | Crosswalk IoU: 0.5522
+Crosswalk IoU improved (0.5431 -> 0.5522). Saving model...
+
+Epoch 16/20
+Training: 100%|██████████| 20/20 [01:26<00:00,  4.33s/it, loss=0.0425][stderr]
+Avg Train Loss: 0.0407
+Running Validation...
+Mean IoU: 0.7550 | Crosswalk IoU: 0.5342
+
+Epoch 17/20
+Training: 100%|██████████| 20/20 [01:28<00:00,  4.42s/it, loss=0.0351][stderr]
+Avg Train Loss: 0.0420
+Running Validation...
+Mean IoU: 0.7486 | Crosswalk IoU: 0.5216
+
+Epoch 18/20
+Training: 100%|██████████| 20/20 [01:25<00:00,  4.30s/it, loss=0.0298][stderr]
+Avg Train Loss: 0.0402
+Running Validation...
+Mean IoU: 0.7495 | Crosswalk IoU: 0.5233
+
+Epoch 19/20
+Training: 100%|██████████| 20/20 [01:27<00:00,  4.36s/it, loss=0.0300][stderr]
+Avg Train Loss: 0.0375
+Running Validation...
+Mean IoU: 0.7501 | Crosswalk IoU: 0.5243
+
+Epoch 20/20
+Training: 100%|██████████| 20/20 [01:25<00:00,  4.29s/it, loss=0.0331][stderr]
+Avg Train Loss: 0.0384
+Running Validation...
+Mean IoU: 0.7537 | Crosswalk IoU: 0.5314
+
+Fine-tuning Complete. Best Crosswalk IoU: 0.5522. Weights saved to /Users/dpeleg/local/Jaywalking/best_segformer_crosswalk_jaad.pt
+
+
+Round 3 complete. The baseline fix worked — it correctly started from 0.5342 and only saved when genuinely improved.
+  ┌──────────────────┬────────────────────┬───────────────┐
+  │      Round       │ Best Crosswalk IoU │ Best Mean IoU │
+  ├──────────────────┼────────────────────┼───────────────┤
+  │ 1 (epochs 1-20)  │ 0.4289             │ 0.6994        │
+  ├──────────────────┼────────────────────┼───────────────┤
+  │ 2 (epochs 21-40) │ 0.5182             │ 0.7465        │
+  ├──────────────────┼────────────────────┼───────────────┤
+  │ 3 (epochs 41-60) │ 0.5522             │ 0.7640        │
+  └──────────────────┴────────────────────┴───────────────┘
+
+
