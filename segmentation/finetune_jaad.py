@@ -8,14 +8,18 @@ Saves improved weights to best_segformer_crosswalk_jaad.pt.
 """
 
 import os
+import random
 import numpy as np
 import torch
+torch.backends.cudnn.enabled = False  # Workaround for ThunderCompute prototyping mode
 import evaluate
 from pathlib import Path
-from PIL import Image
+from PIL import Image, ImageFilter
 from sklearn.model_selection import train_test_split
 from torch.utils.data import Dataset, DataLoader
 from torch.optim import AdamW
+from torchvision import transforms as T
+from torchvision.transforms import functional as TF
 from transformers import SegformerForSemanticSegmentation, SegformerImageProcessor
 from tqdm.auto import tqdm
 
@@ -82,17 +86,50 @@ def get_image_mask_pairs(images_dir, masks_dir):
 # 3. DATASET CLASS
 # ==========================================
 class CrosswalkDataset(Dataset):
-    def __init__(self, image_paths, mask_paths, processor):
+    def __init__(self, image_paths, mask_paths, processor, augment=False):
         self.image_paths = image_paths
         self.mask_paths = mask_paths
         self.processor = processor
+        self.augment = augment
 
     def __len__(self):
         return len(self.image_paths)
 
+    def _apply_augmentations(self, image, mask):
+        # Horizontal flip (50%)
+        if random.random() > 0.5:
+            image = TF.hflip(image)
+            mask = TF.hflip(mask)
+
+        # Random resized crop (50%)
+        if random.random() > 0.5:
+            w, h = image.size
+            scale = random.uniform(0.7, 1.0)
+            new_h, new_w = int(h * scale), int(w * scale)
+            top = random.randint(0, h - new_h)
+            left = random.randint(0, w - new_w)
+            image = TF.resized_crop(image, top, left, new_h, new_w, (h, w))
+            mask = TF.resized_crop(mask, top, left, new_h, new_w, (h, w),
+                                   interpolation=T.InterpolationMode.NEAREST)
+
+        # Color jitter (image only, 50%)
+        if random.random() > 0.5:
+            image = TF.adjust_brightness(image, random.uniform(0.8, 1.2))
+            image = TF.adjust_contrast(image, random.uniform(0.8, 1.2))
+            image = TF.adjust_saturation(image, random.uniform(0.8, 1.2))
+
+        # Gaussian blur (image only, 20%)
+        if random.random() > 0.8:
+            image = image.filter(ImageFilter.GaussianBlur(radius=random.uniform(0.5, 1.5)))
+
+        return image, mask
+
     def __getitem__(self, idx):
         image = Image.open(self.image_paths[idx]).convert("RGB")
         mask = Image.open(self.mask_paths[idx]).convert("L")
+
+        if self.augment:
+            image, mask = self._apply_augmentations(image, mask)
 
         mask_np = np.array(mask)
         # Threshold: >128 = crosswalk (handles any compression artifacts)
@@ -164,7 +201,7 @@ def main():
     processor = SegformerImageProcessor.from_pretrained(MODEL_CHECKPOINT)
 
     # Datasets and loaders
-    train_dataset = CrosswalkDataset(train_imgs, train_masks, processor)
+    train_dataset = CrosswalkDataset(train_imgs, train_masks, processor, augment=True)
     train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True, num_workers=NUM_WORKERS)
 
     val_loader = None
