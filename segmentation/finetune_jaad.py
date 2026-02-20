@@ -40,7 +40,7 @@ MODEL_CHECKPOINT = "nvidia/mit-b0"
 
 BATCH_SIZE = 8
 LR = 1e-5             # Low LR for fine-tuning
-EPOCHS = 20
+EPOCHS = 60
 VAL_SPLIT = 0.2
 
 # Setup Device (CUDA > MPS > CPU)
