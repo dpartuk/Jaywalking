@@ -93,6 +93,8 @@ def main():
                         help="Process only this frame within --video (e.g. 00150.png)")
     parser.add_argument("--debug", action="store_true",
                         help="Print per-frame softmax stats to diagnose model confidence")
+    parser.add_argument("--threshold", type=float, default=0.5,
+                        help="Crosswalk probability threshold for mask (default: 0.5)")
     args = parser.parse_args()
 
     # Validate paths
@@ -214,10 +216,11 @@ def main():
                 frame = os.path.basename(rel_paths[i])
                 csv_writer.writerow([video_id, frame, f"{max_prob:.4f}", f"{mean_prob:.4f}", f"{pct_over_50:.2f}"])
 
-                pred = upsampled.argmax(dim=1).squeeze(0)  # [H, W]
+                # Apply threshold to crosswalk probability channel
+                pred = (cw_prob >= args.threshold).cpu().numpy().astype(np.uint8)
 
                 # Convert to 0/255 uint8 mask
-                mask = (pred.cpu().numpy() * 255).astype(np.uint8)
+                mask = (pred * 255).astype(np.uint8)
 
                 # Save
                 out_path = os.path.join(args.output_dir, rel_paths[i])
