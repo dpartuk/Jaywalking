@@ -31,14 +31,13 @@ JAAD_FINETUNE_DIR = os.path.join(SCRIPT_DIR, "jaad_finetune")
 IMAGES_DIR = os.path.join(JAAD_FINETUNE_DIR, "images")
 MASKS_DIR = os.path.join(JAAD_FINETUNE_DIR, "masks")
 
-OUTPUT_WEIGHTS = os.path.join(os.path.dirname(SCRIPT_DIR), "best_segformer_crosswalk_jaad.pt")
-# Resume from JAAD fine-tuned weights if available, otherwise start from base FPVCrosswalk weights
-PRETRAINED_WEIGHTS = OUTPUT_WEIGHTS if os.path.isfile(OUTPUT_WEIGHTS) else \
-    os.path.join(os.path.dirname(SCRIPT_DIR), "best_segformer_crosswalk.pt")
+OUTPUT_WEIGHTS = os.path.join(os.path.dirname(SCRIPT_DIR), "best_segformer_b3_crosswalk_jaad.pt")
+# Resume from JAAD fine-tuned weights if available, otherwise start from pretrained ImageNet backbone
+PRETRAINED_WEIGHTS = OUTPUT_WEIGHTS if os.path.isfile(OUTPUT_WEIGHTS) else None
 
-MODEL_CHECKPOINT = "nvidia/mit-b0"
+MODEL_CHECKPOINT = "nvidia/mit-b3"
 
-BATCH_SIZE = 8
+BATCH_SIZE = 4  # Reduced for larger model
 LR = 1e-5             # Low LR for fine-tuning
 EPOCHS = 100
 VAL_SPLIT = 0.2
@@ -192,11 +191,11 @@ def main():
         ignore_mismatched_sizes=True,
     )
 
-    if os.path.isfile(PRETRAINED_WEIGHTS):
+    if PRETRAINED_WEIGHTS and os.path.isfile(PRETRAINED_WEIGHTS):
         print(f"Loading pretrained weights from {PRETRAINED_WEIGHTS}")
         model.load_state_dict(torch.load(PRETRAINED_WEIGHTS, map_location=DEVICE, weights_only=True))
     else:
-        print(f"Warning: {PRETRAINED_WEIGHTS} not found, fine-tuning from base mit-b0")
+        print(f"Starting from pretrained ImageNet backbone ({MODEL_CHECKPOINT})")
 
     processor = SegformerImageProcessor.from_pretrained(MODEL_CHECKPOINT)
 
