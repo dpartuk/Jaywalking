@@ -201,6 +201,14 @@ def main():
                           f"max={max_prob:.4f} mean={mean_prob:.4f} "
                           f"pixels>0.5={pct_over_50:.2f}%")
 
+                    # Save original image alongside mask for easy comparison
+                    src_img_path = os.path.join(args.input_dir, rel_paths[i])
+                    debug_img_path = os.path.join(args.output_dir, rel_paths[i])
+                    debug_img_path = str(Path(debug_img_path).with_stem(
+                        Path(debug_img_path).stem + "_orig"))
+                    os.makedirs(os.path.dirname(debug_img_path), exist_ok=True)
+                    Image.open(src_img_path).save(debug_img_path)
+
                 # Write metrics to CSV
                 video_id = rel_paths[i].split(os.sep)[0]
                 frame = os.path.basename(rel_paths[i])
