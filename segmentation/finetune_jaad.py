@@ -273,7 +273,10 @@ def main():
                 mode="nearest"
             ).squeeze(1).long()
 
-            loss = torch.nn.functional.cross_entropy(logits, labels_small)
+            loss = torch.nn.functional.cross_entropy(
+                logits, labels_small,
+                weight=torch.tensor([1.0, 5.0], device=DEVICE)
+            )
 
             loss.backward()
             optimizer.step()
