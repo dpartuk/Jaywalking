@@ -40,7 +40,7 @@ MODEL_CHECKPOINT = "nvidia/mit-b0"
 
 BATCH_SIZE = 8
 LR = 1e-5             # Low LR for fine-tuning
-EPOCHS = 60
+EPOCHS = 100
 VAL_SPLIT = 0.2
 
 # Setup Device (CUDA > MPS > CPU)
@@ -209,8 +209,9 @@ def main():
         val_dataset = CrosswalkDataset(val_imgs, val_masks, processor)
         val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
 
-    # Optimizer
+    # Optimizer and scheduler
     optimizer = AdamW(model.parameters(), lr=LR)
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=EPOCHS, eta_min=1e-7)
 
     model.to(DEVICE)
 
@@ -281,7 +282,8 @@ def main():
             progress_bar.set_postfix({"loss": f"{loss.item():.4f}"})
 
         avg_loss = train_loss / len(train_loader)
-        print(f"Avg Train Loss: {avg_loss:.4f}")
+        scheduler.step()
+        print(f"Avg Train Loss: {avg_loss:.4f} | LR: {scheduler.get_last_lr()[0]:.2e}")
 
         # --- VALIDATION ---
         if val_loader is None:
