@@ -23,8 +23,8 @@ from tqdm.auto import tqdm
 JAAD_IMAGES = os.path.expanduser("~/local/JAAD_DS/images")
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_DIR = os.path.join(SCRIPT_DIR, "crosswalk")
-WEIGHTS_PATH = os.path.join(os.path.dirname(SCRIPT_DIR), "best_segformer_crosswalk.pt")
-MODEL_CHECKPOINT = "nvidia/mit-b0"
+WEIGHTS_PATH = os.path.join(os.path.dirname(SCRIPT_DIR), "best_segformer_b3_crosswalk_jaad.pt")
+MODEL_CHECKPOINT = "nvidia/mit-b3"
 
 # Setup Device (CUDA > MPS > CPU)
 if torch.cuda.is_available():
