@@ -220,7 +220,7 @@ def main():
     # ==========================================
     # 5. TRAINING LOOP
     # ==========================================
-    print("\nStarting Fine-tuning...")
+    print("\nStarting Fine-tuning with augmentation...")
 
     best_cw_iou = 0.0
 
