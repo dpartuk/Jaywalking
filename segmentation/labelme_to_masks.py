@@ -47,8 +47,9 @@ def main():
             points = shape["points"]
             shape_type = shape.get("shape_type", "polygon")
 
-            if shape_type == "polygon":
+            if shape_type in ("polygon", "linestrip"):
                 # Flatten list of [x, y] to list of tuples
+                # linestrip is treated as a closed polygon
                 poly = [(p[0], p[1]) for p in points]
                 if len(poly) >= 3:
                     draw.polygon(poly, fill=255)
