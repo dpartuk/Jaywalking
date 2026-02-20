@@ -4,6 +4,7 @@ import os
 import glob
 import numpy as np
 import torch
+torch.backends.cudnn.enabled = False  # Workaround for ThunderCompute prototyping mode
 import evaluate
 from pathlib import Path
 from PIL import Image
@@ -19,10 +20,10 @@ from tqdm.auto import tqdm
 # Update this path to where your dataset folder actually is
 DATASET_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "FPVCrosswalk2025")
 
-BATCH_SIZE = 32          # Lower to 4 or 2 if you run out of memory
+BATCH_SIZE = 8           # Reduced for larger B3 model
 LR = 2e-4                # 6e-5  # Learning Rate
 EPOCHS = 50              # Number of training epochs
-NUM_WORKERS = 8          # 8 workers keeps the GPU fed and avoids data loading bottlenecks
+NUM_WORKERS = 4          # 8 workers keeps the GPU fed and avoids data loading bottlenecks
 # NUM_WORKERS = 0        # Set to 0 for maximum stability on macOS M-chips
 
 # Setup Device (CUDA > MPS > CPU)
@@ -144,8 +145,8 @@ print("Loading SegFormer model...")
 id2label = {0: "background", 1: "crosswalk"}
 label2id = {"background": 0, "crosswalk": 1}
 
-# Using mit-b0 for speed.
-model_checkpoint = "nvidia/mit-b0"
+# Using mit-b3 for better accuracy.
+model_checkpoint = "nvidia/mit-b3"
 
 model = SegformerForSemanticSegmentation.from_pretrained(
     model_checkpoint,
@@ -264,6 +265,6 @@ for epoch in range(EPOCHS):
     if mean_iou > best_iou:
         print(f"🚀 IoU improved ({best_iou:.4f} -> {mean_iou:.4f}). Saving model...")
         best_iou = mean_iou
-        torch.save(model.state_dict(), "best_segformer_crosswalk.pt")
+        torch.save(model.state_dict(), "best_segformer_b3_crosswalk.pt")
 
 print("\nTraining Complete.")
