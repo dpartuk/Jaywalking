@@ -2,15 +2,18 @@ import os
 # os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
 
 import glob
+import random
 import numpy as np
 import torch
 torch.backends.cudnn.enabled = False  # Workaround for ThunderCompute prototyping mode
 import evaluate
 from pathlib import Path
-from PIL import Image
+from PIL import Image, ImageFilter
 from sklearn.model_selection import train_test_split
 from torch.utils.data import Dataset, DataLoader
 from torch.optim import AdamW
+from torchvision import transforms as T
+from torchvision.transforms import functional as TF
 from transformers import SegformerForSemanticSegmentation, SegformerImageProcessor
 from tqdm.auto import tqdm
 
@@ -112,6 +115,37 @@ class CrosswalkDataset(Dataset):
         # Open Image and Mask
         image = Image.open(self.image_paths[idx]).convert("RGB")
         mask = Image.open(self.mask_paths[idx]).convert("L")
+
+        # Rotate 90 or 270 degrees to make horizontal stripes vertical
+        k = random.choice([1, 3])  # 90 or 270 degrees
+        image = image.rotate(k * 90, expand=True)
+        mask = mask.rotate(k * 90, expand=True)
+
+        # Horizontal flip (50%)
+        if random.random() > 0.5:
+            image = TF.hflip(image)
+            mask = TF.hflip(mask)
+
+        # Random resized crop (50%)
+        if random.random() > 0.5:
+            w, h = image.size
+            scale = random.uniform(0.7, 1.0)
+            new_h, new_w = int(h * scale), int(w * scale)
+            top = random.randint(0, h - new_h)
+            left = random.randint(0, w - new_w)
+            image = TF.resized_crop(image, top, left, new_h, new_w, (h, w))
+            mask = TF.resized_crop(mask, top, left, new_h, new_w, (h, w),
+                                   interpolation=T.InterpolationMode.NEAREST)
+
+        # Color jitter (image only, 50%)
+        if random.random() > 0.5:
+            image = TF.adjust_brightness(image, random.uniform(0.8, 1.2))
+            image = TF.adjust_contrast(image, random.uniform(0.8, 1.2))
+            image = TF.adjust_saturation(image, random.uniform(0.8, 1.2))
+
+        # Gaussian blur (image only, 20%)
+        if random.random() > 0.8:
+            image = image.filter(ImageFilter.GaussianBlur(radius=random.uniform(0.5, 1.5)))
 
         # Convert to numpy
         mask_np = np.array(mask)
