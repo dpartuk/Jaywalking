@@ -256,17 +256,19 @@ class Inference(object):
                                 per_frame_ped.append(idx_ped)
                         else :
                             xtl, ytl, xbr, ybr = 0, 0, 0, 0
-                            
+
                         new_frame_data = {'ped_id': idx_ped,
                                           'occlusion' : 0,
                                           'bbox' : [float(xtl), float(ytl), float(xbr), float(ybr)],
                                           '2dkp' : kp_ped}
                         data_seq['seqs'][-1]['frames'][-1]['peds'].append(new_frame_data)
-                    
+
                 if len(per_frame_ped) == 0:
                     data_seq['per_seq_ped'].append(None)
                 else:
                     data_seq['per_seq_ped'].append(per_frame_ped)
+            else:
+                data_seq['per_seq_ped'].append(None)
 
         vidcap.release()
         
@@ -457,4 +459,5 @@ if __name__ == "__main__":
     infer_model(opts, args)
 
     #Reconstruct the video for visualization
-    infer.reconstrust_video(filename=opts.filename)
+    # not needed for our jaywalking goal. saving disk space
+    # infer.reconstrust_video(filename=opts.filename)
