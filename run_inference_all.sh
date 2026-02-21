@@ -6,7 +6,7 @@
 set -e
 
 # Install dependencies
-pip install -r intention/requirements.txt
+# pip install -r intention/requirements.txt
 
 # Verify checkpoint exists
 if [ ! -f checkpoints/best_epoch.bin ]; then
