@@ -309,7 +309,7 @@ class Inference(object):
             print("No pickle file found at " + self._infer_pkl_path)
             return
         
-        with open(join(self._infer_pkl_path, pkl_file_path), "rb") as f:
+        with open(pkl_file_path, "rb") as f:
                 infer_data = pickle.load(f)
 
         data_PIP = {'vid_id': infer_data['vid_id'],'num_seq': infer_data['num_seq'],'forecast_step': infer_data['forecast_step'],
