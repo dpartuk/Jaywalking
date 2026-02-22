@@ -55,6 +55,12 @@ def parse_args():
         default="/Users/dpeleg/local/JAAD_DS/annotations_attributes/",
         help="Directory containing JAAD pedestrian attributes XMLs",
     )
+    parser.add_argument(
+        "--vehicle_dir",
+        type=str,
+        default="/Users/dpeleg/local/JAAD_DS/annotations_vehicle/",
+        help="Directory containing JAAD vehicle annotation XMLs",
+    )
     return parser.parse_args()
 
 
@@ -115,6 +121,26 @@ def load_ped_attributes(attributes_dir):
             "ages": ",".join(unique_ages),
         }
     return ped_attrs
+
+
+def load_vehicle_actions(vehicle_dir):
+    """Load per-frame vehicle action from JAAD vehicle XMLs.
+
+    Returns dict keyed by (video_id, frame_int) -> action string.
+    """
+    vehicle_data = {}
+    if not os.path.isdir(vehicle_dir):
+        return vehicle_data
+    for fname in os.listdir(vehicle_dir):
+        if not fname.endswith(".xml"):
+            continue
+        video_id = fname.replace("_vehicle.xml", "")
+        tree = ET.parse(os.path.join(vehicle_dir, fname))
+        for frame in tree.getroot().findall("frame"):
+            frame_id = int(frame.attrib["id"])
+            action = frame.attrib.get("action", "")
+            vehicle_data[(video_id, frame_id)] = action
+    return vehicle_data
 
 
 def load_segmentation_data(csv_path):
@@ -186,7 +212,7 @@ def process_intention_json(json_path, video_id, seg_data, crosswalk_threshold):
     return rows
 
 
-def aggregate_jaywalking(all_rows, video_attrs, ped_attrs, window_size=50, step=10, min_jaywalking=25):
+def aggregate_jaywalking(all_rows, video_attrs, ped_attrs, vehicle_data, window_size=50, step=10, min_jaywalking=25):
     """Aggregate per-frame jaywalking into sliding window events.
 
     Every `step` frames, look `window_size` frames forward. If at least
@@ -247,6 +273,7 @@ def aggregate_jaywalking(all_rows, video_attrs, ped_attrs, window_size=50, step=
                 "weather": attrs.get("weather", ""),
                 "num_lanes": pa.get("num_lanes", ""),
                 "ages": pa.get("ages", ""),
+                "vehicle_action": vehicle_data.get((video_id, last_frame), ""),
             })
 
     return agg_rows
@@ -289,6 +316,13 @@ def main():
     else:
         print(f"Warning: No attributes XMLs found in {args.attributes_dir}")
 
+    # Load vehicle actions from JAAD vehicle XMLs
+    vehicle_data = load_vehicle_actions(args.vehicle_dir)
+    if vehicle_data:
+        print(f"Loaded vehicle actions for {len(set(k[0] for k in vehicle_data))} videos")
+    else:
+        print(f"Warning: No vehicle XMLs found in {args.vehicle_dir}")
+
     # Process each video
     all_rows = []
     video_stats = {}
@@ -318,12 +352,12 @@ def main():
         writer.writerows(all_rows)
 
     # Write aggregated output CSV
-    agg_rows = aggregate_jaywalking(all_rows, video_attrs, ped_attrs)
+    agg_rows = aggregate_jaywalking(all_rows, video_attrs, ped_attrs, vehicle_data)
     agg_output = os.path.splitext(args.output)[0] + "_aggregated.csv"
     agg_fieldnames = [
         "video_id", "ped_index", "window_start", "window_end", "last_frame",
         "frames_in_window", "jaywalking_frames", "jaywalking", "crossing_pedestrians",
-        "location", "time_of_day", "weather", "num_lanes", "ages",
+        "location", "time_of_day", "weather", "num_lanes", "ages", "vehicle_action",
     ]
     with open(agg_output, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=agg_fieldnames)
