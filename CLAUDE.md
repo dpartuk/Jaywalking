@@ -12,7 +12,7 @@ The three modules form a complementary pedestrian safety system operating on JAA
 
 - **`detection/`** — YOLOv8 pedestrian detection + hybrid texture/edge crosswalk identification. Classifies pedestrians into states: STATIC, SAFE, CROSSWALK, JAYWALKING. Entry point: `main.py`.
 - **`intention/`** — MotionBERT (DSTformer) transformer for binary crossing intention prediction from 2D pose keypoints (extracted via OpenPifPaf). Model architecture in `lib/model/` (ActionNet = DSTformer backbone + classification head). Datasets in `lib/data/`, utilities in `lib/utils/`.
-- **`segmentation/`** — SegFormer-B0 (or DeepLabV3+ alternative) for pixel-level crosswalk segmentation on FPV images. Dataset: FPVCrosswalk2025 with synthetic and real-world splits.
+- **`segmentation/`** — SegFormer-B3 (or DeepLabV3+ alternative) for pixel-level crosswalk segmentation on FPV images. Dataset: FPVCrosswalk2025 with synthetic and real-world splits.
 
 ## Commands
 
@@ -49,7 +49,7 @@ tensorboard --logdir=intention/logs/
 
 ### Segmentation
 ```bash
-python segmentation/train.py            # Train SegFormer-B0
+python segmentation/train.py            # Train SegFormer-B3
 python segmentation/train_deeplab.py    # Train DeepLabV3+ alternative
 python segmentation/check_data.py       # Validate dataset stats
 python segmentation/visualize.py        # Visualize predictions

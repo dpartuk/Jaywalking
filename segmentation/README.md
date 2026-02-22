@@ -1,6 +1,6 @@
 # Segmentation Module
 
-Pixel-level crosswalk segmentation using SegFormer-B0 (primary) or DeepLabV3+ (alternative) on first-person-view images.
+Pixel-level crosswalk segmentation using SegFormer-B3 (primary) or DeepLabV3+ (alternative) on first-person-view images.
 
 ## Overview
 
@@ -8,7 +8,7 @@ Binary semantic segmentation (background vs. crosswalk) trained on the FPVCrossw
 
 | Model | Backbone | Script | Default LR | Default Epochs |
 |-------|----------|--------|-----------|----------------|
-| **SegFormer-B0** | `nvidia/mit-b0` | `train.py` | 6e-5 | 2 |
+| **SegFormer-B3** | `nvidia/mit-b3` | `train.py` | 6e-5 | 2 |
 | **DeepLabV3+** | ResNet-50 | `train_deeplab.py` | 1e-4 | 10 |
 
 Both models output 2-class predictions and are evaluated with Mean IoU and per-category Crosswalk IoU.
@@ -45,7 +45,7 @@ Scans for valid image-mask pairs and displays a sample with raw and thresholded 
 
 ## Training
 
-### SegFormer-B0 (recommended)
+### SegFormer-B3 (recommended)
 
 ```bash
 python train.py
