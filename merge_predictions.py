@@ -49,6 +49,12 @@ def parse_args():
         default="datagen/JAAD_DS/annotations/",
         help="Directory containing JAAD annotation XMLs",
     )
+    parser.add_argument(
+        "--attributes_dir",
+        type=str,
+        default="/Users/dpeleg/local/JAAD_DS/annotations_attributes/",
+        help="Directory containing JAAD pedestrian attributes XMLs",
+    )
     return parser.parse_args()
 
 
@@ -73,6 +79,42 @@ def load_video_attributes(annotations_dir):
             "weather": attrs.get("weather", ""),
         }
     return video_attrs
+
+
+def load_ped_attributes(attributes_dir):
+    """Load per-video pedestrian attributes (age, num_lanes) from JAAD attributes XMLs.
+
+    Since we cannot reliably map JAAD pedestrian IDs to our model's ped_index,
+    we aggregate: num_lanes uses the most common value per video, and age
+    collects all unique values.
+    """
+    ped_attrs = {}
+    if not os.path.isdir(attributes_dir):
+        return ped_attrs
+    for fname in os.listdir(attributes_dir):
+        if not fname.endswith(".xml"):
+            continue
+        # video_0001_attributes.xml -> video_0001
+        video_id = fname.replace("_attributes.xml", "")
+        tree = ET.parse(os.path.join(attributes_dir, fname))
+        ages = []
+        lanes = []
+        for ped in tree.getroot().findall("pedestrian"):
+            age = ped.attrib.get("age", "")
+            if age:
+                ages.append(age)
+            nl = ped.attrib.get("num_lanes", "")
+            if nl:
+                lanes.append(nl)
+        # Most common num_lanes, all unique ages
+        from collections import Counter
+        most_common_lanes = Counter(lanes).most_common(1)[0][0] if lanes else ""
+        unique_ages = sorted(set(ages)) if ages else []
+        ped_attrs[video_id] = {
+            "num_lanes": most_common_lanes,
+            "ages": ",".join(unique_ages),
+        }
+    return ped_attrs
 
 
 def load_segmentation_data(csv_path):
@@ -144,7 +186,7 @@ def process_intention_json(json_path, video_id, seg_data, crosswalk_threshold):
     return rows
 
 
-def aggregate_jaywalking(all_rows, video_attrs, window_size=50, step=10, min_jaywalking=25):
+def aggregate_jaywalking(all_rows, video_attrs, ped_attrs, window_size=50, step=10, min_jaywalking=25):
     """Aggregate per-frame jaywalking into sliding window events.
 
     Every `step` frames, look `window_size` frames forward. If at least
@@ -155,9 +197,13 @@ def aggregate_jaywalking(all_rows, video_attrs, window_size=50, step=10, min_jay
     """
     # Group rows by (video_id, ped_index)
     groups = defaultdict(dict)
+    # Track which pedestrians are crossing per (video_id, frame)
+    crossing_peds_by_frame = defaultdict(set)
     for row in all_rows:
         key = (row["video_id"], row["ped_index"])
         groups[key][row["frame"]] = row
+        if row["crossing_pred"] == 1:
+            crossing_peds_by_frame[(row["video_id"], row["frame"])].add(row["ped_index"])
 
     agg_rows = []
     for (video_id, ped_index), frame_map in sorted(groups.items()):
@@ -167,18 +213,21 @@ def aggregate_jaywalking(all_rows, video_attrs, window_size=50, step=10, min_jay
         max_frame = max(frame_map)
 
         attrs = video_attrs.get(video_id, {})
+        pa = ped_attrs.get(video_id, {})
 
         for win_start in range(min_frame, max_frame + 1, step):
             win_end = win_start + window_size
             jw_count = 0
             total_in_window = 0
             last_frame = None
+            crossing_peds_in_window = set()
             for f in range(win_start, win_end):
                 if f in frame_map:
                     total_in_window += 1
                     last_frame = f
                     if frame_map[f]["jaywalking"]:
                         jw_count += 1
+                crossing_peds_in_window.update(crossing_peds_by_frame.get((video_id, f), set()))
 
             if total_in_window == 0:
                 continue
@@ -192,9 +241,12 @@ def aggregate_jaywalking(all_rows, video_attrs, window_size=50, step=10, min_jay
                 "frames_in_window": total_in_window,
                 "jaywalking_frames": jw_count,
                 "jaywalking": jw_count >= min_jaywalking,
+                "crossing_pedestrians": len(crossing_peds_in_window),
                 "location": attrs.get("location", ""),
                 "time_of_day": attrs.get("time_of_day", ""),
                 "weather": attrs.get("weather", ""),
+                "num_lanes": pa.get("num_lanes", ""),
+                "ages": pa.get("ages", ""),
             })
 
     return agg_rows
@@ -230,6 +282,13 @@ def main():
     else:
         print(f"Warning: No annotation XMLs found in {args.annotations_dir}")
 
+    # Load pedestrian attributes from JAAD attributes XMLs
+    ped_attrs = load_ped_attributes(args.attributes_dir)
+    if ped_attrs:
+        print(f"Loaded pedestrian attributes for {len(ped_attrs)} videos")
+    else:
+        print(f"Warning: No attributes XMLs found in {args.attributes_dir}")
+
     # Process each video
     all_rows = []
     video_stats = {}
@@ -259,12 +318,12 @@ def main():
         writer.writerows(all_rows)
 
     # Write aggregated output CSV
-    agg_rows = aggregate_jaywalking(all_rows, video_attrs)
+    agg_rows = aggregate_jaywalking(all_rows, video_attrs, ped_attrs)
     agg_output = os.path.splitext(args.output)[0] + "_aggregated.csv"
     agg_fieldnames = [
         "video_id", "ped_index", "window_start", "window_end", "last_frame",
-        "frames_in_window", "jaywalking_frames", "jaywalking",
-        "location", "time_of_day", "weather",
+        "frames_in_window", "jaywalking_frames", "jaywalking", "crossing_pedestrians",
+        "location", "time_of_day", "weather", "num_lanes", "ages",
     ]
     with open(agg_output, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=agg_fieldnames)
