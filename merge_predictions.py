@@ -213,10 +213,14 @@ def process_intention_json(json_path, video_id, seg_data, crosswalk_threshold):
 
 
 def compute_risk_score(crossing_confidence, crosswalk_max_prob, vehicle_action,
-                       time_of_day, weather, num_lanes, crossing_pedestrians, ages):
+                       time_of_day, weather, num_lanes, crossing_pedestrians, ages,
+                       location):
     """Compute pedestrian danger risk score (0-1) using a weighted composite model.
 
     risk = P(crossing) × (1 - P(crosswalk)) × V_risk × E_risk × C_risk × A_risk
+
+    Returns 0 for non-street locations (plaza, indoor) where vehicle-pedestrian
+    conflict is not applicable.
 
     Components:
       - P(crossing): intention model confidence (higher = more certain of crossing)
@@ -226,11 +230,13 @@ def compute_risk_score(crossing_confidence, crosswalk_max_prob, vehicle_action,
       - C_risk: crowd risk factor (more pedestrians crossing = more dangerous)
       - A_risk: age vulnerability factor (children and seniors are more at risk)
     """
+    # No vehicle-pedestrian conflict risk in plazas or indoors
+    if location in ("plaza", "indoor"):
+        return 0.0
+
     VEHICLE_RISK = {
         "stopped": 0.1,
-        "decelerating": 0.3,
-        "moving_slow": 0.5,
-        "accelerating": 0.7,
+        "moving_slow": 0.4,
         "moving_fast": 1.0,
     }
 
@@ -346,7 +352,7 @@ def aggregate_jaywalking(all_rows, video_attrs, ped_attrs, vehicle_data, window_
                 avg_confidence, avg_crosswalk, v_action,
                 attrs.get("time_of_day", ""), attrs.get("weather", ""),
                 pa.get("num_lanes", ""), len(crossing_peds_in_window),
-                pa.get("ages", ""),
+                pa.get("ages", ""), attrs.get("location", ""),
             )
 
             agg_rows.append({
