@@ -212,6 +212,51 @@ def process_intention_json(json_path, video_id, seg_data, crosswalk_threshold):
     return rows
 
 
+def compute_risk_score(crossing_confidence, crosswalk_max_prob, vehicle_action,
+                       time_of_day, weather, num_lanes):
+    """Compute pedestrian danger risk score (0-1) using a weighted composite model.
+
+    risk = P(crossing) × (1 - P(crosswalk)) × V_risk × E_risk
+
+    Components:
+      - P(crossing): intention model confidence (higher = more certain of crossing)
+      - 1 - P(crosswalk): absence of crosswalk (higher = more dangerous)
+      - V_risk: vehicle action risk factor
+      - E_risk: environmental risk multiplier (time of day, weather, road width)
+    """
+    VEHICLE_RISK = {
+        "stopped": 0.1,
+        "decelerating": 0.3,
+        "moving_slow": 0.5,
+        "accelerating": 0.7,
+        "moving_fast": 1.0,
+    }
+
+    # Base risk: crossing probability × absence of crosswalk
+    p_crossing = max(0.0, min(1.0, crossing_confidence))
+    p_no_crosswalk = 1.0 - max(0.0, min(1.0, crosswalk_max_prob))
+    base_risk = p_crossing * p_no_crosswalk
+
+    # Vehicle risk factor
+    v_risk = VEHICLE_RISK.get(vehicle_action, 0.5)
+
+    # Environmental multiplier (starts at 1.0, increases with hazardous conditions)
+    e_risk = 1.0
+    if time_of_day in ("nighttime", "evening"):
+        e_risk *= 1.3
+    if weather in ("rain", "snow"):
+        e_risk *= 1.2
+    try:
+        if int(num_lanes) >= 4:
+            e_risk *= 1.2
+    except (ValueError, TypeError):
+        pass
+
+    # Combine and clamp to [0, 1]
+    risk = base_risk * v_risk * e_risk
+    return min(1.0, round(risk, 4))
+
+
 def aggregate_jaywalking(all_rows, video_attrs, ped_attrs, vehicle_data, window_size=50, step=10, min_jaywalking=25):
     """Aggregate per-frame jaywalking into sliding window events.
 
@@ -247,16 +292,34 @@ def aggregate_jaywalking(all_rows, video_attrs, ped_attrs, vehicle_data, window_
             total_in_window = 0
             last_frame = None
             crossing_peds_in_window = set()
+            crossing_confidences = []
+            crosswalk_probs = []
             for f in range(win_start, win_end):
                 if f in frame_map:
                     total_in_window += 1
                     last_frame = f
                     if frame_map[f]["jaywalking"]:
                         jw_count += 1
+                    if frame_map[f]["crossing_pred"] == 1:
+                        conf = frame_map[f]["crossing_confidence"]
+                        if conf is not None:
+                            crossing_confidences.append(conf)
+                    cw = frame_map[f].get("crosswalk_max_prob")
+                    if cw != "" and cw is not None:
+                        crosswalk_probs.append(cw)
                 crossing_peds_in_window.update(crossing_peds_by_frame.get((video_id, f), set()))
 
             if total_in_window == 0:
                 continue
+
+            v_action = vehicle_data.get((video_id, last_frame), "")
+            avg_confidence = sum(crossing_confidences) / len(crossing_confidences) if crossing_confidences else 0.0
+            avg_crosswalk = sum(crosswalk_probs) / len(crosswalk_probs) if crosswalk_probs else 0.0
+            risk = compute_risk_score(
+                avg_confidence, avg_crosswalk, v_action,
+                attrs.get("time_of_day", ""), attrs.get("weather", ""),
+                pa.get("num_lanes", ""),
+            )
 
             agg_rows.append({
                 "video_id": video_id,
@@ -268,12 +331,13 @@ def aggregate_jaywalking(all_rows, video_attrs, ped_attrs, vehicle_data, window_
                 "jaywalking_frames": jw_count,
                 "jaywalking": jw_count >= min_jaywalking,
                 "crossing_pedestrians": len(crossing_peds_in_window),
+                "risk_score": risk,
                 "location": attrs.get("location", ""),
                 "time_of_day": attrs.get("time_of_day", ""),
                 "weather": attrs.get("weather", ""),
                 "num_lanes": pa.get("num_lanes", ""),
                 "ages": pa.get("ages", ""),
-                "vehicle_action": vehicle_data.get((video_id, last_frame), ""),
+                "vehicle_action": v_action,
             })
 
     return agg_rows
@@ -357,6 +421,7 @@ def main():
     agg_fieldnames = [
         "video_id", "ped_index", "window_start", "window_end", "last_frame",
         "frames_in_window", "jaywalking_frames", "jaywalking", "crossing_pedestrians",
+        "risk_score",
         "location", "time_of_day", "weather", "num_lanes", "ages", "vehicle_action",
     ]
     with open(agg_output, "w", newline="") as f:
