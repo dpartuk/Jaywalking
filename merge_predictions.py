@@ -213,16 +213,18 @@ def process_intention_json(json_path, video_id, seg_data, crosswalk_threshold):
 
 
 def compute_risk_score(crossing_confidence, crosswalk_max_prob, vehicle_action,
-                       time_of_day, weather, num_lanes):
+                       time_of_day, weather, num_lanes, crossing_pedestrians, ages):
     """Compute pedestrian danger risk score (0-1) using a weighted composite model.
 
-    risk = P(crossing) × (1 - P(crosswalk)) × V_risk × E_risk
+    risk = P(crossing) × (1 - P(crosswalk)) × V_risk × E_risk × C_risk × A_risk
 
     Components:
       - P(crossing): intention model confidence (higher = more certain of crossing)
       - 1 - P(crosswalk): absence of crosswalk (higher = more dangerous)
       - V_risk: vehicle action risk factor
       - E_risk: environmental risk multiplier (time of day, weather, road width)
+      - C_risk: crowd risk factor (more pedestrians crossing = more dangerous)
+      - A_risk: age vulnerability factor (children and seniors are more at risk)
     """
     VEHICLE_RISK = {
         "stopped": 0.1,
@@ -230,6 +232,22 @@ def compute_risk_score(crossing_confidence, crosswalk_max_prob, vehicle_action,
         "moving_slow": 0.5,
         "accelerating": 0.7,
         "moving_fast": 1.0,
+    }
+
+    LANE_RISK = {
+        1: 0.8,
+        2: 1.0,
+        3: 1.1,
+        4: 1.2,
+        5: 1.3,
+        6: 1.4,
+    }
+
+    AGE_RISK = {
+        "child": 1.4,
+        "young": 1.0,
+        "adult": 1.0,
+        "senior": 1.3,
     }
 
     # Base risk: crossing probability × absence of crosswalk
@@ -247,13 +265,22 @@ def compute_risk_score(crossing_confidence, crosswalk_max_prob, vehicle_action,
     if weather in ("rain", "snow"):
         e_risk *= 1.2
     try:
-        if int(num_lanes) >= 4:
-            e_risk *= 1.2
+        e_risk *= LANE_RISK.get(int(num_lanes), 1.0)
     except (ValueError, TypeError):
         pass
 
+    # Crowd risk: more pedestrians crossing simultaneously increases danger
+    # Scales logarithmically: 1 ped = 1.0, 2 = 1.15, 3 = 1.25, 4+ = 1.3+
+    c_risk = 1.0 + 0.15 * min(2.0, max(0, crossing_pedestrians - 1) ** 0.5)
+
+    # Age vulnerability: highest risk age group determines the multiplier
+    a_risk = 1.0
+    if ages:
+        age_list = [a.strip() for a in ages.split(",")]
+        a_risk = max(AGE_RISK.get(a, 1.0) for a in age_list)
+
     # Combine and clamp to [0, 1]
-    risk = base_risk * v_risk * e_risk
+    risk = base_risk * v_risk * e_risk * c_risk * a_risk
     return min(1.0, round(risk, 4))
 
 
@@ -318,7 +345,8 @@ def aggregate_jaywalking(all_rows, video_attrs, ped_attrs, vehicle_data, window_
             risk = compute_risk_score(
                 avg_confidence, avg_crosswalk, v_action,
                 attrs.get("time_of_day", ""), attrs.get("weather", ""),
-                pa.get("num_lanes", ""),
+                pa.get("num_lanes", ""), len(crossing_peds_in_window),
+                pa.get("ages", ""),
             )
 
             agg_rows.append({
@@ -331,6 +359,8 @@ def aggregate_jaywalking(all_rows, video_attrs, ped_attrs, vehicle_data, window_
                 "jaywalking_frames": jw_count,
                 "jaywalking": jw_count >= min_jaywalking,
                 "crossing_pedestrians": len(crossing_peds_in_window),
+                "avg_crossing_confidence": round(avg_confidence, 4),
+                "avg_crosswalk_max_prob": round(avg_crosswalk, 4),
                 "risk_score": risk,
                 "location": attrs.get("location", ""),
                 "time_of_day": attrs.get("time_of_day", ""),
@@ -421,7 +451,7 @@ def main():
     agg_fieldnames = [
         "video_id", "ped_index", "window_start", "window_end", "last_frame",
         "frames_in_window", "jaywalking_frames", "jaywalking", "crossing_pedestrians",
-        "risk_score",
+        "avg_crossing_confidence", "avg_crosswalk_max_prob", "risk_score",
         "location", "time_of_day", "weather", "num_lanes", "ages", "vehicle_action",
     ]
     with open(agg_output, "w", newline="") as f:
