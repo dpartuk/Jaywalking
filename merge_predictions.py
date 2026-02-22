@@ -320,7 +320,7 @@ def aggregate_jaywalking(all_rows, video_attrs, ped_attrs, vehicle_data, window_
         pa = ped_attrs.get(video_id, {})
 
         for win_start in range(min_frame, max_frame + 1, step):
-            win_end = win_start + window_size
+            win_end = min(win_start + window_size, max_frame + 1)
             jw_count = 0
             total_in_window = 0
             last_frame = None
